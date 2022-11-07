@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2022 a las 12:53:09
+-- Tiempo de generación: 07-11-2022 a las 10:24:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -103,6 +103,16 @@ CREATE TABLE `testimonio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
+-- Volcado de datos para la tabla `testimonio`
+--
+
+INSERT INTO `testimonio` (`id`, `autor`, `contenido`, `fecha`) VALUES
+(1, 'Roberto', 'Uno de los mejores a los que he ido, muy buena atención al cliente.', '2022-11-03'),
+(2, 'Jose', 'Tiene unas instalaciones geniales con mucho espacio.', '2022-11-01'),
+(3, 'Ricardo', 'Mi gimnasio es el mejor.', '2022-11-06'),
+(4, 'Pedro', 'Los instructores son muy amables y siempre están ahí para ayudar.', '2022-11-04');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -176,7 +186,18 @@ ALTER TABLE `socio`
 -- AUTO_INCREMENT de la tabla `testimonio`
 --
 ALTER TABLE `testimonio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `citas`
+--
+ALTER TABLE `citas`
+  ADD CONSTRAINT `ce_cita_servicio` FOREIGN KEY (`servicio`) REFERENCES `servicio` (`id`),
+  ADD CONSTRAINT `ce_cita_socio` FOREIGN KEY (`socio`) REFERENCES `socio` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
