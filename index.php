@@ -34,9 +34,21 @@
             <h2>Testimonios</h2>
             <?php
                 require_once "php/funciones.php";
+                $con=conectarServidor();
 
-                //mt_rand(inf, sup)
+                $max=$con->query("select count(id) from testimonio");
+                $random=mt_rand(0,$max);
                 
+                $resultado=$con->query("select * from testimonio where id=$random");
+                
+                $fila=$resultado->fetch_array(MYSQLI_ASSOC);
+
+                echo "<div>
+                    <p>$fila[contenido]</p>
+                    <p>$fila[autor]</p>
+                </div>";
+                
+                $con->close();
             ?>
         </section>
         <section>
