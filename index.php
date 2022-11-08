@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="img/logo.png" alt="">
+        <img src="img/logo.png" alt="" id="logo">
         <nav>
             <a href="">Socios</a>
             <a href="">Productos</a>
@@ -34,22 +34,22 @@
         <section>
             <h2>Testimonios</h2>
             <?php
-                require_once "php/funciones.php";
-                $con=conectarServidor();
+                // require_once "php/funciones.php";
+                // $con=conectarServidor();
 
-                $max=$con->query("select count(id) from testimonio");
-                $random=mt_rand(0,$max);
+                // $max=$con->query("select count(id) from testimonio");
+                // $random=mt_rand(0,$max);
                 
-                $resultado=$con->query("select * from testimonio where id=$random");
+                // $resultado=$con->query("select * from testimonio where id=$random");
                 
-                $fila=$resultado->fetch_array(MYSQLI_ASSOC);
+                // $fila=$resultado->fetch_array(MYSQLI_ASSOC);
 
-                echo "<div>
-                    <p>$fila[contenido]</p>
-                    <p>$fila[autor]</p>
-                </div>";
+                // echo "<div>
+                //     <p>$fila[contenido]</p>
+                //     <p>$fila[autor]</p>
+                // </div>";
                 
-                $con->close();
+                // $con->close();
             ?>
         </section>
         <section>
