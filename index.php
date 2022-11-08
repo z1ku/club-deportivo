@@ -15,12 +15,12 @@
     <header>
         <nav>
             <a href="index.php"><img src="img/logo.png" alt="" id="logo"></a>
-            <a href="#">Socios</a>
-            <a href="#">Productos</a>
-            <a href="#">Servicios</a>
-            <a href="#">Testimonios</a>
-            <a href="#">Noticias</a>
-            <a href="#">Citas</a>
+            <a href="php/socios.php">Socios</a>
+            <a href="php/productos.php">Productos</a>
+            <a href="php/servicios.php">Servicios</a>
+            <a href="php/testimonios.php">Testimonios</a>
+            <a href="php/noticias.php">Noticias</a>
+            <a href="php/citas.php">Citas</a>
         </nav>
         <div class="rrss">
             <a href="#"><i class="fa-brands fa-twitter"></i></a>
@@ -69,7 +69,7 @@
                 $resultado=$con->query("select * from testimonio where id=$random");
                 $fila=$resultado->fetch_array(MYSQLI_ASSOC);
 
-                echo "<div class=\"testimonio\">
+                echo "<div class=\"testimonio_random\">
                     <p>\"$fila[contenido]\"</p>
                     <p>$fila[autor]</p>
                 </div>";
