@@ -44,6 +44,15 @@
     <main>
         <section class="seccionSocios">
             <h1>Listado de Socios</h1>
+            <?php
+                require_once "funciones.php";
+                $con=conectarServidor();
+
+                $socios=$con->query("select * from socios");
+                
+
+
+            ?>
         </section>
     </main>
     <footer>
