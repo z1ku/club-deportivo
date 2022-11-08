@@ -58,22 +58,23 @@
         <section>
             <h2>Testimonios</h2>
             <?php
-                // require_once "php/funciones.php";
-                // $con=conectarServidor();
+                require_once "php/funciones.php";
+                $con=conectarServidor();
 
-                // $max=$con->query("select count(id) from testimonio");
-                // $random=mt_rand(0,$max);
-                
-                // $resultado=$con->query("select * from testimonio where id=$random");
-                
-                // $fila=$resultado->fetch_array(MYSQLI_ASSOC);
+                $max=$con->query("select count(id) from testimonio");
+                $num=$max->fetch_array(MYSQLI_NUM);
 
-                // echo "<div>
-                //     <p>$fila[contenido]</p>
-                //     <p>$fila[autor]</p>
-                // </div>";
+                $random=mt_rand(1,$num[0]);
+
+                $resultado=$con->query("select * from testimonio where id=$random");
+                $fila=$resultado->fetch_array(MYSQLI_ASSOC);
+
+                echo "<div class=\"testimonio\">
+                    <p>\"$fila[contenido]\"</p>
+                    <p>$fila[autor]</p>
+                </div>";
                 
-                // $con->close();
+                $con->close();
             ?>
         </section>
         <section>
