@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2022 a las 10:24:01
+-- Tiempo de generación: 08-11-2022 a las 21:21:12
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -86,8 +86,17 @@ CREATE TABLE `socio` (
   `usuario` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
   `pass` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
   `telefono` int(9) NOT NULL,
-  `foto` varchar(30) COLLATE latin1_spanish_ci NOT NULL
+  `foto` varchar(50) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `socio`
+--
+
+INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
+(1, 'Ricardo Romero Bustos', 27, 'ricardor1', 'ricardor1', 689546783, '../img/socios/ricardor1.jpg'),
+(2, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 629456782, '../img/socios/jesusr1.jpg'),
+(3, 'Pedro Gomez Gutierrez', 32, 'pedrog1', 'pedrog1', 656347387, '..img/socios/pedrog1');
 
 -- --------------------------------------------------------
 
@@ -122,7 +131,8 @@ INSERT INTO `testimonio` (`id`, `autor`, `contenido`, `fecha`) VALUES
 ALTER TABLE `citas`
   ADD PRIMARY KEY (`socio`,`servicio`,`fecha`),
   ADD KEY `socio` (`socio`),
-  ADD KEY `socio_2` (`socio`,`servicio`,`fecha`);
+  ADD KEY `socio_2` (`socio`,`servicio`,`fecha`),
+  ADD KEY `ce_cita_servicio` (`servicio`);
 
 --
 -- Indices de la tabla `noticia`
@@ -180,7 +190,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `socio`
 --
 ALTER TABLE `socio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `testimonio`
