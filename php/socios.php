@@ -42,7 +42,9 @@
         </div>
     </header>
     <main>
-
+        <section class="seccionSocios">
+            <h1>Listado de Socios</h1>
+        </section>
     </main>
     <footer>
         <div>
