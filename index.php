@@ -42,8 +42,10 @@
         </div>
     </header>
     <main>
-        <section>
-            <h1>Bienvenido a Olympia Gym</h1>  
+        <section id="bienvenida">
+            <h1>Olympia Gym</h1>
+            <span>El mejor club deportivo de tu ciudad</span>
+            <button>Únete ahora</button>
         </section>
         <section>
             <h2>Últimas noticias</h2>
