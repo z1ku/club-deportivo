@@ -15,17 +15,17 @@
     <header>
         <nav>
             <a href="index.php"><img src="img/logo.png" alt="" id="logo"></a>
-            <a href="">Socios</a>
-            <a href="">Productos</a>
-            <a href="">Servicios</a>
-            <a href="">Testimonios</a>
-            <a href="">Noticias</a>
-            <a href="">Citas</a>
+            <a href="#">Socios</a>
+            <a href="#">Productos</a>
+            <a href="#">Servicios</a>
+            <a href="#">Testimonios</a>
+            <a href="#">Noticias</a>
+            <a href="#">Citas</a>
         </nav>
         <div class="rrss">
-            <a href=""><i class="fa-brands fa-twitter"></i></a>
-            <a href=""><i class="fa-brands fa-facebook"></i></a>
-            <a href=""><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
         </div>
         <div class="login">
             <form action="" method="post">
@@ -95,9 +95,9 @@
     </main>
     <footer>
         <div>
-            <a href="">Política de privacidad</a>
-            <a href="">Condiciones</a>
-            <a href="">Contacto</a>
+            <a href="#">Política de privacidad</a>
+            <a href="#">Condiciones</a>
+            <a href="#">Contacto</a>
         </div>
         <span>DESARROLLADO POR RICARDO ROMERO BUSTOS</span>
     </footer>
