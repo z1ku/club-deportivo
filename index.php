@@ -69,10 +69,14 @@
                 $resultado=$con->query("select * from testimonio where id=$random");
                 $fila=$resultado->fetch_array(MYSQLI_ASSOC);
 
-                echo "<div class=\"testimonio_random\">
-                    <p>\"$fila[contenido]\"</p>
-                    <p>$fila[autor]</p>
-                </div>";
+                if($num[0]>0){
+                    echo "<div class=\"testimonio_random\">
+                        <p>\"$fila[contenido]\"</p>
+                        <p>$fila[autor]</p>
+                    </div>";
+                }else{
+                    echo "<p>Aún no hay testimonios en la base de datos</p>";
+                }
                 
                 $con->close();
             ?>

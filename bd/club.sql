@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2022 a las 21:21:12
+-- Tiempo de generación: 09-11-2022 a las 14:26:50
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -94,9 +94,9 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
-(1, 'Ricardo Romero Bustos', 27, 'ricardor1', 'ricardor1', 689546783, '../img/socios/ricardor1.jpg'),
-(2, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 629456782, '../img/socios/jesusr1.jpg'),
-(3, 'Pedro Gomez Gutierrez', 32, 'pedrog1', 'pedrog1', 656347387, '..img/socios/pedrog1');
+(1, 'Ricardo Romero Bustos', 27, 'ricardor1', 'ricardor1', 689546783, 'ricardor1.jpg'),
+(2, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 629456782, 'jesusr1.jpg'),
+(3, 'Pedro Gomez Gutierrez', 32, 'pedrog1', 'pedrog1', 656347387, 'pedrog1.jpg');
 
 -- --------------------------------------------------------
 

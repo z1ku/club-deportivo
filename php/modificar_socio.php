@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socios</title>
+    <title>Modificar Socio</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,53 +42,15 @@
         </div>
     </header>
     <main>
-        <section class="seccionSocios">
-            <h1>Listado de Socios</h1>
+        <section id="seccionModificarSocio">
             <?php
-                require_once "funciones.php";
-                $con=conectarServidor();
-
-                $socios=$con->query("select * from socio");
-
-                if($socios->num_rows==0){
-                    echo "<p>Aún no hay socios en la base de datos</p>";
+                if(isset($_POST["modificar_socio"])){
+                    echo "<form action=\"\" method=\"post\">
+                    
+                    </form>";
                 }else{
-                    echo "<table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Foto</th>
-                            <th>Nombre</th>
-                            <th>Edad</th>
-                            <th>Usuario</th>
-                            <th>Contraseña</th>
-                            <th>Telefono</th>
-                            <th>Modificar</th>
-                        </tr>
-                    </thead>
-                    <tbody>";
-                    while($fila_socios=$socios->fetch_array(MYSQLI_ASSOC)){
-                        echo "<tr>
-                            <td>$fila_socios[id]</td>
-                            <td><img src=\"../img/socios/$fila_socios[foto]\"></td>
-                            <td>$fila_socios[nombre]</td>
-                            <td>$fila_socios[edad]</td>
-                            <td>$fila_socios[usuario]</td>
-                            <td>$fila_socios[pass]</td>
-                            <td>$fila_socios[telefono]</td>
-                            <td>
-                                <form action=\"modificar_socio.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_socio\" value=\"$fila_socios[id]\">
-                                    <input type=\"submit\" name=\"modificar_socio\" value=\"Modificar\">
-                                </form>
-                            </td>
-                        </tr>";
-                    }
-                    echo "</tbody>";
-                    echo "</table>";
+                    echo "<p>Usa el botón Modificar en socios</p>";
                 }
-                
-                $con->close();
             ?>
         </section>
     </main>
