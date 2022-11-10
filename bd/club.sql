@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2022 a las 14:26:50
+-- Tiempo de generación: 10-11-2022 a las 14:24:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -57,7 +57,7 @@ CREATE TABLE `noticia` (
 CREATE TABLE `producto` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nombre` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `precio` double(5,2) NOT NULL
+  `precio` double(5,2) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
@@ -70,7 +70,7 @@ CREATE TABLE `servicio` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `descripcion` varchar(250) COLLATE latin1_spanish_ci NOT NULL,
   `duracion` int(3) UNSIGNED NOT NULL,
-  `precio` double(5,2) NOT NULL
+  `precio` double(5,2) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
@@ -82,10 +82,10 @@ CREATE TABLE `servicio` (
 CREATE TABLE `socio` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nombre` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `edad` int(2) NOT NULL,
+  `edad` int(2) UNSIGNED NOT NULL,
   `usuario` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
   `pass` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
-  `telefono` int(9) NOT NULL,
+  `telefono` int(9) UNSIGNED NOT NULL,
   `foto` varchar(50) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 

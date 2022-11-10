@@ -77,38 +77,62 @@
                     </div>
                     <div>
                         <label for=\"telefono\">Telefono:</label>
-                        <input type=\"number\" name=\"telefono\" placeholder=\"$socio[telefono]\">
+                        <input type=\"number\" name=\"telefono\" placeholder=\"$socio[telefono]\" min=\"0\">
                     </div>
                     <div>
-                        <label for=\"foto\">Subir foto</label>
-                        <input type=\"file\" name=\"foto\">
+                        <label for=\"foto\">Subir foto en jpg:</label>
+                        <input type=\"file\" name=\"foto\" accept=\"image/jpeg\">
                     </div>
                     <input type=\"submit\" name=\"modificar\" value=\"Guardar\">
                     </form>";
-
+                    
                     if(isset($_POST['modificar'])){
-                        if(trim($_POST['nombre']!="")){
+                        if(trim($_POST['nombre']=="")){
                             $nombre=$socio['nombre'];
                         }else{
                             $nombre=trim($_POST['nombre']);
                         }
-
-                        if(trim($_POST['edad']!="")){
+                        
+                        if($_POST['edad']==""){
                             $edad=$socio['edad'];
                         }else{
-                            $edad=trim($_POST['edad']);
+                            if($_POST['edad']>0){
+                                $edad=$_POST['edad'];
+                            }else{
+                                
+                            }
                         }
 
-                        if(trim($_POST['usuario']!="")){
+                        if(trim($_POST['usuario']=="")){
                             $usuario=$socio['usuario'];
                         }else{
                             $usuario=trim($_POST['usuario']);
                         }
+
+                        if(trim($_POST['pass']=="")){
+                            $pass=$socio['pass'];
+                        }else{
+                            $pass=trim($_POST['pass']);
+                        }
+
+                        if($_POST['telefono']==""){
+                            $telefono=$socio['telefono'];
+                        }else{
+                            if(preg_match("`[6789][0-9]{8}`", $_POST['telefono'])){
+                                $telefono=$_POST['telefono'];
+                            }else{
+                                
+                            }
+                        }
+
+
                     }
+
 
                     $con->close();
                 }else{
                     echo "<p>Usa el botón Modificar en socios</p>";
+                    header("refresh:3; url=socios.php");
                 }
             ?>
         </section>
