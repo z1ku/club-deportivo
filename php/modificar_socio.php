@@ -43,11 +43,70 @@
     </header>
     <main>
         <section id="seccionModificarSocio">
+            <h1>Modificar Socio</h1>
             <?php
                 if(isset($_POST["modificar_socio"])){
-                    echo "<form action=\"\" method=\"post\">
-                    
+                    require_once "funciones.php";
+
+                    $id_socio=$_POST['id_socio'];
+
+                    $con=conectarServidor();
+                    $datos=$con->query("select * from socio where id=$id_socio");
+                    $socio=$datos->fetch_array(MYSQLI_ASSOC);
+
+                    echo "<form action=\"#\" method=\"post\" enctype=\"multipart/form-data\">
+                    <div>
+                        <label for=\"id\">ID:</label>
+                        <input type=\"number\" name=\"id\" value=\"$socio[id]\" disabled>
+                    </div>
+                    <div>
+                        <label for=\"nombre\">Nombre:</label>
+                        <input type=\"text\" name=\"nombre\" placeholder=\"$socio[nombre]\">
+                    </div>
+                    <div>
+                        <label for=\"edad\">Edad:</label>
+                        <input type=\"number\" name=\"edad\" placeholder=\"$socio[edad]\">
+                    </div>
+                    <div>
+                        <label for=\"usuario\">Usuario:</label>
+                        <input type=\"text\" name=\"usuario\" placeholder=\"$socio[usuario]\">
+                    </div>
+                    <div>
+                        <label for=\"pass\">Contraseña:</label>
+                        <input type=\"password\" name=\"pass\">
+                    </div>
+                    <div>
+                        <label for=\"telefono\">Telefono:</label>
+                        <input type=\"number\" name=\"telefono\" placeholder=\"$socio[telefono]\">
+                    </div>
+                    <div>
+                        <label for=\"foto\">Subir foto</label>
+                        <input type=\"file\" name=\"foto\">
+                    </div>
+                    <input type=\"submit\" name=\"modificar\" value=\"Guardar\">
                     </form>";
+
+                    if(isset($_POST['modificar'])){
+                        if(trim($_POST['nombre']!="")){
+                            $nombre=$socio['nombre'];
+                        }else{
+                            $nombre=trim($_POST['nombre']);
+                        }
+
+                        if(trim($_POST['edad']!="")){
+                            $edad=$socio['edad'];
+                        }else{
+                            $edad=trim($_POST['edad']);
+                        }
+
+                        if(trim($_POST['usuario']!="")){
+                            $usuario=$socio['usuario'];
+                        }else{
+                            $usuario=trim($_POST['usuario']);
+                        }
+                    }
+
+                    $con->close();
                 }else{
                     echo "<p>Usa el botón Modificar en socios</p>";
                 }
