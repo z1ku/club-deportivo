@@ -44,7 +44,9 @@
             $con->close();
             header("refresh:2; url=socios.php");
         }
+
     }else if(isset($_POST['eliminar_socio'])){
+
         require_once "funciones.php";
 
         $id=$_POST['id_socio'];
@@ -62,6 +64,35 @@
 
         $con->close();
         header("refresh:2; url=socios.php");
+
+    }else if(isset($_POST['insertar_socio'])){
+        require_once "funciones.php";
+
+        $nombre=$_POST['nombre'];
+        $edad=$_POST['edad'];
+        $usuario=$_POST['usuario'];
+        $pass=$_POST['pass'];
+        $telefono=$_POST['telefono'];
+        $foto=$_FILES['foto']['tmp_name'];
+
+        $con=conectarServidor();
+
+        $sentencia=$con->prepare("select count(id) from socio where usuario=?");
+        $sentencia->bind_param("s", $usuario);
+
+        if($sentencia->num_rows>0){
+            echo "<p>Ese nombre de usuario ya existe</p>";
+            header("refresh:2; url=socios.php");
+        }else if($_FILES['foto']['type']!="image/jpeg" && is_uploaded_file($_FILES['foto']['tmp_name'])){
+            echo "<p>La foto no es un jpg</p>";
+            header("refresh:2; url=socios.php");
+        }else if(!preg_match("`[6789][0-9]{8}`", $_POST['telefono'])){
+            echo "<p>No es un número de teléfono válido</p>";
+            header("refresh:2; url=socios.php");
+        }else{
+            
+        }
+
     }else{
         header("Location:socios.php");
     }

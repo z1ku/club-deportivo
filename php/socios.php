@@ -44,6 +44,15 @@
     <main>
         <section class="seccionSocios">
             <h1>Listado de Socios</h1>
+            <div class="contenedor_buscar_nuevo">
+                <form action="#" method="post">
+                    <input type="text" name="cadena">
+                    <input type="submit" name="buscar_socio" value="Buscar">
+                </form>
+                <form action="panel_socios.php" method="post">
+                    <input type="submit" name="nuevo_socio" value="Nuevo socio">
+                </form>
+            </div>
             <?php
                 require_once "funciones.php";
                 $con=conectarServidor();
@@ -51,7 +60,7 @@
                 $socios=$con->query("select * from socio");
 
                 if($socios->num_rows==0){
-                    echo "<p>Aún no hay socios en la base de datos</p>";
+                    echo "<p>No hay socios en la base de datos</p>";
                 }else{
                     echo "<table>
                     <thead>

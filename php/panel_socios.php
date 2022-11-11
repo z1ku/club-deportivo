@@ -54,6 +54,7 @@
                     $datos=$con->query("select * from socio where id=$id_socio");
                     $socio=$datos->fetch_array(MYSQLI_ASSOC);
 
+                    echo "<h2>Editar Socio</h2>";
                     echo "<form action=\"editar_socio.php\" method=\"post\" enctype=\"multipart/form-data\">
                     <div>
                         <label for=\"id\">ID:</label>
@@ -88,6 +89,50 @@
                     </form>";
                     
                     $con->close();
+                }else if(isset($_POST["nuevo_socio"])){
+                    
+                    require_once "funciones.php";
+                    $con=conectarServidor();
+
+                    $sentencia="select auto_increment from information_schema.tables where table_schema='club' and table_name='socio'";
+                    $resultado=$con->query($sentencia);
+
+                    $fila=$resultado->fetch_array(MYSQLI_NUM);
+                    $id=$fila[0];
+                    
+                    echo "<h2>Nuevo Socio</h2>";
+                    echo "<form action=\"editar_socio.php\" method=\"post\" enctype=\"multipart/form-data\">
+                    <div>
+                        <label for=\"id\">ID:</label>
+                        <input type=\"number\" name=\"id\" value=\"$id\" readonly>
+                    </div>
+                    <div>
+                        <label for=\"nombre\">Nombre:</label>
+                        <input type=\"text\" name=\"nombre\" required>
+                    </div>
+                    <div>
+                        <label for=\"edad\">Edad:</label>
+                        <input type=\"number\" name=\"edad\" min=\"0\" required>
+                    </div>
+                    <div>
+                        <label for=\"usuario\">Usuario:</label>
+                        <input type=\"text\" name=\"usuario\" required>
+                    </div>
+                    <div>
+                        <label for=\"pass\">Contraseña:</label>
+                        <input type=\"password\" name=\"pass\" required>
+                    </div>
+                    <div>
+                        <label for=\"telefono\">Telefono:</label>
+                        <input type=\"number\" name=\"telefono\" min=\"0\" required>
+                    </div>
+                    <div>
+                        <label for=\"foto\">Subir foto en jpg:</label>
+                        <input type=\"file\" name=\"foto\" accept=\"image/jpeg\" required>
+                    </div>
+                    <input type=\"submit\" name=\"insertar_socio\" value=\"Guardar\">
+                    </form>";
+
                 }else{
                     header("Location:socios.php");
                 }
