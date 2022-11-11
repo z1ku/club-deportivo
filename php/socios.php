@@ -84,8 +84,9 @@
                                 </form>
                             </td>
                             <td>
-                                <form action=\"panel_socios.php\" method=\"post\">
+                                <form action=\"editar_socio.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_socio\" value=\"$fila_socios[id]\">
+                                    <input type=\"hidden\" name=\"foto_socio\" value=\"$fila_socios[foto]\">
                                     <input type=\"submit\" name=\"eliminar_socio\" value=\"Eliminar\">
                                 </form>
                             </td>

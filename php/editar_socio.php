@@ -37,13 +37,31 @@
             if($sentencia->execute()){
                 echo "<p>Socio editado correctamente</p>";
             }else{
-                echo "<p>Ha habido un error</p>";
+                echo "<p>ERROR:</p> " . $con->error;
             }
 
             $sentencia->close();
             $con->close();
             header("refresh:2; url=socios.php");
         }
+    }else if(isset($_POST['eliminar_socio'])){
+        require_once "funciones.php";
+
+        $id=$_POST['id_socio'];
+        $foto=$_POST['foto_socio'];
+
+        $con=conectarServidor();
+        $sentencia="delete from socio where id=$id";
+
+        if($con->query($sentencia)){
+            echo "<p>Socio eliminado correctamente</p>";
+            unlink("../img/socios/$foto");
+        }else{
+            echo "<p>ERROR:</p> " . $con->error;
+        }
+
+        $con->close();
+        header("refresh:2; url=socios.php");
     }else{
         header("Location:socios.php");
     }
