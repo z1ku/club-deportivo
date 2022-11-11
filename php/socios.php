@@ -64,6 +64,7 @@
                             <th>Contraseña</th>
                             <th>Telefono</th>
                             <th>Modificar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>";
@@ -77,9 +78,15 @@
                             <td>$fila_socios[pass]</td>
                             <td>$fila_socios[telefono]</td>
                             <td>
-                                <form action=\"modificar_socio.php\" method=\"post\">
+                                <form action=\"panel_socios.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_socio\" value=\"$fila_socios[id]\">
-                                    <input type=\"submit\" name=\"modificar_socio\" value=\"Modificar\">
+                                    <input type=\"submit\" name=\"editar_socio\" value=\"Editar\">
+                                </form>
+                            </td>
+                            <td>
+                                <form action=\"panel_socios.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_socio\" value=\"$fila_socios[id]\">
+                                    <input type=\"submit\" name=\"eliminar_socio\" value=\"Eliminar\">
                                 </form>
                             </td>
                         </tr>";

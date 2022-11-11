@@ -42,10 +42,10 @@
         </div>
     </header>
     <main>
-        <section id="seccionModificarSocio">
-            <h1>Modificar Socio</h1>
+        <section id="panel_socios">
+            <h1>Panel Socios</h1>
             <?php
-                if(isset($_POST["modificar_socio"])){
+                if(isset($_POST["editar_socio"])){
                     require_once "funciones.php";
 
                     $id_socio=$_POST['id_socio'];
@@ -54,85 +54,42 @@
                     $datos=$con->query("select * from socio where id=$id_socio");
                     $socio=$datos->fetch_array(MYSQLI_ASSOC);
 
-                    echo "<form action=\"#\" method=\"post\" enctype=\"multipart/form-data\">
+                    echo "<form action=\"editar_socio.php\" method=\"post\" enctype=\"multipart/form-data\">
                     <div>
                         <label for=\"id\">ID:</label>
-                        <input type=\"number\" name=\"id\" value=\"$socio[id]\" disabled>
+                        <input type=\"number\" name=\"id\" value=\"$socio[id]\" readonly>
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" placeholder=\"$socio[nombre]\">
+                        <input type=\"text\" name=\"nombre\" value=\"$socio[nombre]\">
                     </div>
                     <div>
                         <label for=\"edad\">Edad:</label>
-                        <input type=\"number\" name=\"edad\" placeholder=\"$socio[edad]\">
+                        <input type=\"number\" name=\"edad\" value=\"$socio[edad]\" min=\"0\">
                     </div>
                     <div>
                         <label for=\"usuario\">Usuario:</label>
-                        <input type=\"text\" name=\"usuario\" placeholder=\"$socio[usuario]\">
+                        <input type=\"text\" name=\"usuario\" value=\"$socio[usuario]\">
+                        <input type=\"hidden\" name=\"usuario_antiguo\" value=\"$socio[usuario]\">
                     </div>
                     <div>
                         <label for=\"pass\">Contraseña:</label>
-                        <input type=\"password\" name=\"pass\">
+                        <input type=\"password\" name=\"pass\" value=\"$socio[pass]\">
                     </div>
                     <div>
                         <label for=\"telefono\">Telefono:</label>
-                        <input type=\"number\" name=\"telefono\" placeholder=\"$socio[telefono]\" min=\"0\">
+                        <input type=\"number\" name=\"telefono\" value=\"$socio[telefono]\" min=\"0\">
                     </div>
                     <div>
                         <label for=\"foto\">Subir foto en jpg:</label>
                         <input type=\"file\" name=\"foto\" accept=\"image/jpeg\">
                     </div>
-                    <input type=\"submit\" name=\"modificar\" value=\"Guardar\">
+                    <input type=\"submit\" name=\"editar_socio\" value=\"Guardar\">
                     </form>";
                     
-                    if(isset($_POST['modificar'])){
-                        if(trim($_POST['nombre']=="")){
-                            $nombre=$socio['nombre'];
-                        }else{
-                            $nombre=trim($_POST['nombre']);
-                        }
-                        
-                        if($_POST['edad']==""){
-                            $edad=$socio['edad'];
-                        }else{
-                            if($_POST['edad']>0){
-                                $edad=$_POST['edad'];
-                            }else{
-                                
-                            }
-                        }
-
-                        if(trim($_POST['usuario']=="")){
-                            $usuario=$socio['usuario'];
-                        }else{
-                            $usuario=trim($_POST['usuario']);
-                        }
-
-                        if(trim($_POST['pass']=="")){
-                            $pass=$socio['pass'];
-                        }else{
-                            $pass=trim($_POST['pass']);
-                        }
-
-                        if($_POST['telefono']==""){
-                            $telefono=$socio['telefono'];
-                        }else{
-                            if(preg_match("`[6789][0-9]{8}`", $_POST['telefono'])){
-                                $telefono=$_POST['telefono'];
-                            }else{
-                                
-                            }
-                        }
-
-
-                    }
-
-
                     $con->close();
                 }else{
-                    echo "<p>Usa el botón Modificar en socios</p>";
-                    header("refresh:3; url=socios.php");
+                    header("Location:socios.php");
                 }
             ?>
         </section>
