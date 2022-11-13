@@ -48,6 +48,7 @@
                 <form action="#" method="post">
                     <input type="text" name="cadena">
                     <input type="submit" name="buscar_socio" value="Buscar">
+                    <a href="socios.php">Reset</a>
                 </form>
                 <form action="panel_socios.php" method="post">
                     <input type="submit" name="nuevo_socio" value="Nuevo socio">
@@ -61,6 +62,62 @@
 
                 if($socios->num_rows==0){
                     echo "<p>No hay socios en la base de datos</p>";
+                }else if(isset($_POST['buscar_socio'])){
+                    $cadena=$_POST['cadena'];
+                    $param="%$cadena%";
+
+                    $buscar=$con->prepare("select * from socio where nombre like ? or telefono like ?");
+                    $buscar->bind_result($id,$nombre,$edad,$usuario,$pass,$telefono,$foto);
+                    $buscar->bind_param("ss",$param,$param);
+                    $buscar->execute();
+
+                    if($buscar->num_rows==0){
+                        echo "<p>No se han encontrado coincidencias</p>";
+                    }else{
+                        echo "<table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Foto</th>
+                                <th>Nombre</th>
+                                <th>Edad</th>
+                                <th>Usuario</th>
+                                <th>Contraseña</th>
+                                <th>Telefono</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                        while($buscar->fetch()){
+                            echo "<tr>
+                                <td>$id</td>
+                                <td><img src=\"../img/socios/$foto\"></td>
+                                <td>$nombre</td>
+                                <td>$edad</td>
+                                <td>$usuario</td>
+                                <td>$pass</td>
+                                <td>$telefono</td>
+                                <td>
+                                    <form action=\"panel_socios.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_socio\" value=\"$id\">
+                                        <input type=\"submit\" name=\"editar_socio\" value=\"Editar\">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action=\"editar_socio.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_socio\" value=\"$id\">
+                                        <input type=\"hidden\" name=\"foto_socio\" value=\"$foto\">
+                                        <input type=\"submit\" name=\"eliminar_socio\" value=\"Eliminar\">
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                    }
+
+                    $buscar->close();
                 }else{
                     echo "<table>
                     <thead>
