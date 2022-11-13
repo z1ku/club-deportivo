@@ -82,6 +82,8 @@
         $buscar->bind_result($num);
         $buscar->fetch();
 
+        $buscar->close();
+
         if($num>0){
             echo "<p>Ese nombre de usuario ya existe</p>";
         }else if($_FILES['foto']['type']!="image/jpeg"){
@@ -91,7 +93,7 @@
         }else{
             $insertar=$con->prepare("insert into socio values(null,?,?,?,?,?,?)");
             $insertar->bind_param("sissis", $nombre,$edad,$usuario,$pass,$telefono,$foto);
-
+            
             if($insertar->execute()){
                 move_uploaded_file($_FILES['foto']['tmp_name'], "../img/socios/$usuario.jpg");
                 echo "<p>Socio nuevo insertado correctamente</p>";
@@ -102,7 +104,6 @@
             $insertar->close();
         }
         
-        $buscar->close();
         $con->close();
         header("refresh:2; url=socios.php");
     }else{

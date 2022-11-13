@@ -61,14 +61,14 @@
                 require_once "php/funciones.php";
                 $con=conectarServidor();
 
-                $max=$con->query("select count(id) from testimonio");
-                $num=$max->fetch_array(MYSQLI_NUM);
+                $consulta=$con->query("select count(id) from testimonio");
+                $num=$consulta->fetch_array(MYSQLI_NUM);
 
-                $random=mt_rand(1,$num[0]);
+                $id=mt_rand(1,$num[0]);
 
-                $resultado=$con->query("select * from testimonio where id=$random");
-                $fila=$resultado->fetch_array(MYSQLI_ASSOC);
-
+                $datos=$con->query("select * from testimonio where id=$id");
+                $fila=$datos->fetch_array(MYSQLI_ASSOC);
+                
                 if($num[0]>0){
                     echo "<div class=\"testimonio_random\">
                         <p>\"$fila[contenido]\"</p>
