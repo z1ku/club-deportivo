@@ -46,6 +46,7 @@
             <h1>Panel Socios</h1>
             <?php
                 if(isset($_POST["editar_socio"])){
+
                     require_once "funciones.php";
 
                     $id_socio=$_POST['id_socio'];
@@ -133,6 +134,7 @@
                     <input type=\"submit\" name=\"insertar_socio\" value=\"Guardar\">
                     </form>";
 
+                    $con->close();
                 }else{
                     header("Location:socios.php");
                 }
