@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2022 a las 14:24:52
+-- Tiempo de generación: 13-11-2022 a las 19:50:22
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,6 +60,14 @@ CREATE TABLE `producto` (
   `precio` double(5,2) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `nombre`, `precio`) VALUES
+(3, 'Batido de proteinas', 5.95),
+(4, 'Mancuernas', 25.00);
+
 -- --------------------------------------------------------
 
 --
@@ -95,8 +103,9 @@ CREATE TABLE `socio` (
 
 INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
 (1, 'Ricardo Romero Bustos', 27, 'ricardor1', 'ricardor1', 689546783, 'ricardor1.jpg'),
-(2, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 629456782, 'jesusr1.jpg'),
-(3, 'Pedro Gomez Gutierrez', 32, 'pedrog1', 'pedrog1', 656347387, 'pedrog1.jpg');
+(5, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 689914567, 'jesusr1.jpg'),
+(7, 'Pedro Gomez Gutierrez', 25, 'pedrog1', 'pedrog1', 654437698, 'pedrog1.jpg'),
+(8, 'Javier Terrones', 35, 'javiert1', 'javiert1', 654346598, 'javiert1.jpg');
 
 -- --------------------------------------------------------
 
@@ -178,7 +187,7 @@ ALTER TABLE `noticia`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -190,7 +199,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `socio`
 --
 ALTER TABLE `socio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `testimonio`
