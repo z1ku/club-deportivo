@@ -93,7 +93,7 @@
         }else{
             $insertar=$con->prepare("insert into socio values(null,?,?,?,?,?,?)");
             $insertar->bind_param("sissis", $nombre,$edad,$usuario,$pass,$telefono,$foto);
-            
+
             if($insertar->execute()){
                 move_uploaded_file($_FILES['foto']['tmp_name'], "../img/socios/$usuario.jpg");
                 echo "<p>Socio nuevo insertado correctamente</p>";
