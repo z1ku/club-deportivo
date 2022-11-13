@@ -70,7 +70,8 @@
                     $buscar->bind_result($id,$nombre,$edad,$usuario,$pass,$telefono,$foto);
                     $buscar->bind_param("ss",$param,$param);
                     $buscar->execute();
-
+                    $buscar->store_result();
+                    
                     if($buscar->num_rows==0){
                         echo "<p>No se han encontrado coincidencias</p>";
                     }else{
