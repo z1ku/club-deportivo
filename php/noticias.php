@@ -42,7 +42,102 @@
         </div>
     </header>
     <main>
+        <section class="seccionNoticias">
+            <h1>Listado de Noticias</h1>
+            <div class="contenedor_nueva_noticia">
+                <form action="panel_noticias.php" method="post">
+                    <input type="submit" name="nueva_noticia" value="Nueva noticia">
+                </form>
+            </div>
+            <?php
+                require_once "funciones.php";
 
+                $con=conectarServidor();
+
+                $noticiasPorPagina=4;
+                $pagina=1;
+
+                if(isset($_GET['pagina'])){
+                    $pagina=$_GET['pagina'];
+                }
+
+                $limit=$noticiasPorPagina;
+                $offset = ($pagina - 1) * $noticiasPorPagina;
+
+                $sentencia=$con->query("select count(id) from noticia");
+                $num=$sentencia->fetch_array(MYSQLI_NUM);
+                $conteo=$num[0];
+
+                $paginas=ceil($conteo/$noticiasPorPagina);
+
+                $noticias=$con->query("select * from noticia limit $limit offset $offset");
+
+                if($noticias->num_rows==0){
+                    echo "<p>No hay noticias en la base de datos</p>";
+                }else{
+                    echo "<table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Titulo</th>
+                            <th>Contenido</th>
+                            <th>Fecha</th>
+                            <th>Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+                    while($fila_noticias=$noticias->fetch_array(MYSQLI_ASSOC)){
+
+                        $contenido_short=substr($fila_noticias['contenido'], 0, 50);
+
+                        echo "<tr>
+                            <td>$fila_noticias[id]</td>
+                            <td>$fila_noticias[imagen]</td>
+                            <td>$fila_noticias[titulo]</td>
+                            <td>$contenido_short</td>
+                            <td>$fila_noticias[fecha]</td>
+                        </tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+
+                    echo "<nav>
+                        <div class=\"row\">
+                            <div class=\"col-xs-12 col-sm-6\">
+                                <p>Mostrando $noticiasPorPagina de $conteo productos disponibles</p>
+                            </div>
+                            <div class=\"col-xs-12 col-sm-6\">
+                                <p>Página $pagina de $paginas</p>
+                            </div>
+                        </div>
+                        <ul class=\"pagination\">";
+                    if($pagina!=1){
+                        echo '<li class="page-item">
+                            <a class="page-link" href="index.php?page='.($pagina-1).'"><span aria-hidden="true">&laquo;</span></a>
+                        </li>';
+                    }
+                    for($i=1;$i<=$paginas;$i++){
+                        if($i==$pagina){
+                            echo '<li class="page-item active">
+                                <a class="page-link" href="#">'.$pagina.'</a>
+                            </li>';
+                        }else{
+                            echo '<li class="page-item">
+                                <a class="page-link" href="index.php?page='.$i.'">'.$i.'</a>
+                            </li>';
+                        }
+                    }
+                    if($pagina!=$paginas){
+                        echo '<li class="page-item"><a class="page-link" href="index.php?page='.($pagina+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
+                    }
+                    echo "</ul>";
+                    echo "</nav>";
+                }
+                
+                $con->close();
+            ?>
+        </section>
     </main>
     <footer>
         <div>
