@@ -53,7 +53,7 @@
                 require_once "funciones.php";
                 $con=conectarServidor();
 
-                $testimonios=$con->query("select * from testimonio");
+                $testimonios=$con->query("select * from testimonio order by fecha desc");
 
                 if($testimonios->num_rows==0){
                     echo "<p>No hay testimonios en la base de datos</p>";
