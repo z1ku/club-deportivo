@@ -97,6 +97,12 @@
                             <td>$fila_noticias[titulo]</td>
                             <td>$contenido_short</td>
                             <td>$fila_noticias[fecha]</td>
+                            <td>
+                                <form action=\"noticia_completa.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_noticia\" value=\"$fila_noticias[id]\">
+                                    <input type=\"submit\" name=\"ver_noticia\" value=\"Ver\">
+                                </form>
+                            </td>
                         </tr>";
                     }
                     echo "</tbody>";
@@ -134,7 +140,7 @@
                     echo "</ul>";
                     echo "</nav>";
                 }
-                
+
                 $con->close();
             ?>
         </section>
