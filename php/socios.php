@@ -85,7 +85,7 @@
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
                                 <th>Telefono</th>
-                                <th>Modificar</th>
+                                <th>Editar</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
@@ -130,7 +130,7 @@
                             <th>Usuario</th>
                             <th>Contraseña</th>
                             <th>Telefono</th>
-                            <th>Modificar</th>
+                            <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>

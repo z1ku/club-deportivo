@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-    <section class="seccionProductos">
+        <section class="seccionProductos">
             <h1>Listado de Productos</h1>
             <div class="contenedor_buscar_nuevo">
                 <form action="#" method="post">
@@ -81,6 +81,8 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Precio</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>";
@@ -115,6 +117,8 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Precio</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>";

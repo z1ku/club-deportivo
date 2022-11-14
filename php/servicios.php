@@ -42,7 +42,109 @@
         </div>
     </header>
     <main>
+        <section class="seccionServicios">
+            <h1>Listado de Servicios</h1>
+            <div class="contenedor_buscar_nuevo">
+                <form action="#" method="post">
+                    <input type="text" name="cadena">
+                    <input type="submit" name="buscar_producto" value="Buscar">
+                    <a href="servicios.php">Reset</a>
+                </form>
+                <form action="panel_servicios.php" method="post">
+                    <input type="submit" name="nuevo_servicio" value="Nuevo servicio">
+                </form>
+            </div>
+            <?php
+                require_once "funciones.php";
+                $con=conectarServidor();
 
+                $servicios=$con->query("select * from servicio");
+
+                if($servicios->num_rows==0){
+                    echo "<p>No hay servicios en la base de datos</p>";
+                }else if(isset($_POST['buscar_servicio'])){
+                    $cadena=$_POST['cadena'];
+                    $param="%$cadena%";
+
+                    $buscar=$con->prepare("select * from servicio where descripcion like ?");
+                    $buscar->bind_result($id,$descripcion,$duracion,$precio);
+                    $buscar->bind_param("s",$param);
+                    $buscar->execute();
+                    $buscar->store_result();
+                    
+                    if($buscar->num_rows==0){
+                        echo "<p>No se han encontrado coincidencias</p>";
+                    }else{
+                        echo "<table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descripción</th>
+                                <th>Duración</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                        while($buscar->fetch()){
+                            echo "<tr>
+                                <td>$id</td>
+                                <td>$nombre</td>
+                                <td>$precio €</td>
+                                <td>
+                                    <form action=\"panel_productos.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
+                                        <input type=\"submit\" name=\"editar_producto\" value=\"Editar\">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action=\"editar_producto.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
+                                        <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\">
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                    }
+
+                    $buscar->close();
+                }else{
+                    echo "<table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+                    while($fila_productos=$productos->fetch_array(MYSQLI_ASSOC)){
+                        echo "<tr>
+                            <td>$fila_productos[id]</td>
+                            <td>$fila_productos[nombre]</td>
+                            <td>$fila_productos[precio] €</td>
+                            <td>
+                                <form action=\"panel_productos.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
+                                    <input type=\"submit\" name=\"editar_producto\" value=\"Editar\">
+                                </form>
+                            </td>
+                            <td>
+                                <form action=\"editar_producto.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
+                                    <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\">
+                                </form>
+                            </td>
+                        </tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+                
+                $con->close();
+            ?>
+        </section>
     </main>
     <footer>
         <div>
