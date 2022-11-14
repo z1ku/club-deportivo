@@ -47,7 +47,7 @@
             <div class="contenedor_buscar_nuevo">
                 <form action="#" method="post">
                     <input type="text" name="cadena">
-                    <input type="submit" name="buscar_producto" value="Buscar">
+                    <input type="submit" name="buscar_servicio" value="Buscar">
                     <a href="servicios.php">Reset</a>
                 </form>
                 <form action="panel_servicios.php" method="post">
@@ -82,24 +82,20 @@
                                 <th>Descripción</th>
                                 <th>Duración</th>
                                 <th>Precio</th>
+                                <th>Editar</th>
                             </tr>
                         </thead>
                         <tbody>";
                         while($buscar->fetch()){
                             echo "<tr>
                                 <td>$id</td>
-                                <td>$nombre</td>
+                                <td>$descripcion</td>
+                                <td>$duracion mins</td>
                                 <td>$precio €</td>
                                 <td>
-                                    <form action=\"panel_productos.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
-                                        <input type=\"submit\" name=\"editar_producto\" value=\"Editar\">
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action=\"editar_producto.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
-                                        <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\">
+                                    <form action=\"panel_servicios.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$id\">
+                                        <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\">
                                     </form>
                                 </td>
                             </tr>";
@@ -114,26 +110,23 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Duración</th>
                             <th>Precio</th>
+                            <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>";
-                    while($fila_productos=$productos->fetch_array(MYSQLI_ASSOC)){
+                    while($fila_servicios=$servicios->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
-                            <td>$fila_productos[id]</td>
-                            <td>$fila_productos[nombre]</td>
-                            <td>$fila_productos[precio] €</td>
+                            <td>$fila_servicios[id]</td>
+                            <td>$fila_servicios[descripcion]</td>
+                            <td>$fila_servicios[duracion] mins</td>
+                            <td>$fila_servicios[precio] €</td>
                             <td>
-                                <form action=\"panel_productos.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
-                                    <input type=\"submit\" name=\"editar_producto\" value=\"Editar\">
-                                </form>
-                            </td>
-                            <td>
-                                <form action=\"editar_producto.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
-                                    <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\">
+                                <form action=\"panel_servicios.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_servicios[id]\">
+                                    <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\">
                                 </form>
                             </td>
                         </tr>";

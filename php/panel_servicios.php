@@ -49,61 +49,69 @@
 
                     require_once "funciones.php";
 
-                    $id_producto=$_POST['id_servicio'];
+                    $id_servicio=$_POST['id_servicio'];
                     
                     $con=conectarServidor();
-                    $datos=$con->query("select * from producto where id=$id_producto");
-                    $producto=$datos->fetch_array(MYSQLI_ASSOC);
+                    $datos=$con->query("select * from servicio where id=$id_servicio");
+                    $servicio=$datos->fetch_array(MYSQLI_ASSOC);
 
-                    echo "<h2>Editar Producto</h2>";
-                    echo "<form action=\"editar_producto.php\" method=\"post\">
+                    echo "<h2>Editar Servicio</h2>";
+                    echo "<form action=\"editar_servicio.php\" method=\"post\">
                     <div>
                         <label for=\"id\">ID:</label>
-                        <input type=\"number\" name=\"id\" value=\"$producto[id]\" readonly>
+                        <input type=\"number\" name=\"id\" value=\"$servicio[id]\" readonly>
                     </div>
                     <div>
-                        <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" value=\"$producto[nombre]\">
+                        <label for=\"descripcion\">Descripción:</label>
+                        <input type=\"text\" name=\"descripcion\" value=\"$servicio[descripcion]\">
+                    </div>
+                    <div>
+                        <label for=\"duracion\">Duración:</label>
+                        <input type=\"number\" name=\"duracion\" value=\"$servicio[duracion]\" min=\"0\">
                     </div>
                     <div>
                         <label for=\"precio\">Precio:</label>
-                        <input type=\"number\" name=\"precio\" value=\"$producto[precio]\" min=\"0\" step=\"0.01\">
+                        <input type=\"number\" name=\"precio\" value=\"$servicio[precio]\" min=\"0\" step=\"0.01\">
                     </div>
-                    <input type=\"submit\" name=\"editar_producto\" value=\"Guardar\">
+                    <input type=\"submit\" name=\"editar_servicio\" value=\"Guardar\">
                     </form>";
                     
                     $con->close();
-                }else if(isset($_POST["nuevo_producto"])){
+                }else if(isset($_POST["nuevo_servicio"])){
                     
                     require_once "funciones.php";
                     $con=conectarServidor();
 
-                    $sentencia="select auto_increment from information_schema.tables where table_schema='club' and table_name='producto'";
+                    $sentencia="select auto_increment from information_schema.tables where table_schema='club' and table_name='servicio'";
                     $resultado=$con->query($sentencia);
 
                     $fila=$resultado->fetch_array(MYSQLI_NUM);
                     $id=$fila[0];
                     
-                    echo "<h2>Nuevo Producto</h2>";
-                    echo "<form action=\"editar_producto.php\" method=\"post\">
+                    echo "<h2>Nuevo servicio</h2>";
+                    echo "<form action=\"editar_servicio.php\" method=\"post\">
                     <div>
                         <label for=\"id\">ID:</label>
                         <input type=\"number\" name=\"id\" value=\"$id\" readonly>
                     </div>
                     <div>
-                        <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" required>
+                        <label for=\"descripcion\">Descripción:</label>
+                        <input type=\"text\" name=\"descripcion\" required>
+                    </div>
+                    <div>
+                        <label for=\"duracion\">Duración:</label>
+                        <input type=\"number\" name=\"duracion\" min=\"0\" required>
                     </div>
                     <div>
                         <label for=\"precio\">Precio:</label>
                         <input type=\"number\" name=\"precio\" min=\"0\" step=\"0.01\" required>
                     </div>
-                    <input type=\"submit\" name=\"insertar_producto\" value=\"Guardar\">
+                    <input type=\"submit\" name=\"insertar_servicio\" value=\"Guardar\">
                     </form>";
 
                     $con->close();
                 }else{
-                    header("Location:productos.php");
+                    header("Location:servicios.php");
                 }
             ?>
         </section>
