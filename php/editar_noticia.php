@@ -26,7 +26,7 @@
             $con->close();
         }
 
-        //header("refresh:2; url=noticias.php");
+        header("refresh:2; url=noticias.php");
     }else{
        header("Location:noticias.php");
     }
