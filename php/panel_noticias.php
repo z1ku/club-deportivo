@@ -56,7 +56,7 @@
                     $id=$fila[0];
                     
                     echo "<h2>Nueva noticia</h2>";
-                    echo "<form action=\"editar_noticia.php\" method=\"post\">
+                    echo "<form action=\"editar_noticia.php\" method=\"post\" enctype=\"multipart/form-data\">
                     <div>
                         <label for=\"id\">ID:</label>
                         <input type=\"number\" name=\"id\" value=\"$id\" readonly>

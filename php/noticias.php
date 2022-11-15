@@ -54,27 +54,28 @@
 
                 $con=conectarServidor();
 
-                $noticiasPorPagina=4;
-                $pagina=1;
+                $noticias=$con->query("select * from noticia");
+                $num_total_rows=$noticias->num_rows;
 
-                if(isset($_GET['pagina'])){
-                    $pagina=$_GET['pagina'];
-                }
-
-                $limit=$noticiasPorPagina;
-                $offset = ($pagina - 1) * $noticiasPorPagina;
-
-                $sentencia=$con->query("select count(id) from noticia");
-                $num=$sentencia->fetch_array(MYSQLI_NUM);
-                $conteo=$num[0];
-
-                $paginas=ceil($conteo/$noticiasPorPagina);
-
-                $noticias=$con->query("select * from noticia limit $limit offset $offset");
-
-                if($noticias->num_rows==0){
+                if($num_total_rows==0){
                     echo "<p>No hay noticias en la base de datos</p>";
                 }else{
+                    $page=false;
+                    $noticiasPorPagina=4;
+
+                    if(isset($_GET["page"])){
+                        $page=$_GET["page"];
+                    }
+
+                    if(!$page){
+                        $start=0;
+                        $page=1;
+                    }else{
+                        $start=($page - 1)*$noticiasPorPagina;
+                    }
+
+                    $total_pages=ceil($num_total_rows/$noticiasPorPagina);
+
                     echo "<table>
                     <thead>
                         <tr>
@@ -93,10 +94,10 @@
 
                         echo "<tr>
                             <td>$fila_noticias[id]</td>
-                            <td>$fila_noticias[imagen]</td>
+                            <td><img src=\"../img/noticias/$fila_noticias[imagen]\"></td>
                             <td>$fila_noticias[titulo]</td>
                             <td>$contenido_short</td>
-                            <td>$fila_noticias[fecha]</td>
+                            <td>$fila_noticias[fecha_publicacion]</td>
                             <td>
                                 <form action=\"noticia_completa.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_noticia\" value=\"$fila_noticias[id]\">
@@ -108,37 +109,29 @@
                     echo "</tbody>";
                     echo "</table>";
 
-                    echo "<nav>
-                        <div class=\"row\">
-                            <div class=\"col-xs-12 col-sm-6\">
-                                <p>Mostrando $noticiasPorPagina de $conteo productos disponibles</p>
-                            </div>
-                            <div class=\"col-xs-12 col-sm-6\">
-                                <p>Página $pagina de $paginas</p>
-                            </div>
-                        </div>
-                        <ul class=\"pagination\">";
-                    if($pagina!=1){
-                        echo '<li class="page-item">
-                            <a class="page-link" href="index.php?page='.($pagina-1).'"><span aria-hidden="true">&laquo;</span></a>
-                        </li>';
-                    }
-                    for($i=1;$i<=$paginas;$i++){
-                        if($i==$pagina){
-                            echo '<li class="page-item active">
-                                <a class="page-link" href="#">'.$pagina.'</a>
-                            </li>';
-                        }else{
-                            echo '<li class="page-item">
-                                <a class="page-link" href="index.php?page='.$i.'">'.$i.'</a>
-                            </li>';
+                    echo '<p>Número de noticias totales: '.$num_total_rows.'</p>';
+                    echo '<p>En cada página se muestran '.$noticiasPorPagina.' noticias.</p>';
+                    echo '<p>Mostrando la página '.$page.' de ' .$total_pages.' páginas.</p>';
+                    
+                    echo '<nav>';
+                    echo '<ul class="pagination">';
+                    if($total_pages>1){
+                        if($page!=1){
+                            echo '<li class="page-item"><a class="page-link" href="index.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
+                        }
+                        for($i=1;$i<=$total_pages;$i++){
+                            if($page == $i){
+                                echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+                            }else{
+                                echo '<li class="page-item"><a class="page-link" href="index.php?page='.$i.'">'.$i.'</a></li>';
+                            }
+                        }
+                        if($page != $total_pages){
+                            echo '<li class="page-item"><a class="page-link" href="index.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
                         }
                     }
-                    if($pagina!=$paginas){
-                        echo '<li class="page-item"><a class="page-link" href="index.php?page='.($pagina+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
-                    }
-                    echo "</ul>";
-                    echo "</nav>";
+                    echo '</ul>';
+                    echo '</nav>';
                 }
 
                 $con->close();
