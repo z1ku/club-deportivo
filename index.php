@@ -47,18 +47,42 @@
             <span>El mejor club deportivo de tu ciudad</span>
             <button>Únete ahora</button>
         </section>
-        <section>
+        <section id="ultimas_noticias">
             <h2>Últimas noticias</h2>
             <?php
-                //para sacar las 3 ultimas noticias
-                //select * from noticia where .... limit 3,2
+                require_once "php/funciones.php";
 
+                $con=conectarServidor();
+
+                $fecha_actual=date('Y-m-d');
+
+                $consulta=$con->query("select * from noticia where fecha_publicacion<='$fecha_actual' order by fecha_publicacion asc limit 0, 3");
+
+                echo '<div class="contenedor_ultimas_noticias">';
+                while($noticia=$consulta->fetch_array(MYSQLI_ASSOC)){
+                    $contenido_short=substr($noticia['contenido'], 0, 50);
+
+                    echo "<div>
+                        <h3>$noticia[titulo]</h3>
+                        <img src=\"img/noticias/$noticia[imagen]\">
+                        <p>$contenido_short</p>
+                        <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
+                        <form action=\"php/noticia_completa.php\" method=\"post\">
+                            <input type=\"hidden\" name=\"id_noticia\" value=\"$noticia[id]\">
+                            <input type=\"submit\" name=\"ver_noticia\" value=\"Ver\">
+                        </form>
+                    </div>";
+                }
+                echo '</div>';
+
+                $con->close();
             ?>
         </section>
-        <section>
+        <section id="testimonio_random">
             <h2>Testimonios</h2>
             <?php
                 require_once "php/funciones.php";
+
                 $con=conectarServidor();
 
                 $consulta=$con->query("select count(id) from testimonio");
@@ -70,7 +94,7 @@
                 $fila=$datos->fetch_array(MYSQLI_ASSOC);
                 
                 if($num[0]>0){
-                    echo "<div class=\"testimonio_random\">
+                    echo "<div>
                         <p>\"$fila[contenido]\"</p>
                         <p>$fila[autor]</p>
                     </div>";
