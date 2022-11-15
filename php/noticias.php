@@ -85,7 +85,7 @@
                             <th>Imagen</th>
                             <th>Titulo</th>
                             <th>Contenido</th>
-                            <th>Fecha</th>
+                            <th>Fecha publicación</th>
                             <th>Ver</th>
                         </tr>
                     </thead>
@@ -93,7 +93,7 @@
                     while($fila_noticias=$noticias->fetch_array(MYSQLI_ASSOC)){
 
                         $contenido_short=substr($fila_noticias['contenido'], 0, 50);
-                        
+
                         echo "<tr>
                             <td>$fila_noticias[id]</td>
                             <td><img src=\"../img/noticias/$fila_noticias[imagen]\"></td>

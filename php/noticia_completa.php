@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Testimonios</title>
+    <title>Noticia</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,42 +42,7 @@
         </div>
     </header>
     <main>
-        <section id="panel_testimonios">
-            <h1>Panel Testimonios</h1>
-            <?php
-                if(isset($_POST["nuevo_testimonio"])){
-                    require_once "funciones.php";
-                    $con=conectarServidor();
-
-                    $sentencia="select auto_increment from information_schema.tables where table_schema='club' and table_name='testimonio'";
-                    $resultado=$con->query($sentencia);
-
-                    $fila=$resultado->fetch_array(MYSQLI_NUM);
-                    $id=$fila[0];
-                    
-                    echo "<h2>Nuevo Testimonio</h2>";
-                    echo "<form action=\"editar_testimonio.php\" method=\"post\">
-                    <div>
-                        <label for=\"id\">ID:</label>
-                        <input type=\"number\" name=\"id\" value=\"$id\" readonly>
-                    </div>
-                    <div>
-                        <label for=\"autor\">Autor:</label>
-                        <input type=\"text\" name=\"autor\" maxlength=\"50\" required>
-                    </div>
-                    <div>
-                        <label for=\"contenido\">Contenido:</label>
-                        <textarea name=\"contenido\" cols=\"30\" rows=\"10\" maxlength=\"250\" required></textarea>
-                    </div>
-                    <input type=\"submit\" name=\"insertar_testimonio\" value=\"Guardar\">
-                    </form>";
-                    
-                    $con->close();
-                }else{
-                    header("Location:testimonios.php");
-                }
-            ?>
-        </section>
+        
     </main>
     <footer>
         <div>

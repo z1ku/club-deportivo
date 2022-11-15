@@ -63,15 +63,15 @@
                     </div>
                     <div>
                         <label for=\"descripcion\">Descripción:</label>
-                        <input type=\"text\" name=\"descripcion\" value=\"$servicio[descripcion]\">
+                        <input type=\"text\" name=\"descripcion\" value=\"$servicio[descripcion]\" maxlength=\"80\" required>
                     </div>
                     <div>
                         <label for=\"duracion\">Duración:</label>
-                        <input type=\"number\" name=\"duracion\" value=\"$servicio[duracion]\" min=\"0\">
+                        <input type=\"number\" name=\"duracion\" value=\"$servicio[duracion]\" min=\"0\" max=\"999\" required>
                     </div>
                     <div>
                         <label for=\"precio\">Precio:</label>
-                        <input type=\"number\" name=\"precio\" value=\"$servicio[precio]\" min=\"0\" step=\"0.01\">
+                        <input type=\"number\" name=\"precio\" value=\"$servicio[precio]\" min=\"0\" max=\"999\" step=\"0.01\" required>
                     </div>
                     <input type=\"submit\" name=\"editar_servicio\" value=\"Guardar\">
                     </form>";
@@ -96,15 +96,15 @@
                     </div>
                     <div>
                         <label for=\"descripcion\">Descripción:</label>
-                        <input type=\"text\" name=\"descripcion\" required>
+                        <input type=\"text\" name=\"descripcion\" maxlength=\"80\" required>
                     </div>
                     <div>
                         <label for=\"duracion\">Duración:</label>
-                        <input type=\"number\" name=\"duracion\" min=\"0\" required>
+                        <input type=\"number\" name=\"duracion\" min=\"0\" max=\"999\" required>
                     </div>
                     <div>
                         <label for=\"precio\">Precio:</label>
-                        <input type=\"number\" name=\"precio\" min=\"0\" step=\"0.01\" required>
+                        <input type=\"number\" name=\"precio\" min=\"0\" max=\"999\" step=\"0.01\" required>
                     </div>
                     <input type=\"submit\" name=\"insertar_servicio\" value=\"Guardar\">
                     </form>";

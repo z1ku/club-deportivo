@@ -63,11 +63,11 @@
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" value=\"$producto[nombre]\">
+                        <input type=\"text\" name=\"nombre\" value=\"$producto[nombre]\" maxlength=\"50\" required>
                     </div>
                     <div>
                         <label for=\"precio\">Precio:</label>
-                        <input type=\"number\" name=\"precio\" value=\"$producto[precio]\" min=\"0\" step=\"0.01\">
+                        <input type=\"number\" name=\"precio\" value=\"$producto[precio]\" min=\"0\" max=\"999\" step=\"0.01\" required>
                     </div>
                     <input type=\"submit\" name=\"editar_producto\" value=\"Guardar\">
                     </form>";
@@ -92,11 +92,11 @@
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" required>
+                        <input type=\"text\" name=\"nombre\" maxlength=\"50\" required>
                     </div>
                     <div>
                         <label for=\"precio\">Precio:</label>
-                        <input type=\"number\" name=\"precio\" min=\"0\" step=\"0.01\" required>
+                        <input type=\"number\" name=\"precio\" min=\"0\" max=\"999\" step=\"0.01\" required>
                     </div>
                     <input type=\"submit\" name=\"insertar_producto\" value=\"Guardar\">
                     </form>";

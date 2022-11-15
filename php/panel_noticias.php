@@ -63,15 +63,19 @@
                     </div>
                     <div>
                         <label for=\"titulo\">Titulo:</label>
-                        <input type=\"text\" name=\"titulo\" required>
+                        <input type=\"text\" name=\"titulo\" maxlength=\"80\" required>
                     </div>
                     <div>
                         <label for=\"contenido\">Contenido:</label>
-                        <textarea name=\"contenido\" cols=\"30\" rows=\"10\" maxlength=\"250\" required></textarea>
+                        <textarea name=\"contenido\" cols=\"30\" rows=\"10\" maxlength=\"800\" required></textarea>
+                    </div>
+                    <div>
+                        <label for=\"fecha\">¿A partir de que fecha quieres que se publique?</label>
+                        <input type=\"date\" name=\"fecha\" required>
                     </div>
                     <div>
                         <label for=\"imagen\">Subir imagen en jpg:</label>
-                        <input type=\"file\" name=\"imagen\" accept=\"image/jpeg\">
+                        <input type=\"file\" name=\"imagen\" accept=\"image/jpeg\" required>
                     </div>
                     <input type=\"submit\" name=\"insertar_noticia\" value=\"Guardar\">
                     </form>";

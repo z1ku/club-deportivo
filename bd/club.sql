@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2022 a las 19:50:22
+-- Tiempo de generación: 15-11-2022 a las 11:58:03
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,11 +42,21 @@ CREATE TABLE `citas` (
 
 CREATE TABLE `noticia` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `titulo` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
-  `contenido` varchar(250) COLLATE latin1_spanish_ci NOT NULL,
+  `titulo` varchar(80) COLLATE latin1_spanish_ci NOT NULL,
+  `contenido` varchar(800) COLLATE latin1_spanish_ci NOT NULL,
   `imagen` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
   `fecha_publicacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `noticia`
+--
+
+INSERT INTO `noticia` (`id`, `titulo`, `contenido`, `imagen`, `fecha_publicacion`) VALUES
+(1, 'Po esta es mi noticia', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto.', '1.jpg', '2022-11-15'),
+(2, 'Una noticia muy interesante', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto', '2.jpg', '2022-11-16'),
+(3, 'Otra noticia muy interesante', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto', '3.jpg', '2022-11-15'),
+(4, 'Una noticia aun mas interesante que la anterior', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', '4.jpg', '2022-11-17');
 
 -- --------------------------------------------------------
 
@@ -76,10 +86,18 @@ INSERT INTO `producto` (`id`, `nombre`, `precio`) VALUES
 
 CREATE TABLE `servicio` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` varchar(250) COLLATE latin1_spanish_ci NOT NULL,
+  `descripcion` varchar(80) COLLATE latin1_spanish_ci NOT NULL,
   `duracion` int(3) UNSIGNED NOT NULL,
   `precio` double(5,2) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id`, `descripcion`, `duracion`, `precio`) VALUES
+(1, 'Clases de rumba', 60, 10.00),
+(2, 'Clases de spinning', 120, 15.00);
 
 -- --------------------------------------------------------
 
@@ -128,7 +146,8 @@ INSERT INTO `testimonio` (`id`, `autor`, `contenido`, `fecha`) VALUES
 (1, 'Roberto', 'Uno de los mejores a los que he ido, muy buena atención al cliente.', '2022-11-03'),
 (2, 'Jose', 'Tiene unas instalaciones geniales con mucho espacio.', '2022-11-01'),
 (3, 'Ricardo', 'Mi gimnasio es el mejor.', '2022-11-06'),
-(4, 'Pedro', 'Los instructores son muy amables y siempre están ahí para ayudar.', '2022-11-04');
+(4, 'Pedro', 'Los instructores son muy amables y siempre están ahí para ayudar.', '2022-11-04'),
+(5, 'Juanma', 'Me han obligado a hacer una reseña positiva.', '2022-11-14');
 
 --
 -- Índices para tablas volcadas
@@ -181,7 +200,7 @@ ALTER TABLE `testimonio`
 -- AUTO_INCREMENT de la tabla `noticia`
 --
 ALTER TABLE `noticia`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -193,7 +212,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `socio`
@@ -205,7 +224,7 @@ ALTER TABLE `socio`
 -- AUTO_INCREMENT de la tabla `testimonio`
 --
 ALTER TABLE `testimonio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

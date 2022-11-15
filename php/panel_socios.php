@@ -63,24 +63,24 @@
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" value=\"$socio[nombre]\">
+                        <input type=\"text\" name=\"nombre\" value=\"$socio[nombre]\" maxlength=\"80\" required>
                     </div>
                     <div>
                         <label for=\"edad\">Edad:</label>
-                        <input type=\"number\" name=\"edad\" value=\"$socio[edad]\" min=\"0\">
+                        <input type=\"number\" name=\"edad\" value=\"$socio[edad]\" min=\"0\" max=\"99\" required>
                     </div>
                     <div>
                         <label for=\"usuario\">Usuario:</label>
-                        <input type=\"text\" name=\"usuario\" value=\"$socio[usuario]\">
+                        <input type=\"text\" name=\"usuario\" value=\"$socio[usuario]\" maxlength=\"15\" required>
                         <input type=\"hidden\" name=\"usuario_antiguo\" value=\"$socio[usuario]\">
                     </div>
                     <div>
                         <label for=\"pass\">Contraseña:</label>
-                        <input type=\"password\" name=\"pass\" value=\"$socio[pass]\">
+                        <input type=\"password\" name=\"pass\" value=\"$socio[pass]\" maxlength=\"15\" required>
                     </div>
                     <div>
                         <label for=\"telefono\">Telefono:</label>
-                        <input type=\"number\" name=\"telefono\" value=\"$socio[telefono]\" min=\"0\">
+                        <input type=\"number\" name=\"telefono\" value=\"$socio[telefono]\" min=\"0\" max=\"999999999\" required>
                     </div>
                     <div>
                         <label for=\"foto\">Subir foto en jpg:</label>
@@ -109,23 +109,23 @@
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" required>
+                        <input type=\"text\" name=\"nombre\" maxlength=\"80\" required>
                     </div>
                     <div>
                         <label for=\"edad\">Edad:</label>
-                        <input type=\"number\" name=\"edad\" min=\"0\" required>
+                        <input type=\"number\" name=\"edad\" min=\"0\" max=\"99\" required>
                     </div>
                     <div>
                         <label for=\"usuario\">Usuario:</label>
-                        <input type=\"text\" name=\"usuario\" required>
+                        <input type=\"text\" name=\"usuario\" maxlength=\"15\" required>
                     </div>
                     <div>
                         <label for=\"pass\">Contraseña:</label>
-                        <input type=\"password\" name=\"pass\" required>
+                        <input type=\"password\" name=\"pass\" maxlength=\"15\" required>
                     </div>
                     <div>
                         <label for=\"telefono\">Telefono:</label>
-                        <input type=\"number\" name=\"telefono\" min=\"0\" required>
+                        <input type=\"number\" name=\"telefono\" min=\"0\" max=\"999999999\" required>
                     </div>
                     <div>
                         <label for=\"foto\">Subir foto en jpg:</label>
