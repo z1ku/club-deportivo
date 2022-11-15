@@ -42,7 +42,29 @@
         </div>
     </header>
     <main>
-        
+        <section class="noticia">
+            <?php
+                if(isset($_POST['ver_noticia'])){
+                    require_once "funciones.php";
+
+                    $id=$_POST['id_noticia'];
+
+                    $con=conectarServidor();
+
+                    $consulta=$con->query("select * from noticia where id=$id");
+                    $noticia=$consulta->fetch_array(MYSQLI_ASSOC);
+
+                    echo "<h1>$noticia[titulo]</h1>
+                    <img src=\"../img/noticias/$noticia[imagen]\">
+                    <div>
+                        <p>$noticia[contenido]</p>
+                    </div>
+                    <p>Fecha de publicación: $noticia[fecha_publicacion]</p>";
+                }else{
+                    header("Location:noticias.php");
+                }
+            ?>
+        </section>
     </main>
     <footer>
         <div>
