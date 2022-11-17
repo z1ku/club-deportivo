@@ -120,7 +120,6 @@
                     echo "</tr>";
                 }
                 echo "</table>";
-
             ?>
         </section>
     </main>
