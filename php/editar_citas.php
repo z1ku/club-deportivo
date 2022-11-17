@@ -21,16 +21,20 @@
         }else{
             $con=conectarServidor();
 
-            if($con->query("insert into citas values($id_usuario,$id_servicio,$fecha,$hora")){
+            $insertar=$con->prepare("insert into citas values(?,?,?,?)");
+            $insertar->bind_param("iiss",$id_usuario,$id_servicio,$fecha,$hora);
+
+            if($insertar->execute()){
                 echo "<p>Cita nueva insertada correctamente</p>";
             }else{
-                echo "<p>ERROR:</p> " . $con->error;
+                echo "<p>ERROR:</p> " . $insertar->error;
             }
 
+            $insertar->close();
             $con->close();
         }
-
-        //header("refresh:2; url=citas.php");
+        
+        header("refresh:2; url=citas.php");
     }else{
         header("Location:citas.php");
     }
