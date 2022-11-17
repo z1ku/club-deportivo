@@ -57,9 +57,69 @@
             <?php
                 require_once "funciones.php";
 
-                
+                setlocale(LC_ALL, "es-ES.UTF-8");
 
+                $marca=time();
 
+                //NOMBRE DEL MES
+                $nom_mes=strftime('%B', $marca);
+
+                //PRIMER DIA DEL MES
+                $m=date('m', $marca);
+                $a=date('Y', $marca);
+                $marca_start=mktime(0,0,0,$m,1,$a);
+                $start=date('N', $marca_start);
+
+                //NUMERO DE DIAS DEL MES
+                $max_dias=date('t', $marca);
+
+                //NUMERO DE SEMANAS DEL MES
+                $num_filas=ceil($max_dias/7);
+
+                //CONTADOR PARA LOS DIAS
+                $dias=1;
+
+                //SUMO +1 A FILAS SI NECESITO MAS FILAS
+                if($start>=6){
+                    $num_filas+=1;
+                }
+
+                echo "<table border>
+                <caption>
+                    <form action=\"#\" method=\"post\">
+                        <input type=\"submit\" value=\"&laquo;\" name=\"atras\">
+                    </form>
+                    $nom_mes
+                    <form action=\"#\" method=\"post\">
+                        <input type=\"submit\" value=\"&raquo;\" name=\"atras\">
+                    </form>
+                </caption>
+                <tr>
+                    <td>Lunes</td>
+                    <td>Martes</td>
+                    <td>Miercoles</td>
+                    <td>Jueves</td>
+                    <td>Viernes</td>
+                    <td>Sabado</td>
+                    <td>Domingo</td>
+                </tr>";
+                for($filas=0;$filas<$num_filas;$filas++){
+                    $posicion_semana=1;
+                    echo "<tr>";
+                    for($cols=0;$cols<7;$cols++){
+                        if($dias<=$max_dias && $dias>=$start){
+                            echo "<td>$dias</td>";
+                            $dias++;
+                            $posicion_semana++;
+                        }else{
+                            echo "<td></td>";
+                            $start--;
+                            $posicion_semana++;
+                        }
+                    }
+                    echo "</tr>";
+                }
+                echo "</table>";
 
             ?>
         </section>
