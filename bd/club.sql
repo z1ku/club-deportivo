@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 11:58:03
+-- Tiempo de generación: 17-11-2022 a las 14:26:21
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -34,6 +34,15 @@ CREATE TABLE `citas` (
   `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`socio`, `servicio`, `fecha`, `hora`) VALUES
+(1, 2, '2022-11-20', '17:00:00'),
+(5, 1, '2022-11-18', '18:00:00'),
+(7, 2, '2022-11-17', '17:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -56,7 +65,8 @@ INSERT INTO `noticia` (`id`, `titulo`, `contenido`, `imagen`, `fecha_publicacion
 (1, 'Po esta es mi noticia', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto.', '1.jpg', '2022-11-15'),
 (2, 'Una noticia muy interesante', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto', '2.jpg', '2022-11-16'),
 (3, 'Otra noticia muy interesante', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto', '3.jpg', '2022-11-15'),
-(4, 'Una noticia aun mas interesante que la anterior', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', '4.jpg', '2022-11-17');
+(4, 'Una noticia aun mas interesante que la anterior', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', '4.jpg', '2022-11-17'),
+(5, 'Otra noticia mas', 'sisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiis cuentame mas.', '5.jpg', '2022-11-15');
 
 -- --------------------------------------------------------
 
@@ -200,7 +210,7 @@ ALTER TABLE `testimonio`
 -- AUTO_INCREMENT de la tabla `noticia`
 --
 ALTER TABLE `noticia`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
