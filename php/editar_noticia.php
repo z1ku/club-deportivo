@@ -15,7 +15,7 @@
 
         if($_FILES['imagen']['type']!="image/jpeg"){
             echo "<p>La imagen no es un jpg</p>";
-        }else if($_POST['fecha']<$fecha_actual){
+        }else if($fecha<$fecha_actual){
             echo "<p>La fecha no puede ser anterior a hoy</p>";
         }else{
             require_once "funciones.php";
@@ -39,7 +39,7 @@
             $insertar->close();
             $con->close();
         }
-
+        
         header("refresh:2; url=noticias.php");
     }else{
        header("Location:noticias.php");

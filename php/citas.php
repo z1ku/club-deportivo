@@ -42,7 +42,27 @@
         </div>
     </header>
     <main>
-        
+        <section class="seccionCitas">
+            <h1>Citas</h1>
+            <div class="contenedor_buscar_nuevo">
+                <form action="#" method="post">
+                    <input type="text" name="cadena">
+                    <input type="submit" name="buscar_cita" value="Buscar">
+                    <a href="citas.php">Reset</a>
+                </form>
+                <form action="panel_citas.php" method="post">
+                    <input type="submit" name="nueva_cita" value="Nueva cita">
+                </form>
+            </div>
+            <?php
+                require_once "funciones.php";
+
+                
+
+
+
+            ?>
+        </section>
     </main>
     <footer>
         <div>
