@@ -69,15 +69,15 @@
                     $a=date('Y', $marca);
                 }
 
-                //NOMBRE DEL MES
-                //$nom_mes=strftime('%B', $marca);
-
                 //PRIMER DIA DEL MES
                 $marca_start=mktime(0,0,0,$m,1,$a);
                 $start=date('N', $marca_start);
 
+                //NOMBRE DEL MES
+                $nom_mes=strftime('%B', $marca_start);
+                
                 //NUMERO DE DIAS DEL MES
-                $max_dias=date('t', $marca);
+                $max_dias=date('t', $marca_start);
 
                 //NUMERO DE SEMANAS DEL MES
                 $num_filas=ceil($max_dias/7);
@@ -109,13 +109,7 @@
                 echo "<table border>
                 <caption>
                     <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
-                    <form action=\"#\" method=\"post\">
-                        <input type=\"submit\" value=\"&laquo;\" name=\"anterior\">
-                    </form>
                     $nom_mes de $a
-                    <form action=\"#\" method=\"post\">
-                        <input type=\"submit\" value=\"&raquo;\" name=\"siguiente\">
-                    </form>
                     <a href=\"citas.php?nuevo_mes=$mes_siguiente&nuevo_ano=$ano_siguiente\">&raquo</a>
                 </caption>
                 <tr>
