@@ -70,7 +70,7 @@
                 }
 
                 //NOMBRE DEL MES
-                $nom_mes=strftime('%B', $marca);
+                //$nom_mes=strftime('%B', $marca);
 
                 //PRIMER DIA DEL MES
                 $marca_start=mktime(0,0,0,$m,1,$a);
