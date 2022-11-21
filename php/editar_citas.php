@@ -46,8 +46,29 @@
         $con->close();
         header("refresh:2; url=citas.php");
     }else if(isset($_POST['borrar_cita'])){
+        $socio=$_POST['id_socio'];
+        $servicio=$_POST['id_servicio'];
+        $fecha=$_POST['fecha'];
+
+        $fecha_actual=date('Y-m-d');
+
+        if($fecha<$fecha_actual){
+            echo "<p>No se pueden borrar citas ya pasadas</p>";
+        }else if($fecha==$fecha_actual){
+            echo "<p>No se pueden borrar citas sin antelacion (1dia)</p>";
+        }else{
+            $con=conectarServidor();
+
+            if($con->query("delete from citas where socio=$socio and servicio=$servicio and fecha='$fecha'")){
+                echo "<p>Cita borrada con éxito</p>";
+            }else{
+                echo "<p>ERROR: </p>" . $con->error;
+            }
+            
+            $con->close();
+        }
         
-        
+        header("refresh:2; url=citas.php");
     }else{
         header("Location:citas.php");
     }
