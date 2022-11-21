@@ -45,6 +45,9 @@
 
         $con->close();
         header("refresh:2; url=citas.php");
+    }else if(isset($_POST['borrar_cita'])){
+        
+        
     }else{
         header("Location:citas.php");
     }

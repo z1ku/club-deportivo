@@ -57,6 +57,8 @@
             <?php
                 require_once "funciones.php";
 
+                $con=conectarServidor();
+
                 setlocale(LC_ALL, "es-ES.UTF-8");
 
                 if($_GET){
@@ -138,6 +140,57 @@
                     echo "</tr>";
                 }
                 echo "</table>";
+
+                if(isset($_POST['buscar_cita'])){
+                    $cadena=$_POST['cadena'];
+                    $param="%$cadena%";
+
+                    $buscar=$con->prepare("select socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and nombre like ? or descripcion like ? or fecha like ?");
+                    $buscar->bind_result($socio,$servicio,$nombre,$descripcion,$telefono,$fecha,$hora);
+                    $buscar->bind_param("sss",$param,$param,$param);
+                    $buscar->execute();
+                    $buscar->store_result();
+
+                    if($buscar->num_rows==0){
+                        echo "<p>No se han encontrado coincidencias</p>";
+                    }else{
+                        echo "<table>
+                        <thead>
+                            <tr>
+                                <th>Socio</th>
+                                <th>Servicio</th>
+                                <th>Teléfono</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                        while($buscar->fetch()){
+                            echo "<tr>
+                                <td>$nombre</td>
+                                <td>$descripcion</td>
+                                <td>$telefono</td>
+                                <td>$fecha</td>
+                                <td>$hora</td>
+                                <td>
+                                    <form action=\"editar_citas.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_socio\" value=\"$socio\">
+                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$servicio\">
+                                        <input type=\"hidden\" name=\"fecha\" value=\"$fecha\">
+                                        <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\">
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                    }
+
+                    $buscar->close();
+                }
+
+                $con->close();
             ?>
         </section>
     </main>
