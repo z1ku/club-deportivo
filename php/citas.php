@@ -59,14 +59,20 @@
 
                 setlocale(LC_ALL, "es-ES.UTF-8");
 
-                $marca=time();
+                if($_GET){
+                    $m=$_GET["nuevo_mes"];
+                    $a=$_GET["nuevo_ano"];
+                }else{
+                    $marca=time();
+
+                    $m=date('m', $marca);
+                    $a=date('Y', $marca);
+                }
 
                 //NOMBRE DEL MES
                 $nom_mes=strftime('%B', $marca);
 
                 //PRIMER DIA DEL MES
-                $m=date('m', $marca);
-                $a=date('Y', $marca);
                 $marca_start=mktime(0,0,0,$m,1,$a);
                 $start=date('N', $marca_start);
 
