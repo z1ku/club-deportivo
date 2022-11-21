@@ -84,15 +84,33 @@
                     $num_filas+=1;
                 }
 
+                //CALCULO EL MES Y EL AÑO DEL MES ANTERIOR
+                $mes_anterior=$m-1;
+                $ano_anterior=$a;
+                if($mes_anterior==0){
+                    $ano_anterior--;
+                    $mes_anterior=12;
+                }
+
+                //CALCULO EL MES Y EL AÑO DEL MES SIGUIENTE
+                $mes_siguiente=$m+1;
+                $ano_siguiente=$a;
+                if($mes_siguiente==13){
+                    $ano_siguiente++;
+                    $mes_siguiente=1;
+                }
+
                 echo "<table border>
                 <caption>
+                    <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
                     <form action=\"#\" method=\"post\">
-                        <input type=\"submit\" value=\"&laquo;\" name=\"atras\">
+                        <input type=\"submit\" value=\"&laquo;\" name=\"anterior\">
                     </form>
-                    $nom_mes
+                    $nom_mes de $a
                     <form action=\"#\" method=\"post\">
-                        <input type=\"submit\" value=\"&raquo;\" name=\"atras\">
+                        <input type=\"submit\" value=\"&raquo;\" name=\"siguiente\">
                     </form>
+                    <a href=\"citas.php?nuevo_mes=$mes_siguiente&nuevo_ano=$ano_siguiente\">&raquo</a>
                 </caption>
                 <tr>
                     <td>Lunes</td>

@@ -71,7 +71,7 @@
                         $start=0;
                         $page=1;
                     }else{
-                        $start=($page - 1)*$noticiasPorPagina;
+                        $start=($page-1)*$noticiasPorPagina;
                     }
 
                     $total_pages=ceil($num_total_rows/$noticiasPorPagina);
