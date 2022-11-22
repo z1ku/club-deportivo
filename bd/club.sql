@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 14:26:21
+-- Tiempo de generación: 22-11-2022 a las 13:09:56
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -39,6 +39,7 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`socio`, `servicio`, `fecha`, `hora`) VALUES
+(1, 1, '2022-11-22', '19:00:00'),
 (1, 2, '2022-11-20', '17:00:00'),
 (5, 1, '2022-11-18', '18:00:00'),
 (7, 2, '2022-11-17', '17:00:00');
@@ -143,7 +144,7 @@ INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `fot
 
 CREATE TABLE `testimonio` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `autor` bigint(20) UNSIGNED NOT NULL,
   `contenido` varchar(250) COLLATE latin1_spanish_ci NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -153,11 +154,10 @@ CREATE TABLE `testimonio` (
 --
 
 INSERT INTO `testimonio` (`id`, `autor`, `contenido`, `fecha`) VALUES
-(1, 'Roberto', 'Uno de los mejores a los que he ido, muy buena atención al cliente.', '2022-11-03'),
-(2, 'Jose', 'Tiene unas instalaciones geniales con mucho espacio.', '2022-11-01'),
-(3, 'Ricardo', 'Mi gimnasio es el mejor.', '2022-11-06'),
-(4, 'Pedro', 'Los instructores son muy amables y siempre están ahí para ayudar.', '2022-11-04'),
-(5, 'Juanma', 'Me han obligado a hacer una reseña positiva.', '2022-11-14');
+(1, 1, 'Mi gym es el mejor.', '2022-11-22'),
+(2, 8, 'Me han obligado a hacer una reseña positiva.', '2022-11-22'),
+(3, 7, 'El mejor gym de mi poblo.', '2022-11-22'),
+(4, 5, 'El gym de mi hermano es el mas mejor.', '2022-11-22');
 
 --
 -- Índices para tablas volcadas
@@ -200,7 +200,8 @@ ALTER TABLE `socio`
 -- Indices de la tabla `testimonio`
 --
 ALTER TABLE `testimonio`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ce_testi_socio` (`autor`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -234,7 +235,7 @@ ALTER TABLE `socio`
 -- AUTO_INCREMENT de la tabla `testimonio`
 --
 ALTER TABLE `testimonio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -246,6 +247,12 @@ ALTER TABLE `testimonio`
 ALTER TABLE `citas`
   ADD CONSTRAINT `ce_cita_servicio` FOREIGN KEY (`servicio`) REFERENCES `servicio` (`id`),
   ADD CONSTRAINT `ce_cita_socio` FOREIGN KEY (`socio`) REFERENCES `socio` (`id`);
+
+--
+-- Filtros para la tabla `testimonio`
+--
+ALTER TABLE `testimonio`
+  ADD CONSTRAINT `ce_testi_socio` FOREIGN KEY (`autor`) REFERENCES `socio` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
