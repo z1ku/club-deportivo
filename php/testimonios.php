@@ -53,8 +53,8 @@
                 require_once "funciones.php";
                 $con=conectarServidor();
 
-                $testimonios=$con->query("select * from testimonio order by fecha desc");
-
+                $testimonios=$con->query("select nombre,contenido,fecha from testimonio,socio where autor=socio.id order by fecha desc");
+                
                 if($testimonios->num_rows==0){
                     echo "<p>No hay testimonios en la base de datos</p>";
                 }else{
@@ -69,7 +69,7 @@
                     <tbody>";
                     while($fila_testimonios=$testimonios->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
-                            <td>$fila_testimonios[autor]</td>
+                            <td>$fila_testimonios[nombre]</td>
                             <td>$fila_testimonios[contenido]</td>
                             <td>$fila_testimonios[fecha]</td>
                         </tr>";

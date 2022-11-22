@@ -90,13 +90,13 @@
 
                 $id=mt_rand(1,$num[0]);
 
-                $datos=$con->query("select * from testimonio where id=$id");
+                $datos=$con->query("select nombre,contenido from testimonio,socio where autor=socio.id and testimonio.id=$id");
                 $fila=$datos->fetch_array(MYSQLI_ASSOC);
                 
                 if($num[0]>0){
                     echo "<div>
                         <p>\"$fila[contenido]\"</p>
-                        <p>$fila[autor]</p>
+                        <p>$fila[nombre]</p>
                     </div>";
                 }else{
                     echo "<p>Aún no hay testimonios en la base de datos</p>";

@@ -54,6 +54,8 @@
 
                     $fila=$resultado->fetch_array(MYSQLI_NUM);
                     $id=$fila[0];
+
+                    $socios=$con->query("select id,nombre from socio");
                     
                     echo "<h2>Nuevo Testimonio</h2>";
                     echo "<form action=\"editar_testimonio.php\" method=\"post\">
@@ -63,7 +65,11 @@
                     </div>
                     <div>
                         <label for=\"autor\">Autor:</label>
-                        <input type=\"text\" name=\"autor\" maxlength=\"50\" required>
+                        <select name=\"autor\" required>";
+                        while($fila_socios=$socios->fetch_array(MYSQLI_ASSOC)){
+                            echo "<option value=\"$fila_socios[id]\">$fila_socios[nombre]</option>";
+                        }
+                    echo "</select>
                     </div>
                     <div>
                         <label for=\"contenido\">Contenido:</label>

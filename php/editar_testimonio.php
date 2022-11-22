@@ -9,7 +9,7 @@
         $con=conectarServidor();
 
         $insertar=$con->prepare("insert into testimonio values(null,?,?,?)");
-        $insertar->bind_param("sss",$autor,$contenido,$fecha);
+        $insertar->bind_param("iss",$autor,$contenido,$fecha);
 
         if($insertar->execute()){
             echo "<p>Testimonio nuevo insertado correctamente</p>";
