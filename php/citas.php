@@ -184,6 +184,14 @@
                             <td>$fila_citas2[telefono]</td>
                             <td>$fila_citas2[fecha]</td>
                             <td>$fila_citas2[hora]</td>
+                            <td>
+                                <form action=\"editar_citas.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_socio\" value=\"$fila_citas2[socio]\">
+                                    <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_citas2[servicio]\">
+                                    <input type=\"hidden\" name=\"fecha\" value=\"$fila_citas2[fecha]\">
+                                    <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\">
+                                </form>
+                            </td>
                         </tr>";
                     }
                     echo "</tbody>";
