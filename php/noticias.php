@@ -81,7 +81,6 @@
                     echo "<table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Imagen</th>
                             <th>Titulo</th>
                             <th>Contenido</th>
@@ -95,7 +94,6 @@
                         $contenido_short=substr($fila_noticias['contenido'], 0, 50);
 
                         echo "<tr>
-                            <td>$fila_noticias[id]</td>
                             <td><img src=\"../img/noticias/$fila_noticias[imagen]\"></td>
                             <td>$fila_noticias[titulo]</td>
                             <td>$contenido_short</td>

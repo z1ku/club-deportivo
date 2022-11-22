@@ -61,7 +61,6 @@
                     echo "<table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Autor</th>
                             <th>Contenido</th>
                             <th>Fecha</th>
@@ -70,7 +69,6 @@
                     <tbody>";
                     while($fila_testimonios=$testimonios->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
-                            <td>$fila_testimonios[id]</td>
                             <td>$fila_testimonios[autor]</td>
                             <td>$fila_testimonios[contenido]</td>
                             <td>$fila_testimonios[fecha]</td>

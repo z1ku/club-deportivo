@@ -78,7 +78,6 @@
                         echo "<table>
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Foto</th>
                                 <th>Nombre</th>
                                 <th>Edad</th>
@@ -92,7 +91,6 @@
                         <tbody>";
                         while($buscar->fetch()){
                             echo "<tr>
-                                <td>$id</td>
                                 <td><img src=\"../img/socios/$foto\"></td>
                                 <td>$nombre</td>
                                 <td>$edad</td>
@@ -123,7 +121,6 @@
                     echo "<table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Foto</th>
                             <th>Nombre</th>
                             <th>Edad</th>
@@ -137,7 +134,6 @@
                     <tbody>";
                     while($fila_socios=$socios->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
-                            <td>$fila_socios[id]</td>
                             <td><img src=\"../img/socios/$fila_socios[foto]\"></td>
                             <td>$fila_socios[nombre]</td>
                             <td>$fila_socios[edad]</td>

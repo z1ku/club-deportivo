@@ -78,7 +78,6 @@
                         echo "<table>
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Precio</th>
                                 <th>Editar</th>
@@ -88,7 +87,6 @@
                         <tbody>";
                         while($buscar->fetch()){
                             echo "<tr>
-                                <td>$id</td>
                                 <td>$nombre</td>
                                 <td>$precio €</td>
                                 <td>
@@ -114,7 +112,6 @@
                     echo "<table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Editar</th>
@@ -124,7 +121,6 @@
                     <tbody>";
                     while($fila_productos=$productos->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
-                            <td>$fila_productos[id]</td>
                             <td>$fila_productos[nombre]</td>
                             <td>$fila_productos[precio] €</td>
                             <td>

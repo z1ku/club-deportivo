@@ -88,10 +88,14 @@
                 $dias=1;
 
                 //SUMO +1 A FILAS SI NECESITO MAS FILAS
-                if($start>=6 and $max_dias>30){
+                if($start==6 and $max_dias>30){
+                    $num_filas+=1;
+                }else if($start==7 and $max_dias>=30){
+                    $num_filas+=1;
+                }else if($start>=3 and $max_dias<=28){
                     $num_filas+=1;
                 }
-
+                
                 //CALCULO EL MES Y EL AÑO DEL MES ANTERIOR
                 $mes_anterior=$m-1;
                 $ano_anterior=$a;
@@ -110,11 +114,14 @@
 
                 $fechas=$con->query("select distinct fecha from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
 
+                $tiene_citas=false;
+
                 while($fila_fechas=$fechas->fetch_array(MYSQLI_ASSOC)){
                     $marca_dia=strtotime($fila_fechas['fecha']);
                     $dias_con_cita[]=date('d', $marca_dia);
+                    $tiene_citas=true;
                 }
-                
+
                 echo "<table border>
                 <caption>
                     <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
@@ -134,8 +141,17 @@
                     echo "<tr>";
                     for($cols=0;$cols<7;$cols++){
                         if($dias<=$max_dias && $dias>=$start){
-                            echo "<td>$dias</td>";
-                            $dias++;
+                            if($tiene_citas){
+                                if(in_array($dias, $dias_con_cita)){
+                                    echo "<td class=\"dia_cita\">$dias si</td>";
+                                }else{
+                                    echo "<td>$dias</td>";
+                                }
+                                $dias++;
+                            }else{
+                                echo "<td>$dias</td>";
+                                $dias++;
+                            }
                         }else{
                             echo "<td></td>";
                             $start--;
@@ -174,6 +190,7 @@
                     echo "</table>";
                 }
                 
+                //BUSCAR CITAS
                 if(isset($_POST['buscar_cita'])){
                     $cadena=$_POST['cadena'];
                     $param="%$cadena%";
