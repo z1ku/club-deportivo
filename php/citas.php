@@ -88,7 +88,7 @@
                 $dias=1;
 
                 //SUMO +1 A FILAS SI NECESITO MAS FILAS
-                if($start>=6){
+                if($start>=6 and $max_dias>30){
                     $num_filas+=1;
                 }
 
@@ -108,6 +108,13 @@
                     $mes_siguiente=1;
                 }
 
+                $fechas=$con->query("select distinct fecha from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
+
+                while($fila_fechas=$fechas->fetch_array(MYSQLI_ASSOC)){
+                    $marca_dia=strtotime($fila_fechas['fecha']);
+                    $dias_con_cita[]=date('d', $marca_dia);
+                }
+                
                 echo "<table border>
                 <caption>
                     <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
@@ -124,36 +131,64 @@
                     <td>Domingo</td>
                 </tr>";
                 for($filas=0;$filas<$num_filas;$filas++){
-                    $posicion_semana=1;
                     echo "<tr>";
                     for($cols=0;$cols<7;$cols++){
                         if($dias<=$max_dias && $dias>=$start){
                             echo "<td>$dias</td>";
                             $dias++;
-                            $posicion_semana++;
                         }else{
                             echo "<td></td>";
                             $start--;
-                            $posicion_semana++;
                         }
                     }
                     echo "</tr>";
                 }
                 echo "</table>";
 
+                $citas=$con->query("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
+
+                //MUESTRO LAS CITAS DEL MES SI LAS HUBIERA
+                if($citas->num_rows>0){
+                    echo "<h2>Tus citas</h2>";
+                    echo "<table>
+                    <thead>
+                        <tr>
+                            <th>Socio</th>
+                            <th>Servicio</th>
+                            <th>Teléfono</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+                    while($fila_citas2=$citas->fetch_array(MYSQLI_ASSOC)){
+                        echo "<tr>
+                            <td>$fila_citas2[nombre]</td>
+                            <td>$fila_citas2[descripcion]</td>
+                            <td>$fila_citas2[telefono]</td>
+                            <td>$fila_citas2[fecha]</td>
+                            <td>$fila_citas2[hora]</td>
+                        </tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                }
+                
                 if(isset($_POST['buscar_cita'])){
                     $cadena=$_POST['cadena'];
                     $param="%$cadena%";
 
-                    $buscar=$con->prepare("select socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and nombre like ? or descripcion like ? or fecha like ?");
+                    $buscar=$con->prepare("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and (nombre like ? or descripcion like ? or fecha like ?)");
                     $buscar->bind_result($socio,$servicio,$nombre,$descripcion,$telefono,$fecha,$hora);
                     $buscar->bind_param("sss",$param,$param,$param);
                     $buscar->execute();
                     $buscar->store_result();
 
                     if($buscar->num_rows==0){
+                        echo "<h2>Citas encontradas</h2>";
                         echo "<p>No se han encontrado coincidencias</p>";
                     }else{
+                        echo "<h2>Citas encontradas</h2>";
                         echo "<table>
                         <thead>
                             <tr>

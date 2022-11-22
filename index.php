@@ -56,7 +56,7 @@
 
                 $fecha_actual=date('Y-m-d');
 
-                $consulta=$con->query("select * from noticia where fecha_publicacion<='$fecha_actual' order by fecha_publicacion asc limit 0, 3");
+                $consulta=$con->query("select * from noticia where fecha_publicacion<='$fecha_actual' order by fecha_publicacion desc limit 0, 3");
 
                 echo '<div class="contenedor_ultimas_noticias">';
                 while($noticia=$consulta->fetch_array(MYSQLI_ASSOC)){

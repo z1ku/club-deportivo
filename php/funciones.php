@@ -6,6 +6,4 @@
         return $con;
     }
 
-
-    //https://desarrolloweb.com/articulos/685.php
 ?>
