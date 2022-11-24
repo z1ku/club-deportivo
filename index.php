@@ -79,7 +79,6 @@
             ?>
         </section>
         <section id="testimonio_random">
-            <h2>Testimonios</h2>
             <?php
                 require_once "php/funciones.php";
 

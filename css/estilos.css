@@ -5,6 +5,7 @@
 body{
     margin: 0;
     font-family: 'Play', sans-serif;
+    background-color: whitesmoke;
 }
 
 input{
@@ -25,8 +26,11 @@ header{
     top: 0;
     left: 0;
     z-index: 999;
-    background-color: #1e1e1e;
+    background-color: #141414;
     border-bottom: 3px solid rgb(0, 140, 255);
+    box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
 }
 
 #logo{
@@ -53,7 +57,7 @@ header nav a:hover{
 
 .rrss a{
     color: rgb(0, 140, 255);
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 1rem;
 }
 
@@ -98,25 +102,33 @@ header nav a:hover{
     align-items: center;
     height: 50vh;
     color: white;
+    box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
 }
 
 #bienvenida h1{
     font-size: 5rem;
     color: rgb(0, 140, 255);
     margin: 0 0 2rem 0;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
 }
 
 #bienvenida span{
     margin-bottom: 2rem;
     font-size: 1.3rem;
-    color: white;
+    color: whitesmoke;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
 }
 
 #bienvenida button{
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-size: 1.5rem;
-    background-color: white;
+    background-color: whitesmoke;
     border: 3px solid rgb(0, 140, 255);
 }
 
@@ -138,8 +150,8 @@ header nav a:hover{
 }
 
 #ultimas_noticias h2{
-    margin-left: 1rem;
     font-size: 2rem;
+    text-align: center;
 }
 
 #ultimas_noticias h3{
@@ -159,21 +171,53 @@ header nav a:hover{
     padding: 1rem;
     width: 31%;
     overflow: hidden;
+    background-color: rgb(0, 70, 128);
+    color: whitesmoke;
     margin: 0.5rem;
-    background-color: rgb(0, 62, 112);
-    color: white;
     border-radius: 15px;
     border: 2px solid black;
+    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
 }
 
 #ultimas_noticias input{
-    background-color: rgb(0, 140, 255);
-    color: white;
+    background-color: whitesmoke;
+    color: rgb(0, 140, 255);
     border-radius: 10px;
     border: 1px solid black;
     padding: 0.5rem 1rem;
-    width: 25%;
+    width: 15%;
 }
+
+#testimonio_random{
+    margin: 2rem auto;
+    text-align: center;
+    background-image: url("../img/testimonio_fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    color: whitesmoke;
+}
+
+#testimonio_random>div>p:nth-child(1){
+    font-size: 3rem;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
+}
+
+#testimonio_random>div>p:nth-child(2){
+    font-size: 2rem;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
+}
+
 
 
 
@@ -184,7 +228,7 @@ footer{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #1e1e1e;
+    background-color: #141414;
     color: white;
     padding: 1rem;
 }
