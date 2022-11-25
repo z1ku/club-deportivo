@@ -16,6 +16,10 @@ img{
     max-width: 100%;
 }
 
+textarea{
+    resize: none;
+}
+
 /* ESTILOS PARA EL MENU */
 header{
     display: flex;
@@ -133,7 +137,7 @@ header nav a:hover{
 }
 
 #bienvenida button:hover{
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(218, 218, 218);
 }
 
 #ultimas_noticias{
@@ -190,6 +194,10 @@ header nav a:hover{
     width: 15%;
 }
 
+#ultimas_noticias input:hover{
+    background-color: rgb(218, 218, 218);
+}
+
 #testimonio_random{
     margin: 2rem auto;
     text-align: center;
@@ -218,9 +226,92 @@ header nav a:hover{
     padding: 0.5rem 2rem;
 }
 
+#contacto{
+    width: 80%;
+    margin: 1rem auto 2rem auto;
+}
 
+#contacto h2{
+    font-size: 2rem;
+    text-align: center;
+}
 
+#contacto form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 70, 128);
+    padding: 1.5rem;
+    width: fit-content;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 15px;
+}
 
+#contacto div{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#contacto input[type=submit]{
+    margin-top: 1rem;
+    color: white;
+    background-color: black;
+    padding: 0.2rem;
+}
+
+#contacto input[type=submit]:hover{
+    background-color: rgb(27, 27, 27);
+}
+
+/* ESTILOS PARA SECCION SOCIOS */
+.seccionSocios{
+    margin: 1rem;
+    width: 80%;
+    margin: auto;
+    min-height: 90vh;
+}
+
+.seccionSocios h1{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.contenedor_buscar_nuevo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.contenedor_buscar_nuevo input{
+    padding: 0.5rem;
+}
+
+.contenedor_buscar_nuevo input[type=submit]{
+    background-color: rgb(0, 140, 255);
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+
+.contenedor_buscar_nuevo input[type=submit]:hover{
+    background-color: rgb(50, 163, 255);
+}
+
+.contenedor_buscar_nuevo a{
+    background-color: black;
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-decoration: none;
+    color: white;
+}
+
+.contenedor_buscar_nuevo a:hover{
+    background-color: rgb(36, 36, 36);
+}
+
+.seccionSocios table{
+
+}
 
 
 /* ESTILOS PARA EL FOOTER */

@@ -104,7 +104,7 @@
                 $con->close();
             ?>
         </section>
-        <section>
+        <section id="contacto">
             <h2>Contacto</h2>
             <form action="" method="post">
                 <div>
