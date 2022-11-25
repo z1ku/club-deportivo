@@ -174,6 +174,7 @@
                             <th>Teléfono</th>
                             <th>Fecha</th>
                             <th>Hora</th>
+                            <th>Borrar</th>
                         </tr>
                     </thead>
                     <tbody>";
@@ -189,7 +190,7 @@
                                     <input type=\"hidden\" name=\"id_socio\" value=\"$fila_citas2[socio]\">
                                     <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_citas2[servicio]\">
                                     <input type=\"hidden\" name=\"fecha\" value=\"$fila_citas2[fecha]\">
-                                    <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\">
+                                    <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\" class=\"btn-borrar\">
                                 </form>
                             </td>
                         </tr>";
@@ -238,7 +239,7 @@
                                         <input type=\"hidden\" name=\"id_socio\" value=\"$socio\">
                                         <input type=\"hidden\" name=\"id_servicio\" value=\"$servicio\">
                                         <input type=\"hidden\" name=\"fecha\" value=\"$fecha\">
-                                        <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\">
+                                        <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\" class=\"btn-borrar\">
                                     </form>
                                 </td>
                             </tr>";

@@ -92,13 +92,13 @@
                                 <td>
                                     <form action=\"panel_productos.php\" method=\"post\">
                                         <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
-                                        <input type=\"submit\" name=\"editar_producto\" value=\"Editar\">
+                                        <input type=\"submit\" name=\"editar_producto\" value=\"Editar\" class=\"btn-editar\">
                                     </form>
                                 </td>
                                 <td>
                                     <form action=\"editar_producto.php\" method=\"post\">
                                         <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
-                                        <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\">
+                                        <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\" class=\"btn-borrar\">
                                     </form>
                                 </td>
                             </tr>";
@@ -126,13 +126,13 @@
                             <td>
                                 <form action=\"panel_productos.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
-                                    <input type=\"submit\" name=\"editar_producto\" value=\"Editar\">
+                                    <input type=\"submit\" name=\"editar_producto\" value=\"Editar\" class=\"btn-editar\">
                                 </form>
                             </td>
                             <td>
                                 <form action=\"editar_producto.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
-                                    <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\">
+                                    <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\" class=\"btn-borrar\">
                                 </form>
                             </td>
                         </tr>";

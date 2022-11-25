@@ -93,7 +93,7 @@
                                 <td>
                                     <form action=\"panel_servicios.php\" method=\"post\">
                                         <input type=\"hidden\" name=\"id_servicio\" value=\"$id\">
-                                        <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\">
+                                        <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\" class=\"btn-editar\">
                                     </form>
                                 </td>
                             </tr>";
@@ -122,7 +122,7 @@
                             <td>
                                 <form action=\"panel_servicios.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_servicios[id]\">
-                                    <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\">
+                                    <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\" class=\"btn-editar\">
                                 </form>
                             </td>
                         </tr>";
