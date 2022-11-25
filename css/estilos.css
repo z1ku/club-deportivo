@@ -262,7 +262,7 @@ header nav a:hover{
 #contacto form{
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 70, 128);
+    background-color: rgb(0, 94, 172);
     padding: 1.5rem;
     width: fit-content;
     margin: auto;
@@ -383,7 +383,7 @@ header nav a:hover{
 #panel_socios form{
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 70, 128);
+    background-color: rgb(0, 94, 172);
     padding: 1.5rem;
     width: fit-content;
     margin: auto;
@@ -503,7 +503,7 @@ header nav a:hover{
 #panel_productos form{
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 70, 128);
+    background-color: rgb(0, 94, 172);
     padding: 1.5rem;
     width: fit-content;
     margin: auto;
@@ -623,7 +623,7 @@ header nav a:hover{
 #panel_servicios form{
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 70, 128);
+    background-color: rgb(0, 94, 172);
     padding: 1.5rem;
     width: fit-content;
     margin: auto;
