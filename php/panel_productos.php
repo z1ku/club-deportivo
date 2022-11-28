@@ -29,15 +29,7 @@
         </div>
         <div class="login">
             <form action="" method="post">
-                <div>
-                    <label for="usuario">Usuario:</label>
-                    <input type="text" name="usuario">
-                </div>
-                <div>
-                    <label for="pass">Contraseña:</label>
-                    <input type="password" name="pass">
-                </div>
-                <input type="submit" name="enviar" id="btn-login">
+                <input type="submit" name="enviar" id="btn-login" value="Login">
             </form>
         </div>
     </header>
