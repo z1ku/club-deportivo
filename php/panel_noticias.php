@@ -36,6 +36,7 @@
     <main>
         <section id="panel_noticias" class="panel_admin">
             <h1>Panel Noticias</h1>
+            <a href="noticias.php">Volver</a>
             <?php
                 if(isset($_POST["nueva_noticia"])){
                     require_once "funciones.php";

@@ -36,6 +36,7 @@
     <main>
         <section id="panel_productos" class="panel_admin">
             <h1>Panel Productos</h1>
+            <a href="productos.php">Volver</a>
             <?php
                 if(isset($_POST["editar_producto"])){
 

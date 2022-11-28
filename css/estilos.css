@@ -389,6 +389,14 @@ header nav a:hover{
     margin-left: 1rem;
 }
 
+.panel_admin a{
+    background-color: black;
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-decoration: none;
+    color: white;
+}
+
 /* ESTILOS PARA SECCION SOCIOS */
 .seccionSocios td img{
     object-fit: cover;

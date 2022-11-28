@@ -36,6 +36,7 @@
     <main>
         <section id="panel_socios" class="panel_admin">
             <h1>Panel Socios</h1>
+            <a href="socios.php">Volver</a>
             <?php
                 if(isset($_POST["editar_socio"])){
 

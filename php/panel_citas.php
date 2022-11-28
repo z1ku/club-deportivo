@@ -36,6 +36,7 @@
     <main>
         <section id="panel_citas" class="panel_admin">
             <h1>Panel Citas</h1>
+            <a href="citas.php">Volver</a>
             <?php
                 if(isset($_POST["nueva_cita"])){
                     require_once "funciones.php";

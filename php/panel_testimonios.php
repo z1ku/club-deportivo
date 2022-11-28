@@ -36,6 +36,7 @@
     <main>
         <section id="panel_testimonios" class="panel_admin">
             <h1>Panel Testimonios</h1>
+            <a href="testimonios.php">Volver</a>
             <?php
                 if(isset($_POST["nuevo_testimonio"])){
                     require_once "funciones.php";
