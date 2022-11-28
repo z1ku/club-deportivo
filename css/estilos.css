@@ -147,6 +147,31 @@ header nav a:hover{
     background-color: rgb(218, 218, 218);
 }
 
+#descripcion{
+    width: 80%;
+    margin: 1rem auto;
+}
+
+#descripcion h2{
+    font-size: 2rem;
+}
+
+#descripcion p{
+    text-align: justify;
+}
+
+.contenedorDescripcion{
+    display: flex;
+}
+
+.contenedorDescripcion>div{
+    width: 50%;
+}
+
+.contenedorDescripcion video{
+    width: 50%;
+}
+
 #ultimas_noticias{
     width: 80%;
     margin: 2rem auto 1rem auto;
@@ -156,17 +181,13 @@ header nav a:hover{
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: 15px;
-    border: 2px solid black;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 #ultimas_noticias h2{
     font-size: 2rem;
     text-align: center;
-}
-
-#ultimas_noticias h3{
-    margin-top: 0;
 }
 
 #ultimas_noticias>.contenedor_ultimas_noticias{
@@ -180,21 +201,21 @@ header nav a:hover{
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    width: 31%;
+    width: 30%;
     overflow: hidden;
-    background-color: rgb(0, 70, 128);
-    color: whitesmoke;
+    background-color: white;
+    color: black;
     margin: 0.5rem;
-    border-radius: 15px;
-    border: 2px solid black;
+    border-radius: 10px;
+    border: 1px solid black;
     box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
 }
 
 #ultimas_noticias input{
-    background-color: whitesmoke;
-    color: rgb(0, 140, 255);
+    background-color: rgb(0, 140, 255);
+    color: white;
     border-radius: 10px;
     border: 1px solid black;
     padding: 0.5rem 1rem;
@@ -202,7 +223,7 @@ header nav a:hover{
 }
 
 #ultimas_noticias input:hover{
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(50, 163, 255);
 }
 
 #testimonio_random{
@@ -235,12 +256,41 @@ header nav a:hover{
 
 #contacto{
     width: 80%;
-    margin: 1rem auto 2rem auto;
+    margin: 2rem auto 2rem auto;
+}
+
+.contenedorContacto{
+    display: flex;
+    justify-content: center;
 }
 
 #contacto h2{
     font-size: 2rem;
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+#contacto h3{
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.preguntas_y_respuestas{
+    width: 35%;
+    margin-right: 2rem;
+}
+
+.preguntas_y_respuestas details{
+    margin-bottom: 1rem;
+}
+
+.preguntas_y_respuestas details>summary{
+    color: rgb(0, 140, 255);
+}
+
+.preguntas_y_respuestas p{
+    text-align: justify;
+    margin-left: 2rem;
 }
 
 #contacto form{
@@ -249,15 +299,19 @@ header nav a:hover{
     background-color: rgb(0, 94, 172);
     padding: 1.5rem;
     width: fit-content;
-    margin: auto;
+    height: fit-content;
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
 }
 
-#contacto div{
+#contacto form textarea{
+    margin-left: 1rem;
+}
+
+#contacto form div{
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
@@ -361,7 +415,7 @@ header nav a:hover{
     width: fit-content;
     margin: auto;
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
@@ -386,6 +440,10 @@ header nav a:hover{
 
 .panel_admin>form>div>input{
     width: 15rem;
+    margin-left: 1rem;
+}
+
+.panel_admin>form>div>textarea{
     margin-left: 1rem;
 }
 
@@ -535,6 +593,21 @@ header nav a:hover{
 
 .dia_cita{
     background-color: green;
+}
+
+.seccionCitas>.calendario caption{
+    font-size: 1.7rem;
+}
+
+.seccionCitas>.calendario caption a{
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    margin: auto 1.5rem;
+}
+
+.seccionCitas>.calendario caption a:hover{
+    color: rgb(0, 140, 255);
 }
 
 

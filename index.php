@@ -39,6 +39,23 @@
             <span>El mejor club deportivo de tu ciudad</span>
             <button>Únete ahora</button>
         </section>
+        <section id="descripcion">
+            <h2>Gimnasio de Última Generación</h2>
+            <div class="contenedorDescripcion">
+                <div>
+                    <p>
+                        Olympia Gym – Gimnasio en Armilla. Un club situado en el centro comercial Nevada Shopping.
+                    </p>
+                    <p>
+                        Más de 2.400 m2 a tu disposición con actividades y servicios como Musculación guiada y libre, Cardio Conectado, Cycle Park, Clases Colectivas con Coach o virtuales, espacio Cross Training, espacio BURNING PARK dedicado a actividades de alta intensidad o HIIT, plataforma vibratoria Power Plate, área de hidratación de bebidas YANGA... así como un espacio destinado al boxeo, FIGHT PARK con ring y sacos.
+                    </p>
+                    <p>
+                        ¿Problemas con los horarios? Nuestro gym está abierto los 7 días de la semana de 6:00 am a 1:00 am los 365 días del año! ¡No tendrás excusas!
+                    </p>
+                </div>
+                <video src=""></video>
+            </div>
+        </section>
         <section id="ultimas_noticias">
             <h2>Últimas noticias</h2>
             <?php
@@ -55,8 +72,8 @@
                     $contenido_short=substr($noticia['contenido'], 0, 50);
 
                     echo "<div>
-                        <h3>$noticia[titulo]</h3>
                         <img src=\"img/noticias/$noticia[imagen]\">
+                        <h3>$noticia[titulo]</h3>
                         <p>$contenido_short</p>
                         <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
                         <form action=\"php/noticia_completa.php\" method=\"post\">
@@ -98,19 +115,50 @@
         </section>
         <section id="contacto">
             <h2>Contacto</h2>
-            <form action="" method="post">
-                <div>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre">
+            <div class="contenedorContacto">
+                <div class="preguntas_y_respuestas">
+                    <h3>Preguntas y Respuestas</h3>
+                    <details>
+                        <summary>¿Cuál es el precio?</summary>
+                        <p>
+                            14’95€ el primer mes y 24’95€ los siguientes meses con permanencia flexible de 12 meses.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>¿Cuál es el horario?</summary>
+                        <p>
+                            Abrimos los 365 días del año de 6am a 1am con domingos y festivos incluidos.(Horario especial el 25 de diciembre y los días 1 y 6 de enero)
+                        </p>
+                    </details>
+                    <details>
+                        <summary>¿Cómo funciona la permanencia?</summary>
+                        <p>
+                            Nuestra permanencia flexible de 12 meses permite la suspensión temporal de tu abono por motivos médicos, laborales y vacacionales. Para hacer efectiva dicha suspensión es necesario enviar un correo al mail del club adjuntando un justificante válido. La suspensión tiene un periodo mínimo de 1 mes completo, avisando siempre con 7 días de antelación.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>¿Puedo ir a probar el club?</summary>
+                        <p>
+                            Puedes venir un día a entrenar por 10€ y acceder tantas veces como quieras en el mismo día. En un futuro, esos importes se descontarán del precio de la matricula.
+                        </p>
+                    </details>
                 </div>
-                <div>
-                    <label for="correo">Correo:</label>
-                    <input type="email" name="correo">
-                </div>
-                <label for="mensaje">Mensaje:</label>
-                <textarea name="mensaje" cols="30" rows="10"></textarea>
-                <input type="submit" name="enviar">
-            </form>
+                <form action="" method="post">
+                    <div>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre">
+                    </div>
+                    <div>
+                        <label for="correo">Correo:</label>
+                        <input type="email" name="correo">
+                    </div>
+                    <div>
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea name="mensaje" cols="30" rows="10"></textarea>
+                    </div>
+                    <input type="submit" name="enviar">
+                </form>
+            </div>
         </section>
     </main>
     <footer>
