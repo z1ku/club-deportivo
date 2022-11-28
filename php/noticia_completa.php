@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section class="noticia">
+        <section class="noticia seccion">
             <?php
                 if(isset($_POST['ver_noticia'])){
                     require_once "funciones.php";
@@ -55,11 +55,11 @@
                     $noticia=$consulta->fetch_array(MYSQLI_ASSOC);
 
                     echo "<h1>$noticia[titulo]</h1>
-                    <img src=\"../img/noticias/$noticia[imagen]\">
                     <div>
-                        <p>$noticia[contenido]</p>
+                        <img src=\"../img/noticias/$noticia[imagen]\">
+                        <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
                     </div>
-                    <p>Fecha de publicación: $noticia[fecha_publicacion]</p>";
+                    <p>$noticia[contenido]</p>";
                 }else{
                     header("Location:noticias.php");
                 }

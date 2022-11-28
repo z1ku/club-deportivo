@@ -122,28 +122,31 @@
                     $tiene_citas=true;
                 }
 
-                echo "<table border>
+                echo "<table class=\"calendario\">
                 <caption>
                     <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
                     $nom_mes de $a
                     <a href=\"citas.php?nuevo_mes=$mes_siguiente&nuevo_ano=$ano_siguiente\">&raquo</a>
                 </caption>
-                <tr>
-                    <td>Lunes</td>
-                    <td>Martes</td>
-                    <td>Miercoles</td>
-                    <td>Jueves</td>
-                    <td>Viernes</td>
-                    <td>Sabado</td>
-                    <td>Domingo</td>
-                </tr>";
+                <thead>
+                    <tr>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miercoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sabado</th>
+                        <th>Domingo</th>
+                    </tr>
+                </thead>
+                <tbody>";
                 for($filas=0;$filas<$num_filas;$filas++){
                     echo "<tr>";
                     for($cols=0;$cols<7;$cols++){
                         if($dias<=$max_dias && $dias>=$start){
                             if($tiene_citas){
                                 if(in_array($dias, $dias_con_cita)){
-                                    echo "<td class=\"dia_cita\">$dias si</td>";
+                                    echo "<td class=\"dia_cita\">$dias</td>";
                                 }else{
                                     echo "<td>$dias</td>";
                                 }
@@ -159,6 +162,7 @@
                     }
                     echo "</tr>";
                 }
+                echo "</tbody>";
                 echo "</table>";
 
                 $citas=$con->query("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");

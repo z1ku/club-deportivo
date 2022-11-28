@@ -78,6 +78,10 @@
 
                     $noticias=$con->query("select * from noticia limit $start, $noticiasPorPagina");
 
+                    echo '<p>Número de noticias totales: '.$num_total_rows.'</p>';
+                    echo '<p>En cada página se muestran '.$noticiasPorPagina.' noticias.</p>';
+                    echo '<p>Mostrando la página '.$page.' de ' .$total_pages.' páginas.</p>';
+
                     echo "<table>
                     <thead>
                         <tr>
@@ -109,25 +113,21 @@
                     echo "</tbody>";
                     echo "</table>";
                     
-                    echo '<p>Número de noticias totales: '.$num_total_rows.'</p>';
-                    echo '<p>En cada página se muestran '.$noticiasPorPagina.' noticias.</p>';
-                    echo '<p>Mostrando la página '.$page.' de ' .$total_pages.' páginas.</p>';
-                    
                     echo '<nav>';
-                    echo '<ul class="pagination">';
+                    echo '<ul class="paginacion">';
                     if($total_pages>1){
                         if($page!=1){
-                            echo '<li class="page-item"><a class="page-link" href="noticias.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
+                            echo '<li><a href="noticias.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
                         }
                         for($i=1;$i<=$total_pages;$i++){
                             if($page == $i){
-                                echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+                                echo '<li><a href="#">'.$page.'</a></li>';
                             }else{
-                                echo '<li class="page-item"><a class="page-link" href="noticias.php?page='.$i.'">'.$i.'</a></li>';
+                                echo '<li><a href="noticias.php?page='.$i.'">'.$i.'</a></li>';
                             }
                         }
                         if($page != $total_pages){
-                            echo '<li class="page-item"><a class="page-link" href="noticias.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
+                            echo '<li><a href="noticias.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
                         }
                     }
                     echo '</ul>';
