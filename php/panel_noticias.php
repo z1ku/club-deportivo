@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section id="panel_noticias">
+        <section id="panel_noticias" class="panel_admin">
             <h1>Panel Noticias</h1>
             <?php
                 if(isset($_POST["nueva_noticia"])){

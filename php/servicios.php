@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section class="seccionServicios">
+        <section class="seccion_productos_servicios seccion">
             <h1>Listado de Servicios</h1>
             <div class="contenedor_buscar_nuevo">
                 <form action="#" method="post">

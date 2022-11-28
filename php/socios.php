@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section class="seccionSocios">
+        <section class="seccionSocios seccion">
             <h1>Listado de Socios</h1>
             <div class="contenedor_buscar_nuevo">
                 <form action="#" method="post">

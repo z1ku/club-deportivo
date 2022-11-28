@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section id="panel_citas">
+        <section id="panel_citas" class="panel_admin">
             <h1>Panel Citas</h1>
             <?php
                 if(isset($_POST["nueva_cita"])){

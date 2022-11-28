@@ -42,9 +42,9 @@
         </div>
     </header>
     <main>
-        <section class="seccionTestimonios">
+        <section class="seccionTestimonios seccion">
             <h1>Listado de Testimonios</h1>
-            <div class="contenedor_nuevo_testimonio">
+            <div class="contenedor_buscar_nuevo">
                 <form action="panel_testimonios.php" method="post">
                     <input type="submit" name="nuevo_testimonio" value="Nuevo testimonio">
                 </form>

@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section class="seccionCitas">
+        <section class="seccionCitas seccion">
             <h1>Citas</h1>
             <div class="contenedor_buscar_nuevo">
                 <form action="#" method="post">

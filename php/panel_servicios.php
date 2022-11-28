@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section id="panel_servicios">
+        <section id="panel_servicios" class="panel_admin">
             <h1>Panel Servicios</h1>
             <?php
                 if(isset($_POST["editar_servicio"])){

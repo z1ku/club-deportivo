@@ -42,7 +42,7 @@
         </div>
     </header>
     <main>
-        <section id="panel_socios">
+        <section id="panel_socios" class="panel_admin">
             <h1>Panel Socios</h1>
             <?php
                 if(isset($_POST["editar_socio"])){

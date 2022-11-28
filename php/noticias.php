@@ -42,9 +42,9 @@
         </div>
     </header>
     <main>
-        <section class="seccionNoticias">
+        <section class="seccionNoticias seccion">
             <h1>Listado de Noticias</h1>
-            <div class="contenedor_nueva_noticia">
+            <div class="contenedor_buscar_nuevo">
                 <form action="panel_noticias.php" method="post">
                     <input type="submit" name="nueva_noticia" value="Nueva noticia">
                 </form>
