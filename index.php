@@ -40,9 +40,9 @@
             <button>Únete ahora</button>
         </section>
         <section id="descripcion">
-            <h2>Gimnasio de Última Generación</h2>
             <div class="contenedorDescripcion">
                 <div>
+                    <h2>Gimnasio de Última Generación</h2>
                     <p>
                         Olympia Gym – Gimnasio en Armilla. Un club situado en el centro comercial Nevada Shopping.
                     </p>
@@ -53,7 +53,98 @@
                         ¿Problemas con los horarios? Nuestro gym está abierto los 7 días de la semana de 6:00 am a 1:00 am los 365 días del año! ¡No tendrás excusas!
                     </p>
                 </div>
-                <video src=""></video>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/FmOhpro8LkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div id="informacion_practica">
+                <h3>INFORMACIÓN PRÁCTICA</h3>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-square-parking"></i>
+                        <span>Parking gratuito</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-sun"></i>
+                        <span>Aire acondicionado</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-battery-three-quarters"></i>
+                        <span>Armario de recarga de teléfono</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-shower"></i>
+                        <span>Ducha individual</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-spray-can"></i>
+                        <span>Desinfectante</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-wifi"></i>
+                        <span>Wi-Fi gratis</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bottle-water"></i>
+                        <span>Máquinas de vending</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="servicios_del_club">
+                <h3>SERVICIOS DEL CLUB</h3>
+                <div class="contenedorServicios">
+                    <div>
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Musculación libre y guiada</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <span>Cardio training</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-bicycle"></i>
+                        <span>Biking</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-people-group"></i>
+                        <span>Clases en grupo</span>
+                    </div>
+                </div>
+            </div>
+            <div id="conceptos"·>
+                <h3>CONCEPTOS OLYMPIA GYM</h3>
+                <div class="contenedorConceptos contenedorServicios">
+                    <div>
+                        <i class="fa-solid fa-fire"></i>
+                        <span>Burning Park</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <span>Entrenamiento personal</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-hand-back-fist"></i>
+                        <span>Fight Park</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-water"></i>
+                        <span>Hidromasaje</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-percent"></i>
+                        <span>Fit3D</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-couch"></i>
+                        <span>Espacio relax</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="actividades">
+            <div>
+                <h2>Todo tipo de Actividades</h2>
+                <p>
+                    En Olympia Gym disfrutarás de una amplia gama de actividades entre las que se incluyen nuevos espacios y conceptos de entrenamiento. El club está diseñado para ofrecer un alto nivel de digitalización y personalización en todas sus actividades, creando una experiencia inmersiva única acompañada del material de las mejores marcas en todo momento.
+                </p>
             </div>
         </section>
         <section id="ultimas_noticias">
@@ -73,13 +164,15 @@
 
                     echo "<div>
                         <img src=\"img/noticias/$noticia[imagen]\">
-                        <h3>$noticia[titulo]</h3>
-                        <p>$contenido_short</p>
-                        <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
-                        <form action=\"php/noticia_completa.php\" method=\"post\">
-                            <input type=\"hidden\" name=\"id_noticia\" value=\"$noticia[id]\">
-                            <input type=\"submit\" name=\"ver_noticia\" value=\"Ver\">
-                        </form>
+                        <div>
+                            <h3>$noticia[titulo]</h3>
+                            <p>$contenido_short</p>
+                            <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
+                            <form action=\"php/noticia_completa.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"id_noticia\" value=\"$noticia[id]\">
+                                <input type=\"submit\" name=\"ver_noticia\" value=\"Ver\">
+                            </form>
+                        </div>
                     </div>";
                 }
                 echo '</div>';
@@ -159,6 +252,11 @@
                     <input type="submit" name="enviar">
                 </form>
             </div>
+        </section>
+        <section id="seccionLanding">
+            <h2>Conoce todas nuestras máquinas</h2>
+            <span>Visita nuestra landing page</span>
+            <a href="#">Visitar</a>
         </section>
     </main>
     <footer>

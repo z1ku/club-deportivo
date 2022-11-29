@@ -94,7 +94,7 @@ header nav a:hover{
 
 #btn-login{
     background-color: rgb(0, 140, 255);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     margin: auto 2rem;
 }
 
@@ -113,9 +113,6 @@ header nav a:hover{
     align-items: center;
     height: 50vh;
     color: white;
-    box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 0px 5px 2px rgba(0,0,0,0.75);
 }
 
 #bienvenida h1{
@@ -148,32 +145,128 @@ header nav a:hover{
 }
 
 #descripcion{
-    width: 80%;
-    margin: 1rem auto;
+    width: 70%;
+    margin: 2rem auto;
 }
 
 #descripcion h2{
     font-size: 2rem;
+    margin-top: 0;
 }
 
 #descripcion p{
     text-align: justify;
+    line-height: 25px;
 }
 
 .contenedorDescripcion{
     display: flex;
+    justify-content: space-between;
 }
 
 .contenedorDescripcion>div{
     width: 50%;
 }
 
-.contenedorDescripcion video{
-    width: 50%;
+.contenedorDescripcion iframe{
+    margin: 0 2rem;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#descripcion h3{
+    font-size: 1.5rem;
+}
+
+#descripcion ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+#descripcion li{
+    display: flex;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+#informacion_practica i{
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+.contenedorServicios{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contenedorServicios>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    padding: 1rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.contenedorServicios i{
+    font-size: 3rem;
+}
+
+.contenedorConceptos>div{
+    background-color: rgb(0, 140, 255);
+    color: whitesmoke;
+}
+
+#actividades{
+    margin: 2rem auto;
+    text-align: center;
+    background-image: url("../img/gym_fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    color: whitesmoke;
+}
+
+#actividades>div{
+    width: 80%;
+    margin: auto;
+}
+
+#actividades h2{
+    color: rgb(0, 140, 255);
+    margin-top: 0;
+    font-size: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
+}
+
+#actividades p{
+    line-height: 30px;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
 }
 
 #ultimas_noticias{
-    width: 80%;
+    width: 70%;
     margin: 2rem auto 1rem auto;
 }
 
@@ -181,8 +274,6 @@ header nav a:hover{
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid black;
 }
 
 #ultimas_noticias h2{
@@ -193,33 +284,36 @@ header nav a:hover{
 #ultimas_noticias>.contenedor_ultimas_noticias{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 #ultimas_noticias>.contenedor_ultimas_noticias>div{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
     width: 30%;
     overflow: hidden;
     background-color: white;
     color: black;
     margin: 0.5rem;
-    border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#ultimas_noticias>.contenedor_ultimas_noticias>div>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 1rem 1rem 1rem;
+    height: 50%;
 }
 
 #ultimas_noticias input{
     background-color: rgb(0, 140, 255);
     color: white;
-    border-radius: 10px;
     border: 1px solid black;
     padding: 0.5rem 1rem;
-    width: 15%;
+    width: fit-content;
 }
 
 #ultimas_noticias input:hover{
@@ -232,6 +326,7 @@ header nav a:hover{
     background-image: url("../img/testimonio_fondo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -255,7 +350,7 @@ header nav a:hover{
 }
 
 #contacto{
-    width: 80%;
+    width: 70%;
     margin: 2rem auto 2rem auto;
 }
 
@@ -297,14 +392,15 @@ header nav a:hover{
     display: flex;
     flex-direction: column;
     background-color: rgb(0, 94, 172);
+    color: whitesmoke;
     padding: 1.5rem;
     width: fit-content;
     height: fit-content;
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 #contacto form textarea{
@@ -328,10 +424,54 @@ header nav a:hover{
     background-color: rgb(27, 27, 27);
 }
 
+#seccionLanding{
+    background-image: url("../img/fondo_gym2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    color: white;
+}
+
+#seccionLanding h2{
+    font-size: 3rem;
+    color: rgb(0, 140, 255);
+    margin: 0 0 2rem 0;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
+}
+
+#seccionLanding span{
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    color: whitesmoke;
+    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
+}
+
+#seccionLanding a{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    background-color: whitesmoke;
+    border: 3px solid rgb(0, 140, 255);
+    color: black;
+}
+
+#seccionLanding a:hover{
+    background-color: rgb(218, 218, 218);
+}
+
 /* ESTILOS GENERALES PARA LAS SECCIONES */
 .seccion{
     margin: 1rem;
-    width: 80%;
+    width: 70%;
     margin: 2rem auto;
     min-height: 90vh;
 }
@@ -355,14 +495,20 @@ header nav a:hover{
     background-color: rgb(129, 142, 153);
 }
 
+.seccion tbody>tr:nth-child(2n+1){
+    background-color: white;
+}
+
 .contenedor_buscar_nuevo{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
 }
 
 .contenedor_buscar_nuevo input{
     padding: 0.5rem;
+    margin-right: 0.3rem;
 }
 
 .contenedor_buscar_nuevo input[type=submit]{
@@ -373,6 +519,10 @@ header nav a:hover{
 
 .contenedor_buscar_nuevo input[type=submit]:hover{
     background-color: rgb(50, 163, 255);
+}
+
+.contenedor_buscar_nuevo form{
+    display: flex;
 }
 
 .contenedor_buscar_nuevo a{
@@ -390,7 +540,7 @@ header nav a:hover{
 /* ESTILOS GENERALES PARA EL PANEL ADMIN */
 .panel_admin{
     margin: 1rem;
-    width: 80%;
+    width: 70%;
     margin: 1rem auto;
     min-height: 90vh;
 }
@@ -411,14 +561,15 @@ header nav a:hover{
     display: flex;
     flex-direction: column;
     background-color: rgb(0, 94, 172);
+    color: whitesmoke;
     padding: 1.5rem;
     width: fit-content;
     margin: auto;
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 5px 5px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .panel_admin input[type=submit]{
@@ -552,6 +703,10 @@ header nav a:hover{
     width: 800px;
     height: 500px;
     object-fit: cover;
+    margin-right: 1rem;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .noticia p{
@@ -569,6 +724,9 @@ header nav a:hover{
     border-collapse: collapse;
     width: 70%;
     margin: auto;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .seccionCitas>.calendario td{
@@ -581,6 +739,7 @@ header nav a:hover{
     background-color: black;
     color: white;
     padding: 1rem;
+    border: 2px solid black;
 }
 
 .seccionCitas>.calendario td{
