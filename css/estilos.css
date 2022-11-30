@@ -136,12 +136,15 @@ header nav a:hover{
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-size: 1.5rem;
-    background-color: whitesmoke;
+    background-color: black;
     border: 3px solid rgb(0, 140, 255);
+    color: white;
+    width: fit-content;
 }
 
 #bienvenida button:hover{
-    background-color: rgb(218, 218, 218);
+    background-color: white;
+    color: black;
 }
 
 #descripcion{
@@ -459,13 +462,14 @@ header nav a:hover{
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-size: 1.5rem;
-    background-color: whitesmoke;
+    background-color: black;
     border: 3px solid rgb(0, 140, 255);
-    color: black;
+    color: white;
 }
 
 #seccionLanding a:hover{
-    background-color: rgb(218, 218, 218);
+    background-color: white;
+    color: black;
 }
 
 /* ESTILOS GENERALES PARA LAS SECCIONES */
@@ -793,8 +797,9 @@ header nav a:hover{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height: 80vh;
+    height: 70vh;
     color: white;
+    margin-bottom: 2rem;
 }
 
 #landing_bienvenida>div{
@@ -833,12 +838,13 @@ header nav a:hover{
 }
 
 #prueba{
-    width: 70%;
-    margin: 4rem auto;
+    margin: 1rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    height: 30vh;
 }
 
 #prueba h2{
@@ -873,6 +879,83 @@ header nav a:hover{
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#landing_maquinas p{
+    text-align: justify;
+    line-height: 20px;
+}
+
+#landing_maquinas h3{
+    font-size: 2rem;
+}
+
+#landing_maquinas strong{
+    color: rgb(0, 140, 255);
+}
+
+#landing_maquinas img{
+    width: 50%;
+    object-fit: cover;
+}
+
+.maquina_impar>div{
+    display: flex;
+    width: 70%;
+    margin: auto;
+}
+
+.maquina_impar>div>div{
+    margin-right: 1rem;
+}
+
+.maquina_par{
+    background-color: white;
+}
+
+.maquina_par>div{
+    display: flex;
+    width: 70%;
+    margin: auto;
+}
+
+.maquina_par>div>div{
+    margin-left: 1rem;
+}
+
+#esperamos{
+    background-image: url("../img/te_esperamos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#esperamos h2{
+    font-size: 3rem;
+    color: rgb(0, 140, 255);
+    margin: 0 0 2rem 0;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0.5rem 2rem;
+}
+
+#esperamos a{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    background-color: black;
+    border: 3px solid white;
+    color: white;
+    width: fit-content;
+}
+
+#esperamos a:hover{
+    color: black;
+    background-color: white;
 }
 
 /* ESTILOS PARA EL FOOTER */
