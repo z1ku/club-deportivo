@@ -775,9 +775,104 @@ header nav a:hover{
 }
 
 /* ESTILOS PARA LA LANDING PAGE */
+#landing header{
+    justify-content: center;
+}
+
 #landing header h1{
-    font-size: 5rem;
+    font-size: 4rem;
     color: rgb(0, 140, 255);
+}
+
+#landing_bienvenida{
+    background-image: url("../img/landing1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 80vh;
+    color: white;
+}
+
+#landing_bienvenida>div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25rem;
+}
+
+#landing_bienvenida>div span{
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+#landing_bienvenida>div span:nth-child(2){
+    color: rgb(0, 140, 255);
+}
+
+#landing_bienvenida>div p{
+    font-size: 2rem;
+}
+
+#landing_bienvenida>div a{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    background-color: black;
+    border: 3px solid white;
+    color: white;
+    width: fit-content;
+}
+
+#landing_bienvenida>div a:hover{
+    background-color: white;
+    color: black;
+}
+
+#prueba{
+    width: 70%;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#prueba h2{
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+#prueba a{
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    background-color: black;
+    border: 3px solid black;
+    color: rgb(0, 140, 255);
+    width: fit-content;
+}
+
+#prueba a:hover{
+    background-color: white;
+}
+
+#landing_videos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#landing_videos iframe{
+    margin: 1rem 0.5rem;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 /* ESTILOS PARA EL FOOTER */
