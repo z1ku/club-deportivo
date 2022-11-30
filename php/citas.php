@@ -114,12 +114,13 @@
                     $tiene_citas=true;
                 }
 
-                echo "<table class=\"calendario\">
-                <caption>
+                echo "<div id=\"cabecera_calendario\">
                     <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
-                    $nom_mes de $a
+                    <span>$nom_mes de $a</span>
                     <a href=\"citas.php?nuevo_mes=$mes_siguiente&nuevo_ano=$ano_siguiente\">&raquo</a>
-                </caption>
+                </div>";
+                
+                echo "<table class=\"calendario\">
                 <thead>
                     <tr>
                         <th>Lunes</th>
