@@ -774,6 +774,11 @@ header nav a:hover{
     color: rgb(0, 140, 255);
 }
 
+/* ESTILOS PARA LA LANDING PAGE */
+#landing header h1{
+    font-size: 5rem;
+    color: rgb(0, 140, 255);
+}
 
 /* ESTILOS PARA EL FOOTER */
 footer{
@@ -798,10 +803,6 @@ footer a:hover{
 footer>div{
     margin-right: 2rem;
 }
-
-
-
-
 
 
 

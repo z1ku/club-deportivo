@@ -256,7 +256,7 @@
         <section id="seccionLanding">
             <h2>Conoce todas nuestras máquinas</h2>
             <span>Visita nuestra landing page</span>
-            <a href="#">Visitar</a>
+            <a href="html/landing.html">Visitar</a>
         </section>
     </main>
     <footer>
