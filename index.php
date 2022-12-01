@@ -157,9 +157,10 @@
                 $fecha_actual=date('Y-m-d');
 
                 $consulta=$con->query("select * from noticia where fecha_publicacion<='$fecha_actual' order by fecha_publicacion desc limit 0, 3");
-
-                echo '<div class="contenedor_ultimas_noticias">';
-                while($noticia=$consulta->fetch_array(MYSQLI_ASSOC)){
+                
+                if($consulta->num_rows>0){
+                    echo '<div class="contenedor_ultimas_noticias">';
+                    while($noticia=$consulta->fetch_array(MYSQLI_ASSOC)){
                     $contenido_short=substr($noticia['contenido'], 0, 50);
 
                     echo "<div>
@@ -174,9 +175,12 @@
                             </form>
                         </div>
                     </div>";
+                    }
+                    echo '</div>';
+                }else{
+                    echo "<p>No se han encontrado noticias recientes</p>";
                 }
-                echo '</div>';
-
+                
                 $con->close();
             ?>
         </section>
