@@ -705,7 +705,7 @@ header nav a:hover{
 }
 
 .noticia img{
-    width: 800px;
+    width: 70%;
     height: 500px;
     object-fit: cover;
     margin-right: 1rem;
