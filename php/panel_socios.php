@@ -56,7 +56,7 @@
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" value=\"$socio[nombre]\" maxlength=\"80\" required>
+                        <input type=\"text\" name=\"nombre\" value=\"$socio[nombre]\" maxlength=\"50\" required>
                     </div>
                     <div>
                         <label for=\"edad\">Edad:</label>
@@ -102,7 +102,7 @@
                     </div>
                     <div>
                         <label for=\"nombre\">Nombre:</label>
-                        <input type=\"text\" name=\"nombre\" maxlength=\"80\" required>
+                        <input type=\"text\" name=\"nombre\" maxlength=\"50\" required>
                     </div>
                     <div>
                         <label for=\"edad\">Edad:</label>
