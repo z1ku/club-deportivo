@@ -66,7 +66,7 @@
                     </div>
                     <div>
                         <label for=\"contenido\">Contenido:</label>
-                        <textarea name=\"contenido\" cols=\"30\" rows=\"10\" maxlength=\"250\" required></textarea>
+                        <textarea name=\"contenido\" cols=\"30\" rows=\"10\" maxlength=\"100\" required></textarea>
                     </div>
                     <input type=\"submit\" name=\"insertar_testimonio\" value=\"Guardar\">
                     </form>";
