@@ -60,7 +60,7 @@
                     </div>
                     <div>
                         <label for=\"contenido\">Contenido:</label>
-                        <textarea name=\"contenido\" cols=\"30\" rows=\"10\" maxlength=\"800\" required></textarea>
+                        <textarea name=\"contenido\" cols=\"50\" rows=\"30\" maxlength=\"800\" required></textarea>
                     </div>
                     <div>
                         <label for=\"fecha\">¿A partir de que fecha quieres que se publique?</label>
