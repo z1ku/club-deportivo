@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2022 a las 13:09:56
+-- Tiempo de generación: 01-12-2022 a las 14:16:22
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -42,7 +42,10 @@ INSERT INTO `citas` (`socio`, `servicio`, `fecha`, `hora`) VALUES
 (1, 1, '2022-11-22', '19:00:00'),
 (1, 2, '2022-11-20', '17:00:00'),
 (5, 1, '2022-11-18', '18:00:00'),
-(7, 2, '2022-11-17', '17:00:00');
+(7, 2, '2022-11-17', '17:00:00'),
+(9, 4, '2022-12-05', '11:30:00'),
+(10, 1, '2022-12-09', '19:00:00'),
+(11, 3, '2022-12-01', '18:00:00');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,8 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`) VALUES
 (3, 'Batido de proteinas', 5.95),
-(4, 'Mancuernas', 25.00);
+(4, 'Mancuernas', 25.00),
+(5, 'Bocaillo Chope', 500.00);
 
 -- --------------------------------------------------------
 
@@ -107,8 +111,10 @@ CREATE TABLE `servicio` (
 --
 
 INSERT INTO `servicio` (`id`, `descripcion`, `duracion`, `precio`) VALUES
-(1, 'Clases de rumba', 60, 10.00),
-(2, 'Clases de spinning', 120, 15.00);
+(1, 'Boxing', 60, 10.00),
+(2, 'Biking', 120, 15.00),
+(3, 'Musculación libre y guiada', 60, 35.00),
+(4, 'Natación libre', 60, 10.00);
 
 -- --------------------------------------------------------
 
@@ -131,10 +137,13 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
-(1, 'Ricardo Romero Bustos', 27, 'ricardor1', 'ricardor1', 689546783, 'ricardor1.jpg'),
+(1, 'Ricardo Romero Bustos', 27, 'ricardorb1', 'ricardor1', 689546783, 'ricardorb1.jpg'),
 (5, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 689914567, 'jesusr1.jpg'),
 (7, 'Pedro Gomez Gutierrez', 25, 'pedrog1', 'pedrog1', 654437698, 'pedrog1.jpg'),
-(8, 'Javier Terrones', 35, 'javiert1', 'javiert1', 654346598, 'javiert1.jpg');
+(8, 'Javier Terrones', 35, 'javiert1', 'javiert1', 654346598, 'javiert1.jpg'),
+(9, 'Roberto Carlos', 41, 'robertoc1', 'robertoc1', 645434576, 'robertoc1.jpg'),
+(10, 'Zinedine Zidane', 43, 'zinedin1', 'zinedin1', 678345456, 'zinedin1.jpg'),
+(11, 'Messi', 34, 'messi23', 'messi23', 689546723, 'messi23.jpg');
 
 -- --------------------------------------------------------
 
@@ -145,7 +154,7 @@ INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `fot
 CREATE TABLE `testimonio` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `autor` bigint(20) UNSIGNED NOT NULL,
-  `contenido` varchar(250) COLLATE latin1_spanish_ci NOT NULL,
+  `contenido` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -157,7 +166,8 @@ INSERT INTO `testimonio` (`id`, `autor`, `contenido`, `fecha`) VALUES
 (1, 1, 'Mi gym es el mejor.', '2022-11-22'),
 (2, 8, 'Me han obligado a hacer una reseña positiva.', '2022-11-22'),
 (3, 7, 'El mejor gym de mi poblo.', '2022-11-22'),
-(4, 5, 'El gym de mi hermano es el mas mejor.', '2022-11-22');
+(4, 5, 'El gym de mi hermano es el mas mejor.', '2022-11-22'),
+(5, 9, 'Yo solo voy porque esta cerca mi casaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2022-12-01');
 
 --
 -- Índices para tablas volcadas
@@ -217,25 +227,25 @@ ALTER TABLE `noticia`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `socio`
 --
 ALTER TABLE `socio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `testimonio`
 --
 ALTER TABLE `testimonio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
