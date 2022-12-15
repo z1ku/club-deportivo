@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2022 a las 14:16:22
+-- Tiempo de generación: 11-12-2022 a las 23:14:43
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,11 +66,11 @@ CREATE TABLE `noticia` (
 --
 
 INSERT INTO `noticia` (`id`, `titulo`, `contenido`, `imagen`, `fecha_publicacion`) VALUES
-(1, 'Po esta es mi noticia', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto.', '1.jpg', '2022-11-15'),
-(2, 'Una noticia muy interesante', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto', '2.jpg', '2022-11-16'),
-(3, 'Otra noticia muy interesante', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho texto', '3.jpg', '2022-11-15'),
-(4, 'Una noticia aun mas interesante que la anterior', 'Muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuucho textoMuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu', '4.jpg', '2022-11-17'),
-(5, 'Otra noticia mas', 'sisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiissisisissisiis cuentame mas.', '5.jpg', '2022-11-15');
+(1, 'Una noticia muy interesante.', 'Hola soy una noticia muy interesante.', '1.jpg', '2022-11-15'),
+(2, 'Olympia Gym seleccionado por la Comisión Económica Europea de Naciones Unidas.', 'Los valores fundamentales, el modelo de negocio y los logros de la empresa se presentaron en un estudio de caso en el 6º Foro Internacional de CPP de la UNECE, en Barcelona. El evento destacó Colaboraciones Público Privadas exitosas que priorizan a las personas y que tienen el potencial de mover a las poblaciones hacia los Objetivos de Desarrollo Sostenible (ODS) establecidos por las Naciones Unidas en su Agenda 2030.', '2.jpg', '2022-11-16'),
+(3, 'Otra noticia muy interesante', 'Yo soy otra noticia muy interesante.', '3.jpg', '2022-11-15'),
+(4, 'En Olympia Gym, entrenar tiene premio.', 'Como sabes, cada día que vienes a Olympia Gym haces mucho por tu salud. Por ello, queremos darte un motivo más para que no faltes a tu cita con nosotros y premiarte por elegir vivir más y mejor.\r\n\r\nCon nuestro programa de fidelización gana puntos y canjéalos por fantásticos premios.\r\n\r\nVive tu experiencia con nosotros al completo, suma puntos y canjéalos por lo que tú quieras: toallas, gafas de natación, welcome packs… ¡y mucho más!', '4.jpg', '2022-11-17'),
+(5, '¡Lanzamos nuestros planes Olympia!', 'Que consigas tus objetivos es siempre nuestro mayor propósito y cada día, seguimos trabajando para ofrecerte la mejor experiencia y que consigas disfrutar de una vida más plena, más feliz y más capaz.\r\n\r\nTe hemos escuchado y ya puedes ampliar los servicios de tu abono Olympia con el\r\nPlan Plus y el Plan Premium. ¡Aprovecha la oferta de lanzamiento!', '5.jpg', '2022-11-15');
 
 -- --------------------------------------------------------
 
@@ -90,8 +90,8 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`) VALUES
 (3, 'Batido de proteinas', 5.95),
-(4, 'Mancuernas', 25.00),
-(5, 'Bocaillo Chope', 500.00);
+(4, 'Bebida Energética', 3.99),
+(7, 'Camiseta Olympia', 15.00);
 
 -- --------------------------------------------------------
 
@@ -137,7 +137,7 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
-(1, 'Ricardo Romero Bustos', 27, 'ricardorb1', 'ricardor1', 689546783, 'ricardorb1.jpg'),
+(1, 'Ricardo Romero', 27, 'ricardorb1', 'ricardor1', 689546783, 'ricardorb1.jpg'),
 (5, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 689914567, 'jesusr1.jpg'),
 (7, 'Pedro Gomez Gutierrez', 25, 'pedrog1', 'pedrog1', 654437698, 'pedrog1.jpg'),
 (8, 'Javier Terrones', 35, 'javiert1', 'javiert1', 654346598, 'javiert1.jpg'),
@@ -167,7 +167,8 @@ INSERT INTO `testimonio` (`id`, `autor`, `contenido`, `fecha`) VALUES
 (2, 8, 'Me han obligado a hacer una reseña positiva.', '2022-11-22'),
 (3, 7, 'El mejor gym de mi poblo.', '2022-11-22'),
 (4, 5, 'El gym de mi hermano es el mas mejor.', '2022-11-22'),
-(5, 9, 'Yo solo voy porque esta cerca mi casaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2022-12-01');
+(5, 9, 'Yo solo voy porque esta cerca mi casa.', '2022-12-01'),
+(6, 11, 'No puedo tengo furbo', '2022-12-01');
 
 --
 -- Índices para tablas volcadas
@@ -227,7 +228,7 @@ ALTER TABLE `noticia`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -239,13 +240,13 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `socio`
 --
 ALTER TABLE `socio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `testimonio`
 --
 ALTER TABLE `testimonio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas

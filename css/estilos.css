@@ -447,6 +447,7 @@ header nav a:hover{
     margin: 0 0 2rem 0;
     background-color: rgba(0, 0, 0, 0.37);
     padding: 0.5rem 2rem;
+    text-align: center;
 }
 
 #seccionLanding span{
@@ -787,6 +788,7 @@ header nav a:hover{
 #landing header h1{
     font-size: 4rem;
     color: rgb(0, 140, 255);
+    text-align: center;
 }
 
 #landing_bienvenida{
@@ -797,7 +799,6 @@ header nav a:hover{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
     height: 70vh;
     color: white;
     margin-bottom: 2rem;
@@ -806,12 +807,13 @@ header nav a:hover{
 #landing_bienvenida>div{
     display: flex;
     flex-direction: column;
-    margin-left: 25rem;
+    align-items: center;
 }
 
 #landing_bienvenida>div span{
     font-size: 4rem;
     font-weight: bolder;
+    text-align: center;
 }
 
 #landing_bienvenida>div span:nth-child(2){
@@ -851,6 +853,7 @@ header nav a:hover{
 #prueba h2{
     margin-top: 0;
     font-size: 2rem;
+    text-align: center;
 }
 
 #prueba a{
@@ -941,6 +944,7 @@ header nav a:hover{
     margin: 0 0 2rem 0;
     background-color: rgba(0, 0, 0, 0.37);
     padding: 0.5rem 2rem;
+    text-align: center;
 }
 
 #esperamos a{
@@ -984,5 +988,32 @@ footer>div{
 }
 
 
+/* MEDIA QUERYS */
+@media screen and (max-width: 1000px){
+    .maquina_impar>div{
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .maquina_par>div{
+        width: 100%;
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 650px){
+    #landing_maquinas img{
+        width: 100%;
+        order: -1;
+    }
+
+    .maquina_impar>div{
+        flex-direction: column;
+    }
+
+    .maquina_par>div{
+        flex-direction: column;
+    }
+}
 
 
