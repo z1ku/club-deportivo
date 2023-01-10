@@ -60,10 +60,12 @@
                     </thead>
                     <tbody>";
                     while($fila_testimonios=$testimonios->fetch_array(MYSQLI_ASSOC)){
+                        $fecha=date("d-m-Y",strtotime($fila_testimonios['fecha']));
+                        
                         echo "<tr>
                             <td>$fila_testimonios[nombre]</td>
                             <td>$fila_testimonios[contenido]</td>
-                            <td>$fila_testimonios[fecha]</td>
+                            <td>$fecha</td>
                         </tr>";
                     }
                     echo "</tbody>";

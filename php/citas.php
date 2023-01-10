@@ -139,7 +139,13 @@
                         if($dias<=$max_dias && $dias>=$start){
                             if($tiene_citas){
                                 if(in_array($dias, $dias_con_cita)){
-                                    echo "<td class=\"dia_cita\">$dias</td>";
+                                    echo "<td class=\"dia_cita\">
+                                        $dias
+                                        <form action=\"#\" method=\"post\">
+                                            <input type=\"hidden\" name=\"dia_buscado\" value=\"$dias\">
+                                            <input type=\"submit\" name=\"editar_socio\" value=\"Editar\" class=\"btn-editar\">
+                                        </form>
+                                    </td>";
                                 }else{
                                     echo "<td>$dias</td>";
                                 }
@@ -158,44 +164,7 @@
                 echo "</tbody>";
                 echo "</table>";
 
-                $citas=$con->query("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
 
-                //MUESTRO LAS CITAS DEL MES SI LAS HUBIERA
-                if($citas->num_rows>0){
-                    echo "<h2>Tus citas</h2>";
-                    echo "<table>
-                    <thead>
-                        <tr>
-                            <th>Socio</th>
-                            <th>Servicio</th>
-                            <th>Teléfono</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Borrar</th>
-                        </tr>
-                    </thead>
-                    <tbody>";
-                    while($fila_citas2=$citas->fetch_array(MYSQLI_ASSOC)){
-                        echo "<tr>
-                            <td>$fila_citas2[nombre]</td>
-                            <td>$fila_citas2[descripcion]</td>
-                            <td>$fila_citas2[telefono]</td>
-                            <td>$fila_citas2[fecha]</td>
-                            <td>$fila_citas2[hora]</td>
-                            <td>
-                                <form action=\"editar_citas.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_socio\" value=\"$fila_citas2[socio]\">
-                                    <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_citas2[servicio]\">
-                                    <input type=\"hidden\" name=\"fecha\" value=\"$fila_citas2[fecha]\">
-                                    <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\" class=\"btn-borrar\">
-                                </form>
-                            </td>
-                        </tr>";
-                    }
-                    echo "</tbody>";
-                    echo "</table>";
-                }
-                
                 //BUSCAR CITAS
                 if(isset($_POST['buscar_cita'])){
                     $cadena=$_POST['cadena'];
@@ -225,11 +194,13 @@
                         </thead>
                         <tbody>";
                         while($buscar->fetch()){
+                            $fecha_formateada2=date("d-m-Y",strtotime($fecha));
+
                             echo "<tr>
                                 <td>$nombre</td>
                                 <td>$descripcion</td>
                                 <td>$telefono</td>
-                                <td>$fecha</td>
+                                <td>$fecha_formateada2</td>
                                 <td>$hora</td>
                                 <td>
                                     <form action=\"editar_citas.php\" method=\"post\">
@@ -246,6 +217,46 @@
                     }
 
                     $buscar->close();
+                }else{
+                    //MUESTRO LAS CITAS DEL MES SI LAS HUBIERA
+                    $citas=$con->query("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
+                    
+                    if($citas->num_rows>0){
+                        echo "<h2>Tus citas</h2>";
+                        echo "<table>
+                        <thead>
+                            <tr>
+                                <th>Socio</th>
+                                <th>Servicio</th>
+                                <th>Teléfono</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                        while($fila_citas=$citas->fetch_array(MYSQLI_ASSOC)){
+                            $fecha_formateada=date("d-m-Y",strtotime($fila_citas['fecha']));
+
+                            echo "<tr>
+                                <td>$fila_citas[nombre]</td>
+                                <td>$fila_citas[descripcion]</td>
+                                <td>$fila_citas[telefono]</td>
+                                <td>$fecha_formateada</td>
+                                <td>$fila_citas[hora]</td>
+                                <td>
+                                    <form action=\"editar_citas.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_socio\" value=\"$fila_citas[socio]\">
+                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_citas[servicio]\">
+                                        <input type=\"hidden\" name=\"fecha\" value=\"$fila_citas[fecha]\">
+                                        <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\" class=\"btn-borrar\">
+                                    </form>
+                                </td>
+                            </tr>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                    }
                 }
 
                 $con->close();

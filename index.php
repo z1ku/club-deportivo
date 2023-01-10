@@ -161,20 +161,21 @@
                 if($consulta->num_rows>0){
                     echo '<div class="contenedor_ultimas_noticias">';
                     while($noticia=$consulta->fetch_array(MYSQLI_ASSOC)){
-                    $contenido_short=substr($noticia['contenido'], 0, 50);
-
-                    echo "<div>
-                        <img src=\"img/noticias/$noticia[imagen]\">
-                        <div>
-                            <h3>$noticia[titulo]</h3>
-                            <p>$contenido_short</p>
-                            <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
-                            <form action=\"php/noticia_completa.php\" method=\"post\">
-                                <input type=\"hidden\" name=\"id_noticia\" value=\"$noticia[id]\">
-                                <input type=\"submit\" name=\"ver_noticia\" value=\"Ver\">
-                            </form>
-                        </div>
-                    </div>";
+                        $contenido_short=substr($noticia['contenido'], 0, 50);
+                        $fecha=date("d-m-Y",strtotime($noticia['fecha_publicacion']));
+                        
+                        echo "<div>
+                            <img src=\"img/noticias/$noticia[imagen]\">
+                            <div>
+                                <h3>$noticia[titulo]</h3>
+                                <p>$contenido_short</p>
+                                <p>Fecha de publicación: $fecha</p>
+                                <form action=\"php/noticia_completa.php\" method=\"post\">
+                                    <input type=\"hidden\" name=\"id_noticia\" value=\"$noticia[id]\">
+                                    <input type=\"submit\" name=\"ver_noticia\" value=\"Ver\">
+                                </form>
+                            </div>
+                        </div>";
                     }
                     echo '</div>';
                 }else{

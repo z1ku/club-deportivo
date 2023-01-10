@@ -46,10 +46,12 @@
                     $consulta=$con->query("select * from noticia where id=$id");
                     $noticia=$consulta->fetch_array(MYSQLI_ASSOC);
 
+                    $fecha=date("d-m-Y",strtotime($noticia['fecha_publicacion']));
+
                     echo "<h1>$noticia[titulo]</h1>
                     <div>
                         <img src=\"../img/noticias/$noticia[imagen]\">
-                        <p>Fecha de publicación: $noticia[fecha_publicacion]</p>
+                        <p>Fecha de publicación: $fecha</p>
                     </div>
                     <p>$noticia[contenido]</p>";
                 }else{

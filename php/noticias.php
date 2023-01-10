@@ -88,12 +88,13 @@
                     while($fila_noticias=$noticias->fetch_array(MYSQLI_ASSOC)){
 
                         $contenido_short=substr($fila_noticias['contenido'], 0, 50);
+                        $fecha=date("d-m-Y",strtotime($fila_noticias['fecha_publicacion']));
 
                         echo "<tr>
                             <td><img src=\"../img/noticias/$fila_noticias[imagen]\"></td>
                             <td>$fila_noticias[titulo]</td>
                             <td>$contenido_short</td>
-                            <td>$fila_noticias[fecha_publicacion]</td>
+                            <td>$fecha</td>
                             <td>
                                 <form action=\"noticia_completa.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_noticia\" value=\"$fila_noticias[id]\">
