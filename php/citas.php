@@ -140,10 +140,9 @@
                             if($tiene_citas){
                                 if(in_array($dias, $dias_con_cita)){
                                     echo "<td class=\"dia_cita\">
-                                        $dias
                                         <form action=\"#\" method=\"post\">
                                             <input type=\"hidden\" name=\"dia_buscado\" value=\"$dias\">
-                                            <input type=\"submit\" name=\"editar_socio\" value=\"Editar\" class=\"btn-editar\">
+                                            <input type=\"submit\" name=\"cita_calendario\" value=\"$dias\" class=\"btn-dia-cita\">
                                         </form>
                                     </td>";
                                 }else{
@@ -165,7 +164,6 @@
                 echo "</table>";
 
 
-                //BUSCAR CITAS
                 if(isset($_POST['buscar_cita'])){
                     $cadena=$_POST['cadena'];
                     $param="%$cadena%";
@@ -217,12 +215,13 @@
                     }
 
                     $buscar->close();
-                }else{
-                    //MUESTRO LAS CITAS DEL MES SI LAS HUBIERA
-                    $citas=$con->query("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
+                }else if(isset($_POST['cita_calendario'])){
+                    $dia_buscado=$_POST['dia_buscado'];
+
+                    $citas=$con->query("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha='$a-$m-$dia_buscado'");
                     
                     if($citas->num_rows>0){
-                        echo "<h2>Tus citas</h2>";
+                        echo "<h2>Citas del día</h2>";
                         echo "<table>
                         <thead>
                             <tr>

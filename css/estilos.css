@@ -726,6 +726,16 @@ header nav a:hover{
     padding: 1rem;
 }
 
+.btn-dia-cita{
+    background-color: white;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-dia-cita:hover{
+    background-color: rgb(240, 240, 240);
+}
+
 .seccionCitas>.calendario{
     border-collapse: collapse;
     width: 70%;
