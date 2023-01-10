@@ -73,26 +73,6 @@
             header("refresh:2; url=socios.php");
         }
 
-    }else if(isset($_POST['eliminar_socio'])){
-
-        require_once "funciones.php";
-
-        $id=$_POST['id_socio'];
-        $foto=$_POST['foto_socio'];
-
-        $con=conectarServidor();
-        $sentencia="delete from socio where id=$id";
-
-        if($con->query($sentencia)){
-            unlink("../img/socios/$foto");
-            echo "<p>Socio eliminado correctamente</p>";
-        }else{
-            echo "<p>ERROR:</p> " . $con->error;
-        }
-
-        $con->close();
-        header("refresh:2; url=socios.php");
-
     }else if(isset($_POST['insertar_socio'])){
 
         if($_FILES['foto']['type']!="image/jpeg" && is_uploaded_file($_FILES['foto']['tmp_name'])){

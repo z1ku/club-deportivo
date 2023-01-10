@@ -77,7 +77,6 @@
                                 <th>Contraseña</th>
                                 <th>Telefono</th>
                                 <th>Editar</th>
-                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>";
@@ -93,13 +92,6 @@
                                     <form action=\"panel_socios.php\" method=\"post\">
                                         <input type=\"hidden\" name=\"id_socio\" value=\"$id\">
                                         <input type=\"submit\" name=\"editar_socio\" value=\"Editar\" class=\"btn-editar\">
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action=\"editar_socio.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_socio\" value=\"$id\">
-                                        <input type=\"hidden\" name=\"foto_socio\" value=\"$foto\">
-                                        <input type=\"submit\" name=\"eliminar_socio\" value=\"Eliminar\" class=\"btn-borrar\">
                                     </form>
                                 </td>
                             </tr>";
@@ -120,7 +112,6 @@
                             <th>Contraseña</th>
                             <th>Telefono</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>";
@@ -136,13 +127,6 @@
                                 <form action=\"panel_socios.php\" method=\"post\">
                                     <input type=\"hidden\" name=\"id_socio\" value=\"$fila_socios[id]\">
                                     <input type=\"submit\" name=\"editar_socio\" value=\"Editar\" class=\"btn-editar\">
-                                </form>
-                            </td>
-                            <td>
-                                <form action=\"editar_socio.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_socio\" value=\"$fila_socios[id]\">
-                                    <input type=\"hidden\" name=\"foto_socio\" value=\"$fila_socios[foto]\">
-                                    <input type=\"submit\" name=\"eliminar_socio\" value=\"Eliminar\" class=\"btn-borrar\">
                                 </form>
                             </td>
                         </tr>";

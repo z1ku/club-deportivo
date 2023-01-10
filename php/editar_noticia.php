@@ -1,11 +1,13 @@
 <?php
     if(isset($_POST['insertar_noticia'])){
 
-        if($_POST['titulo']=="" || $_POST['contenido']=="" || $_POST['fecha']=="" || !is_uploaded_file($_FILES['foto']['tmp_name'])){
-            echo "<p>Debes de rellenar todos los campos y subir una foto jpeg</p>";
+        if($_POST['titulo']=="" || $_POST['contenido']=="" || $_POST['fecha']==""){
+            echo "<p>Debes de rellenar todos los campos y subir una imagen jpeg</p>";
+        }else if(!is_uploaded_file($_FILES['imagen']['tmp_name'])){
+            echo "<p>Debes subir una imagen jpg</p>";
         }else if(strlen($_POST['titulo'])>80){
             echo "<p>Titulo no puede ser mayor de 80</p>";
-        }else if(strllen($_POST['contenido'])>800){
+        }else if(strlen($_POST['contenido'])>800){
             echo "<p>Contenido no puede ser mayor de 800</p>";
         }else{
             $fecha=$_POST['fecha'];
@@ -22,7 +24,7 @@
             }
 
             if($_FILES['imagen']['type']!="image/jpeg"){
-                echo "<p>La imagen no es un jpg</p>";
+                echo "<p>Debes subir una imagen jpg</p>";
             }else if($fecha<$fecha_actual){
                 echo "<p>La fecha no puede ser anterior a hoy</p>";
             }else{
