@@ -81,7 +81,8 @@
                         </thead>
                         <tbody>";
                         while($buscar->fetch()){
-                            echo "<tr>
+                            if($id>0){
+                                echo "<tr>
                                 <td><img src=\"../img/socios/$foto\"></td>
                                 <td>$nombre</td>
                                 <td>$edad</td>
@@ -94,7 +95,8 @@
                                         <input type=\"submit\" name=\"editar_socio\" value=\"Editar\" class=\"btn-editar\">
                                     </form>
                                 </td>
-                            </tr>";
+                                </tr>";
+                            }
                         }
                         echo "</tbody>";
                         echo "</table>";
@@ -116,7 +118,8 @@
                     </thead>
                     <tbody>";
                     while($fila_socios=$socios->fetch_array(MYSQLI_ASSOC)){
-                        echo "<tr>
+                        if($fila_socios['id']>0){
+                            echo "<tr>
                             <td><img src=\"../img/socios/$fila_socios[foto]\"></td>
                             <td>$fila_socios[nombre]</td>
                             <td>$fila_socios[edad]</td>
@@ -129,7 +132,8 @@
                                     <input type=\"submit\" name=\"editar_socio\" value=\"Editar\" class=\"btn-editar\">
                                 </form>
                             </td>
-                        </tr>";
+                            </tr>";
+                        }
                     }
                     echo "</tbody>";
                     echo "</table>";
