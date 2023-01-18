@@ -108,7 +108,7 @@
     function headerGuest(){
         echo '<header>
             <nav>
-                <a href="../index.php"><img src="img/logo.png" alt="" id="logo"></a>
+                <a href="../index.php"><img src="../img/logo.png" alt="" id="logo"></a>
                 <a href="../index.php">Inicio</a>
                 <a href="productos.php">Productos</a>
                 <a href="servicios.php">Servicios</a>
@@ -130,7 +130,7 @@
     function headerAdmin(){
         echo '<header>
             <nav>
-                <a href="../index.php"><img src="img/logo.png" alt="" id="logo"></a>
+                <a href="../index.php"><img src="../img/logo.png" alt="" id="logo"></a>
                 <a href="../index.php">Inicio</a>
                 <a href="socios.php">Socios</a>
                 <a href="productos.php">Productos</a>
@@ -156,7 +156,7 @@
     function headerSocio($usuario){
         echo '<header>
             <nav>
-                <a href="../index.php"><img src="img/logo.png" alt="" id="logo"></a>
+                <a href="../index.php"><img src="../img/logo.png" alt="" id="logo"></a>
                 <a href="../index.php">Inicio</a>
                 <a href="productos.php">Productos</a>
                 <a href="servicios.php">Servicios</a>
