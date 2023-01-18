@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-12-2022 a las 23:14:43
+-- Tiempo de generación: 18-01-2023 a las 12:21:14
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,7 +70,9 @@ INSERT INTO `noticia` (`id`, `titulo`, `contenido`, `imagen`, `fecha_publicacion
 (2, 'Olympia Gym seleccionado por la Comisión Económica Europea de Naciones Unidas.', 'Los valores fundamentales, el modelo de negocio y los logros de la empresa se presentaron en un estudio de caso en el 6º Foro Internacional de CPP de la UNECE, en Barcelona. El evento destacó Colaboraciones Público Privadas exitosas que priorizan a las personas y que tienen el potencial de mover a las poblaciones hacia los Objetivos de Desarrollo Sostenible (ODS) establecidos por las Naciones Unidas en su Agenda 2030.', '2.jpg', '2022-11-16'),
 (3, 'Otra noticia muy interesante', 'Yo soy otra noticia muy interesante.', '3.jpg', '2022-11-15'),
 (4, 'En Olympia Gym, entrenar tiene premio.', 'Como sabes, cada día que vienes a Olympia Gym haces mucho por tu salud. Por ello, queremos darte un motivo más para que no faltes a tu cita con nosotros y premiarte por elegir vivir más y mejor.\r\n\r\nCon nuestro programa de fidelización gana puntos y canjéalos por fantásticos premios.\r\n\r\nVive tu experiencia con nosotros al completo, suma puntos y canjéalos por lo que tú quieras: toallas, gafas de natación, welcome packs… ¡y mucho más!', '4.jpg', '2022-11-17'),
-(5, '¡Lanzamos nuestros planes Olympia!', 'Que consigas tus objetivos es siempre nuestro mayor propósito y cada día, seguimos trabajando para ofrecerte la mejor experiencia y que consigas disfrutar de una vida más plena, más feliz y más capaz.\r\n\r\nTe hemos escuchado y ya puedes ampliar los servicios de tu abono Olympia con el\r\nPlan Plus y el Plan Premium. ¡Aprovecha la oferta de lanzamiento!', '5.jpg', '2022-11-15');
+(5, '¡Lanzamos nuestros planes Olympia!', 'Que consigas tus objetivos es siempre nuestro mayor propósito y cada día, seguimos trabajando para ofrecerte la mejor experiencia y que consigas disfrutar de una vida más plena, más feliz y más capaz.\r\n\r\nTe hemos escuchado y ya puedes ampliar los servicios de tu abono Olympia con el\r\nPlan Plus y el Plan Premium. ¡Aprovecha la oferta de lanzamiento!', '5.jpg', '2022-11-15'),
+(6, 'cacho de notisia parse', 'awdawdwaawdaw', '6.jpg', '2023-01-12'),
+(7, 'peaso notisia parsero', 'noticia para probar y tal', '7.jpg', '2023-01-12');
 
 -- --------------------------------------------------------
 
@@ -124,12 +126,12 @@ INSERT INTO `servicio` (`id`, `descripcion`, `duracion`, `precio`) VALUES
 
 CREATE TABLE `socio` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nombre` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `edad` int(2) UNSIGNED NOT NULL,
+  `nombre` varchar(50) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `edad` int(2) UNSIGNED DEFAULT NULL,
   `usuario` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
   `pass` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
-  `telefono` int(9) UNSIGNED NOT NULL,
-  `foto` varchar(50) COLLATE latin1_spanish_ci NOT NULL
+  `telefono` int(9) UNSIGNED DEFAULT NULL,
+  `foto` varchar(50) COLLATE latin1_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
@@ -137,6 +139,7 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
+(0, 'Administrador', NULL, 'admin', 'admin', NULL, NULL),
 (1, 'Ricardo Romero', 27, 'ricardorb1', 'ricardor1', 689546783, 'ricardorb1.jpg'),
 (5, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 689914567, 'jesusr1.jpg'),
 (7, 'Pedro Gomez Gutierrez', 25, 'pedrog1', 'pedrog1', 654437698, 'pedrog1.jpg'),
@@ -222,7 +225,7 @@ ALTER TABLE `testimonio`
 -- AUTO_INCREMENT de la tabla `noticia`
 --
 ALTER TABLE `noticia`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -240,7 +243,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `socio`
 --
 ALTER TABLE `socio`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `testimonio`
