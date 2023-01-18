@@ -1,3 +1,15 @@
+<?php
+    require_once "funciones.php";
+
+    session_start();
+
+    if(isset($_COOKIE['sesion'])){
+        session_decode($_COOKIE['sesion']);
+    }
+
+    $tipo_usu="";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,27 +24,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.php"><img src="../img/logo.png" alt="" id="logo"></a>
-            <a href="socios.php">Socios</a>
-            <a href="productos.php">Productos</a>
-            <a href="servicios.php">Servicios</a>
-            <a href="testimonios.php">Testimonios</a>
-            <a href="noticias.php">Noticias</a>
-            <a href="citas.php">Citas</a>
-        </nav>
-        <div class="rrss">
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <div class="login">
-            <form action="" method="post">
-                <input type="submit" name="enviar" id="btn-login" value="Login">
-            </form>
-        </div>
-    </header>
+    <?php
+        if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+            $usuario=$_SESSION['usuario'];
+            $pass=$_SESSION['pass'];
+
+            $esAdmin=comprobarAdmin($usuario,$pass);
+            
+            if($esAdmin){
+                headerAdmin();
+                $tipo_usu="admin";
+            }else{
+                headerSocio($usuario);
+                $tipo_usu="socio";
+            }
+        }else{
+            headerGuest();
+        }
+    ?>
     <main>
         <section class="seccion_productos_servicios seccion">
             <h1>Listado de Servicios</h1>
@@ -42,23 +51,28 @@
                     <input type="submit" name="buscar_servicio" value="Buscar">
                     <a href="servicios.php">Reset</a>
                 </form>
-                <form action="panel_servicios.php" method="post">
-                    <input type="submit" name="nuevo_servicio" value="Nuevo servicio">
-                </form>
+                <?php
+                    if($tipo_usu=="admin"){
+                        echo '<form action="panel_servicios.php" method="post">
+                            <input type="submit" name="nuevo_servicio" value="Nuevo servicio">
+                        </form>';
+                    }
+                ?>
+    
             </div>
             <?php
                 require_once "funciones.php";
                 $con=conectarServidor();
 
-                $servicios=$con->query("select * from servicio");
-
+                $servicios=$con->query("select * from servicio order by descripcion asc");
+                
                 if($servicios->num_rows==0){
                     echo "<p>No hay servicios en la base de datos</p>";
                 }else if(isset($_POST['buscar_servicio'])){
                     $cadena=$_POST['cadena'];
                     $param="%$cadena%";
 
-                    $buscar=$con->prepare("select * from servicio where descripcion like ?");
+                    $buscar=$con->prepare("select * from servicio where descripcion like ? order by descripcion asc");
                     $buscar->bind_result($id,$descripcion,$duracion,$precio);
                     $buscar->bind_param("s",$param);
                     $buscar->execute();
@@ -72,23 +86,27 @@
                             <tr>
                                 <th>Descripción</th>
                                 <th>Duración</th>
-                                <th>Precio</th>
-                                <th>Editar</th>
-                            </tr>
+                                <th>Precio</th>";
+                                if($tipo_usu=="admin"){
+                                    echo "<th>Editar</th>";
+                                }
+                            echo "</tr>
                         </thead>
                         <tbody>";
                         while($buscar->fetch()){
                             echo "<tr>
                                 <td>$descripcion</td>
                                 <td>$duracion mins</td>
-                                <td>$precio €</td>
-                                <td>
-                                    <form action=\"panel_servicios.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$id\">
-                                        <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\" class=\"btn-editar\">
-                                    </form>
-                                </td>
-                            </tr>";
+                                <td>$precio €</td>";
+                                if($tipo_usu=="admin"){
+                                    echo "<td>
+                                        <form action=\"panel_servicios.php\" method=\"post\">
+                                            <input type=\"hidden\" name=\"id_servicio\" value=\"$id\">
+                                            <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\" class=\"btn-editar\">
+                                        </form>
+                                    </td>";
+                                }
+                            echo "</tr>";
                         }
                         echo "</tbody>";
                         echo "</table>";
@@ -101,23 +119,27 @@
                         <tr>
                             <th>Descripción</th>
                             <th>Duración</th>
-                            <th>Precio</th>
-                            <th>Editar</th>
-                        </tr>
+                            <th>Precio</th>";
+                            if($tipo_usu=="admin"){
+                                echo "<th>Editar</th>";
+                            }
+                        echo "</tr>
                     </thead>
                     <tbody>";
                     while($fila_servicios=$servicios->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
                             <td>$fila_servicios[descripcion]</td>
                             <td>$fila_servicios[duracion] mins</td>
-                            <td>$fila_servicios[precio] €</td>
-                            <td>
-                                <form action=\"panel_servicios.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_servicios[id]\">
-                                    <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\" class=\"btn-editar\">
-                                </form>
-                            </td>
-                        </tr>";
+                            <td>$fila_servicios[precio] €</td>";
+                            if($tipo_usu=="admin"){
+                                echo "<td>
+                                    <form action=\"panel_servicios.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_servicios[id]\">
+                                        <input type=\"submit\" name=\"editar_servicio\" value=\"Editar\" class=\"btn-editar\">
+                                    </form>
+                                </td>";
+                            }
+                        echo "</tr>";
                     }
                     echo "</tbody>";
                     echo "</table>";
