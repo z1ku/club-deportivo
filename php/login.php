@@ -65,9 +65,9 @@
 
                         if(isset($_POST['recordar'])){
                             $datos=session_encode();
-                            setcookie('sesion', $datos);
+                            setcookie('sesion', $datos, time()+60*60*7, '/');
                         }
-
+                        
                         echo "<p>Bienvenido $usuario</p>";
                         header("refresh:2; url=../index.php");
                     }else{
