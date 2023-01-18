@@ -58,7 +58,7 @@
                     if($buscar->num_rows>0){
                         $_SESSION['usuario']=$usuario;
                         $_SESSION['pass']=$pass;
-
+                        
                         if($id==0){
                             $_SESSION['admin']=true;
                         }else{
@@ -71,8 +71,10 @@
                         }
 
                         echo "<p>Bienvenido $usuario</p>";
+                        header("refresh:2; url=../index.php");
                     }else{
                         echo "<p>Usuario o contraseña incorrectos.</p>";
+                        header("refresh:2; url=login.php");
                     }
                     
                     $buscar->close();
