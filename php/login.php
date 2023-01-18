@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    if(!isset($_POST['enviar'])){
+        header("Location:../index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -58,12 +62,6 @@
                     if($buscar->num_rows>0){
                         $_SESSION['usuario']=$usuario;
                         $_SESSION['pass']=$pass;
-                        
-                        if($id==0){
-                            $_SESSION['admin']=true;
-                        }else{
-                            $_SESSION['admin']=false;
-                        }
 
                         if(isset($_POST['recordar'])){
                             $datos=session_encode();
@@ -74,7 +72,6 @@
                         header("refresh:2; url=../index.php");
                     }else{
                         echo "<p>Usuario o contraseña incorrectos.</p>";
-                        header("refresh:2; url=login.php");
                     }
                     
                     $buscar->close();
@@ -91,7 +88,7 @@
                     <input type=\"password\" name=\"pass\"required>
                 </div>
                 <label for=\"recordar\">
-                    <input type=\"checkbox\" name=\"recordar\">Recuerdame
+                    <input type=\"checkbox\" name=\"recordar\">Mantener sesión iniciada
                 </label>
                 <input type=\"submit\" name=\"logearse\" value=\"Enviar\">
                 </form>";

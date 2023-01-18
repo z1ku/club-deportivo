@@ -7,6 +7,29 @@
         return $con;
     }
 
+    //FUCION PARA COMPROBAR SI EL USUARIO ES ADMIN
+    function comprobarAdmin($usuario,$pass){
+        $con=conectarServidor();
+
+        $buscar=$con->prepare("select id from socio where usuario=? and pass=?");
+        $buscar->bind_result($id);
+        $buscar->bind_param("ss",$usuario,$pass);
+        $buscar->execute();
+        $buscar->store_result();
+        $buscar->fetch();
+
+        if($id==0){
+            $res=true;
+        }else{
+            $res=false;
+        }
+
+        $buscar->close();
+        $con->close();
+
+        return $res;
+    }
+
     // FUNCIONES PARA HEADER
     ////////////////////////////////////////////////////////////////////
     //HEADER INDEX INVITADO

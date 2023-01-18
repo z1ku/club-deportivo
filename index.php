@@ -1,10 +1,7 @@
 <?php
     require_once "php/funciones.php";
 
-    if(!isset($_SESSION)) { 
-        session_start(); 
-    }
-    // session_start();
+    session_start();
 
     if(isset($_COOKIE['sesion'])){
         session_decode($_COOKIE['sesion']);
@@ -26,11 +23,16 @@
 </head>
 <body>
     <?php
-        if(isset($_SESSION)){
-            if($_SESSION['admin']==true){
+        if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+            $usuario=$_SESSION['usuario'];
+            $pass=$_SESSION['pass'];
+
+            $esAdmin=comprobarAdmin($usuario,$pass);
+            
+            if($esAdmin){
                 headerIndexAdmin();
             }else{
-                headerIndexSocio($_SESSION['usuario']);
+                headerIndexSocio($usuario);
             }
         }else{
             headerIndexGuest();
