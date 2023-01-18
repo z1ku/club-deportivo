@@ -139,6 +139,8 @@
         }
 
         header("refresh:2; url=socios.php");
+    }else if(isset($_POST['editar_mis_datos'])){
+        
     }else{
         header("Location:socios.php");
     }
