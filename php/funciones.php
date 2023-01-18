@@ -51,7 +51,7 @@
             </div>
             <div class="login">
                 <form action="php/cerrar_sesion.php" method="post">
-                    <input type="submit" name="enviar" id="btn-login" value="Cerrar sesión de Administrador">
+                    <input type="submit" name="desconectar" id="btn-login" value="Cerrar sesión de Administrador">
                 </form>
             </div>
         </header>';
@@ -75,7 +75,7 @@
             </div>
             <div class="login">
                 <form action="php/cerrar_sesion.php" method="post">
-                    <input type="submit" name="enviar" id="btn-login" value="Cerrar sesión de '.$usuario.'">
+                    <input type="submit" name="desconectar" id="btn-login" value="Cerrar sesión de '.$usuario.'">
                 </form>
             </div>
         </header>';
@@ -123,7 +123,7 @@
             </div>
             <div class="login">
                 <form action="cerrar_sesion.php" method="post">
-                    <input type="submit" name="enviar" id="btn-login" value="Cerrar sesión de Administrador">
+                    <input type="submit" name="desconectar" id="btn-login" value="Cerrar sesión de Administrador">
                 </form>
             </div>
         </header>';
@@ -147,12 +147,12 @@
             </div>
             <div class="login">
                 <form action="cerrar_sesion.php" method="post">
-                    <input type="submit" name="enviar" id="btn-login" value="Cerrar sesión de '.$usuario.'">
+                    <input type="submit" name="desconectar" id="btn-login" value="Cerrar sesión de '.$usuario.'">
                 </form>
             </div>
         </header>';
     }
-    
+
 
 
 

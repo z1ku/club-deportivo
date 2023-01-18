@@ -1,3 +1,16 @@
+<?php
+    require_once "php/funciones.php";
+
+    if(!isset($_SESSION)) { 
+        session_start(); 
+    }
+    // session_start();
+
+    if(isset($_COOKIE['sesion'])){
+        session_decode($_COOKIE['sesion']);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,28 +25,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="index.php"><img src="img/logo.png" alt="" id="logo"></a>
-            <a href="index.php">Inicio</a>
-            <a href="php/socios.php">Socios</a>
-            <a href="php/productos.php">Productos</a>
-            <a href="php/servicios.php">Servicios</a>
-            <a href="php/testimonios.php">Testimonios</a>
-            <a href="php/noticias.php">Noticias</a>
-            <a href="php/citas.php">Citas</a>
-        </nav>
-        <div class="rrss">
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <div class="login">
-            <form action="php/login.php" method="post">
-                <input type="submit" name="enviar" id="btn-login" value="Login">
-            </form>
-        </div>
-    </header>
+    <?php
+        if(isset($_SESSION)){
+            if($_SESSION['admin']==true){
+                headerIndexAdmin();
+            }else{
+                headerIndexSocio($_SESSION['usuario']);
+            }
+        }else{
+            headerIndexGuest();
+        }
+    ?>
     <main>
         <section id="bienvenida">
             <h1>Olympia Gym</h1>
