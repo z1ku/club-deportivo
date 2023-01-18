@@ -6,6 +6,8 @@
     if(isset($_COOKIE['sesion'])){
         session_decode($_COOKIE['sesion']);
     }
+
+    $tipo_usu="";
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +33,10 @@
             
             if($esAdmin){
                 headerAdmin();
+                $tipo_usu="admin";
             }else{
                 headerSocio($usuario);
+                $tipo_usu="socio";
             }
         }else{
             headerGuest();
@@ -47,15 +51,19 @@
                     <input type="submit" name="buscar_producto" value="Buscar">
                     <a href="productos.php">Reset</a>
                 </form>
-                <form action="panel_productos.php" method="post">
-                    <input type="submit" name="nuevo_producto" value="Nuevo producto">
-                </form>
+                <?php
+                    if($tipo_usu=="admin"){
+                        echo '<form action="panel_productos.php" method="post">
+                            <input type="submit" name="nuevo_producto" value="Nuevo producto">
+                        </form>';
+                    }
+                ?>
             </div>
             <?php
                 require_once "funciones.php";
                 $con=conectarServidor();
 
-                $productos=$con->query("select * from producto");
+                $productos=$con->query("select * from producto order by nombre asc");
 
                 if($productos->num_rows==0){
                     echo "<p>No hay productos en la base de datos</p>";
@@ -63,7 +71,7 @@
                     $cadena=$_POST['cadena'];
                     $param="%$cadena%";
 
-                    $buscar=$con->prepare("select * from producto where nombre like ? or precio like ?");
+                    $buscar=$con->prepare("select * from producto where nombre like ? or precio like ? order by nombre asc");
                     $buscar->bind_result($id,$nombre,$precio);
                     $buscar->bind_param("ss",$param,$param);
                     $buscar->execute();
@@ -76,29 +84,33 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
-                            </tr>
+                                <th>Precio</th>";
+                                if($tipo_usu=="admin"){
+                                    echo"<th>Editar</th>
+                                    <th>Eliminar</th>";
+                                }
+                        echo"</tr>
                         </thead>
                         <tbody>";
                         while($buscar->fetch()){
                             echo "<tr>
                                 <td>$nombre</td>
-                                <td>$precio €</td>
-                                <td>
-                                    <form action=\"panel_productos.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
-                                        <input type=\"submit\" name=\"editar_producto\" value=\"Editar\" class=\"btn-editar\">
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action=\"editar_producto.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
-                                        <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\" class=\"btn-borrar\">
-                                    </form>
-                                </td>
-                            </tr>";
+                                <td>$precio €</td>";
+                                if($tipo_usu=="admin"){
+                                    echo "<td>
+                                        <form action=\"panel_productos.php\" method=\"post\">
+                                            <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
+                                            <input type=\"submit\" name=\"editar_producto\" value=\"Editar\" class=\"btn-editar\">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action=\"editar_producto.php\" method=\"post\">
+                                            <input type=\"hidden\" name=\"id_producto\" value=\"$id\">
+                                            <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\" class=\"btn-borrar\">
+                                        </form>
+                                    </td>";
+                                }
+                            echo "</tr>";
                         }
                         echo "</tbody>";
                         echo "</table>";
@@ -110,29 +122,34 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
+                            <th>Precio</th>";
+                            if($tipo_usu=="admin"){
+                                echo"<th>Editar</th>
+                                <th>Eliminar</th>";
+                            }
+                        echo "</tr>
                     </thead>
                     <tbody>";
                     while($fila_productos=$productos->fetch_array(MYSQLI_ASSOC)){
                         echo "<tr>
                             <td>$fila_productos[nombre]</td>
-                            <td>$fila_productos[precio] €</td>
-                            <td>
-                                <form action=\"panel_productos.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
-                                    <input type=\"submit\" name=\"editar_producto\" value=\"Editar\" class=\"btn-editar\">
-                                </form>
-                            </td>
-                            <td>
-                                <form action=\"editar_producto.php\" method=\"post\">
-                                    <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
-                                    <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\" class=\"btn-borrar\">
-                                </form>
-                            </td>
-                        </tr>";
+                            <td>$fila_productos[precio] €</td>";
+                            if($tipo_usu=="admin"){
+                                echo "<td>
+                                    <form action=\"panel_productos.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
+                                        <input type=\"submit\" name=\"editar_producto\" value=\"Editar\" class=\"btn-editar\">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action=\"editar_producto.php\" method=\"post\">
+                                        <input type=\"hidden\" name=\"id_producto\" value=\"$fila_productos[id]\">
+                                        <input type=\"submit\" name=\"eliminar_producto\" value=\"Eliminar\" class=\"btn-borrar\">
+                                    </form>
+                                </td>";
+                            }
+                            
+                        echo "</tr>";
                     }
                     echo "</tbody>";
                     echo "</table>";
