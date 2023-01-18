@@ -49,23 +49,33 @@
                     $usuario=$_POST['usu'];
                     $pass=$_POST['pass'];
 
-                    $buscar=$con->prepare("select count(id) from socio where usuario=? and pass=?");
-                    $buscar->bind_result($num);
+                    $buscar=$con->prepare("select id from socio where usuario=? and pass=?");
+                    $buscar->bind_result($id);
                     $buscar->bind_param("ss",$usuario,$pass);
                     $buscar->execute();
                     $buscar->store_result();
 
-                    if($num>0){
+                    if($buscar->num_rows>0){
                         $_SESSION['usuario']=$usuario;
                         $_SESSION['pass']=$pass;
+
+                        if($id==0){
+                            $_SESSION['admin']=true;
+                        }else{
+                            $_SESSION['admin']=false;
+                        }
+
+                        if(isset($_POST['recordar'])){
+                            $datos=session_encode();
+                            setcookie('sesion', $datos);
+                        }
+
+                        echo "<p>Bienvenido $usuario</p>";
                     }else{
                         echo "<p>Usuario o contraseña incorrectos.</p>";
                     }
                     
-                    if(isset($_POST['recordar'])){
-                        echo "recordado";
-                    };
-
+                    $buscar->close();
                     $con->close();
                 }
 
