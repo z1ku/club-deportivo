@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citas</title>
+    <title>Mis citas</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,10 +32,10 @@
             $esAdmin=comprobarAdmin($usuario,$pass);
             
             if($esAdmin){
-                headerAdmin();
-                $tipo_usu="admin";
-            }else{
                 header("Location:../index.php");
+            }else{
+                headerSocio($usuario);
+                $tipo_usu="socio";
             }
         }else{
             header("Location:../index.php");
@@ -43,15 +43,12 @@
     ?>
     <main>
         <section class="seccionCitas seccion">
-            <h1>Citas</h1>
+            <h1>Mis citas</h1>
             <div class="contenedor_buscar_nuevo">
                 <form action="#" method="post">
                     <input type="text" name="cadena">
                     <input type="submit" name="buscar_cita" value="Buscar">
-                    <a href="citas.php">Reset</a>
-                </form>
-                <form action="panel_citas.php" method="post">
-                    <input type="submit" name="nueva_cita" value="Nueva cita">
+                    <a href="mis_citas.php">Reset</a>
                 </form>
             </div>
             <?php
@@ -112,7 +109,7 @@
                     $mes_siguiente=1;
                 }
 
-                $fechas=$con->query("select distinct fecha from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%'");
+                $fechas=$con->query("select distinct fecha from citas,servicio,socio where socio=socio.id and servicio=servicio.id and fecha like '%$a-$m-%' and usuario='$usuario' and pass='$pass'");
 
                 $tiene_citas=false;
 
@@ -123,9 +120,9 @@
                 }
 
                 echo "<div id=\"cabecera_calendario\">
-                    <a href=\"citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
+                    <a href=\"mis_citas.php?nuevo_mes=$mes_anterior&nuevo_ano=$ano_anterior\">&laquo</a>
                     <span>$nom_mes de $a</span>
-                    <a href=\"citas.php?nuevo_mes=$mes_siguiente&nuevo_ano=$ano_siguiente\">&raquo</a>
+                    <a href=\"mis_citas.php?nuevo_mes=$mes_siguiente&nuevo_ano=$ano_siguiente\">&raquo</a>
                 </div>";
                 
                 echo "<table class=\"calendario\">
@@ -176,9 +173,9 @@
                     $cadena=$_POST['cadena'];
                     $param="%$cadena%";
 
-                    $buscar=$con->prepare("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and (nombre like ? or descripcion like ? or fecha like ?)");
+                    $buscar=$con->prepare("select distinct socio,servicio,nombre,descripcion,telefono,fecha,hora from citas,servicio,socio where socio=socio.id and servicio=servicio.id and (nombre like ? or descripcion like ? or fecha like ?) and usuario=? and pass=?");
                     $buscar->bind_result($socio,$servicio,$nombre,$descripcion,$telefono,$fecha,$hora);
-                    $buscar->bind_param("sss",$param,$param,$param);
+                    $buscar->bind_param("sssss",$param,$param,$param,$usuario,$pass);
                     $buscar->execute();
                     $buscar->store_result();
 
@@ -190,12 +187,9 @@
                         echo "<table>
                         <thead>
                             <tr>
-                                <th>Socio</th>
                                 <th>Servicio</th>
-                                <th>Teléfono</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
-                                <th>Borrar</th>
                             </tr>
                         </thead>
                         <tbody>";
@@ -203,19 +197,9 @@
                             $fecha_formateada2=date("d-m-Y",strtotime($fecha));
 
                             echo "<tr>
-                                <td>$nombre</td>
                                 <td>$descripcion</td>
-                                <td>$telefono</td>
                                 <td>$fecha_formateada2</td>
                                 <td>$hora</td>
-                                <td>
-                                    <form action=\"editar_citas.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_socio\" value=\"$socio\">
-                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$servicio\">
-                                        <input type=\"hidden\" name=\"fecha\" value=\"$fecha\">
-                                        <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\" class=\"btn-borrar\">
-                                    </form>
-                                </td>
                             </tr>";
                         }
                         echo "</tbody>";
@@ -233,12 +217,9 @@
                         echo "<table>
                         <thead>
                             <tr>
-                                <th>Socio</th>
                                 <th>Servicio</th>
-                                <th>Teléfono</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
-                                <th>Borrar</th>
                             </tr>
                         </thead>
                         <tbody>";
@@ -246,19 +227,9 @@
                             $fecha_formateada=date("d-m-Y",strtotime($fila_citas['fecha']));
 
                             echo "<tr>
-                                <td>$fila_citas[nombre]</td>
                                 <td>$fila_citas[descripcion]</td>
-                                <td>$fila_citas[telefono]</td>
                                 <td>$fecha_formateada</td>
                                 <td>$fila_citas[hora]</td>
-                                <td>
-                                    <form action=\"editar_citas.php\" method=\"post\">
-                                        <input type=\"hidden\" name=\"id_socio\" value=\"$fila_citas[socio]\">
-                                        <input type=\"hidden\" name=\"id_servicio\" value=\"$fila_citas[servicio]\">
-                                        <input type=\"hidden\" name=\"fecha\" value=\"$fila_citas[fecha]\">
-                                        <input type=\"submit\" name=\"borrar_cita\" value=\"Borrar\" class=\"btn-borrar\">
-                                    </form>
-                                </td>
                             </tr>";
                         }
                         echo "</tbody>";

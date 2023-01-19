@@ -3,7 +3,7 @@
 
     session_start();
 
-    if(!isset($_POST['enviar'])){
+    if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
         header("Location:../index.php");
     }
 ?>
