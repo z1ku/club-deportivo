@@ -64,6 +64,6 @@
         
         header("refresh:2; url=servicios.php");
     }else{
-        header("Location:servicios.php");
+        header("Location:../index.php");
     }
 ?>

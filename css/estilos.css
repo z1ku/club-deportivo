@@ -789,6 +789,23 @@ header nav a:hover{
     color: rgb(0, 140, 255);
 }
 
+/* ESTILOS SECCION PERSONAL */
+.seccionPersonal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.seccionPersonal img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: auto;
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%);
+}
+
 /* ESTILOS PARA LA LANDING PAGE */
 #landing header{
     justify-content: center;

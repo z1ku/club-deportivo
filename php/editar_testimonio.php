@@ -28,6 +28,6 @@
         
         header("refresh:2; url=testimonios.php");
     }else{
-        header("Location:testimonios.php");
+        header("Location:../index.php");
     }
 ?>

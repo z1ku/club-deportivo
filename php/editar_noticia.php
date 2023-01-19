@@ -53,6 +53,6 @@
         
         header("refresh:2; url=noticias.php");
     }else{
-       header("Location:noticias.php");
+       header("Location:../index.php");
     }
 ?>

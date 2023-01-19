@@ -75,6 +75,6 @@
         
         header("refresh:2; url=productos.php");
     }else{
-        header("Location:productos.php");
+        header("Location:../index.php");
     }
 ?>

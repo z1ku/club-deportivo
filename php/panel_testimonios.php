@@ -1,3 +1,15 @@
+<?php
+    require_once "funciones.php";
+
+    session_start();
+
+    if(isset($_COOKIE['sesion'])){
+        session_decode($_COOKIE['sesion']);
+    }
+
+    $tipo_usu="";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,27 +24,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.php"><img src="../img/logo.png" alt="" id="logo"></a>
-            <a href="socios.php">Socios</a>
-            <a href="productos.php">Productos</a>
-            <a href="servicios.php">Servicios</a>
-            <a href="testimonios.php">Testimonios</a>
-            <a href="noticias.php">Noticias</a>
-            <a href="citas.php">Citas</a>
-        </nav>
-        <div class="rrss">
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <div class="login">
-            <form action="" method="post">
-                <input type="submit" name="enviar" id="btn-login" value="Login">
-            </form>
-        </div>
-    </header>
+    <?php
+        if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+            $usuario=$_SESSION['usuario'];
+            $pass=$_SESSION['pass'];
+
+            $esAdmin=comprobarAdmin($usuario,$pass);
+            
+            if($esAdmin){
+                headerAdmin();
+                $tipo_usu="admin";
+            }else{
+                header("Location:../index.php");
+            }
+        }else{
+            header("Location:../index.php");
+        }
+    ?>
     <main>
         <section id="panel_testimonios" class="panel_admin">
             <h1>Panel Testimonios</h1>
@@ -60,7 +68,9 @@
                         <label for=\"autor\">Autor:</label>
                         <select name=\"autor\" required>";
                         while($fila_socios=$socios->fetch_array(MYSQLI_ASSOC)){
-                            echo "<option value=\"$fila_socios[id]\">$fila_socios[nombre]</option>";
+                            if($fila_socios['id']!=0){
+                                echo "<option value=\"$fila_socios[id]\">$fila_socios[nombre]</option>";
+                            }
                         }
                     echo "</select>
                     </div>
@@ -73,7 +83,7 @@
                     
                     $con->close();
                 }else{
-                    header("Location:testimonios.php");
+                    header("Location:../index.php");
                 }
             ?>
         </section>

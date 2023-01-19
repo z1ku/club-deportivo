@@ -77,6 +77,6 @@
         
         header("refresh:2; url=citas.php");
     }else{
-        header("Location:citas.php");
+        header("Location:../index.php");
     }
 ?>
