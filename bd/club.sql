@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-01-2023 a las 12:21:14
+-- Tiempo de generación: 20-01-2023 a las 10:07:25
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -129,7 +129,7 @@ CREATE TABLE `socio` (
   `nombre` varchar(50) COLLATE latin1_spanish_ci DEFAULT NULL,
   `edad` int(2) UNSIGNED DEFAULT NULL,
   `usuario` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
-  `pass` varchar(15) COLLATE latin1_spanish_ci NOT NULL,
+  `pass` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
   `telefono` int(9) UNSIGNED DEFAULT NULL,
   `foto` varchar(50) COLLATE latin1_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -139,14 +139,14 @@ CREATE TABLE `socio` (
 --
 
 INSERT INTO `socio` (`id`, `nombre`, `edad`, `usuario`, `pass`, `telefono`, `foto`) VALUES
-(0, 'Administrador', NULL, 'admin', 'admin', NULL, NULL),
-(1, 'Ricardo Romero', 27, 'ricardorb1', 'ricardor1', 689546783, 'ricardorb1.jpg'),
-(5, 'Jesus Romero Bustos', 34, 'jesusr1', 'jesusr1', 689914567, 'jesusr1.jpg'),
-(7, 'Pedro Gomez Gutierrez', 25, 'pedrog1', 'pedrog1', 654437698, 'pedrog1.jpg'),
-(8, 'Javier Terrones', 35, 'javiert1', 'javiert1', 654346598, 'javiert1.jpg'),
-(9, 'Roberto Carlos', 41, 'robertoc1', 'robertoc1', 645434576, 'robertoc1.jpg'),
-(10, 'Zinedine Zidane', 43, 'zinedin1', 'zinedin1', 678345456, 'zinedin1.jpg'),
-(11, 'Messi', 34, 'messi23', 'messi23', 689546723, 'messi23.jpg');
+(0, 'Administrador', NULL, 'admin', 'c3284d0f94606de1fd2af172aba15bf3', NULL, NULL),
+(1, 'Ricardo Romero', 27, 'ricardor1', '52784d7a7812a60927e80a1ea45d250c', 689546783, 'ricardor1.jpg'),
+(5, 'Jesus Romero Bustos', 34, 'jesusr1', 'f56cb29b38347c72d10815924886e33d', 689914567, 'jesusr1.jpg'),
+(7, 'Pedro Gomez Gutierrez', 25, 'pedrog1', '3a425faddfe52e98a3d037b5ae1066d5', 654437698, 'pedrog1.jpg'),
+(8, 'Javier Terrones', 35, 'javiert1', '2917f1e2b594bedd074d6e76d1f52eb4', 654346598, 'javiert1.jpg'),
+(9, 'Roberto Carlos', 41, 'robertoc1', 'ccbc8f707909df8bf9a89f6333b33ad0', 645434576, 'robertoc1.jpg'),
+(10, 'Zinedine Zidane', 43, 'zinedin1', 'cc4bac81f02564bb97825326e5ba6ba7', 678345456, 'zinedin1.jpg'),
+(11, 'Messi', 34, 'messi23', '4e948a230aaa5df8a317c9ca9390904c', 689546723, 'messi23.jpg');
 
 -- --------------------------------------------------------
 
