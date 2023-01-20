@@ -77,7 +77,7 @@
                     </div>
                     <div>
                         <label for=\"pass\">Contraseña:</label>
-                        <input type=\"password\" name=\"pass\" value=\"$socio[pass]\" maxlength=\"15\" required>
+                        <input type=\"password\" name=\"pass\" value=\"\" maxlength=\"15\">
                     </div>
                     <div>
                         <label for=\"telefono\">Telefono:</label>

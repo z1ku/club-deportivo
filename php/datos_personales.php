@@ -59,10 +59,7 @@
                 echo "<h1>Mis datos personales</h1>";
                 echo "<img src=\"../img/socios/$socio[foto]\">";
                 echo "<form action=\"editar_socio.php\" method=\"post\" enctype=\"multipart/form-data\">
-                <div>
-                    <label for=\"id\">ID:</label>
-                    <input type=\"number\" name=\"id\" value=\"$socio[id]\" readonly>
-                </div>
+                <input type=\"hidden\" name=\"id\" value=\"$socio[id]\">
                 <div>
                     <label for=\"nombre\">Nombre:</label>
                     <input type=\"text\" name=\"nombre\" value=\"$socio[nombre]\" maxlength=\"50\" readonly>
@@ -78,7 +75,7 @@
                 </div>
                 <div>
                     <label for=\"pass\">Contraseña:</label>
-                    <input type=\"password\" name=\"pass\" value=\"$socio[pass]\" maxlength=\"15\" required>
+                    <input type=\"password\" name=\"pass\" value=\"\" maxlength=\"15\">
                 </div>
                 <div>
                     <label for=\"telefono\">Telefono:</label>

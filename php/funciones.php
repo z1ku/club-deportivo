@@ -18,7 +18,7 @@
         $buscar->store_result();
         $buscar->fetch();
 
-        if($id==0){
+        if($id===0){
             $res=true;
         }else{
             $res=false;
@@ -26,7 +26,7 @@
 
         $buscar->close();
         $con->close();
-
+        
         return $res;
     }
 

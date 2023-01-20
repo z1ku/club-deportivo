@@ -35,7 +35,7 @@
                     $con=conectarServidor();
 
                     $usuario=$_POST['usu'];
-                    $pass=$_POST['pass'];
+                    $pass=md5(md5($_POST['pass']));
 
                     $buscar=$con->prepare("select id from socio where usuario=? and pass=?");
                     $buscar->bind_result($id);
