@@ -1,0 +1,19 @@
+admin:
+
+usuario: admin
+pw: admin
+
+--------------------------------------------------------------------------
+socios:
+
+usuario: ricardor1
+pw: ricardor1
+
+usuario: jesusr1
+pw: jesusr1
+
+usuario: pedrog1
+pw: pedrog1
+
+usuario: javiert1
+pw: javiert1
