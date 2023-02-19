@@ -90,6 +90,7 @@
                 <a href="php/servicios.php">Servicios</a>
                 <a href="php/datos_personales.php">Mis datos personales</a>
                 <a href="php/mis_citas.php">Mis citas</a>
+                <a href="php/pokemon.php">Pokemon</a>
             </nav>
             <div class="rrss">
                 <a href="#"><i class="fa-brands fa-twitter"></i></a>
@@ -162,6 +163,7 @@
                 <a href="servicios.php">Servicios</a>
                 <a href="datos_personales.php">Mis datos personales</a>
                 <a href="mis_citas.php">Mis citas</a>
+                <a href="pokemon.php">Pokemon</a>
             </nav>
             <div class="rrss">
                 <a href="#"><i class="fa-brands fa-twitter"></i></a>
